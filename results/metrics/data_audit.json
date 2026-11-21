@@ -1,0 +1,102 @@
+{
+  "dataset": {
+    "files": 1439,
+    "actors": 24,
+    "emotions": {
+      "angry": 192,
+      "calm": 192,
+      "disgust": 192,
+      "fearful": 192,
+      "happy": 191,
+      "neutral": 96,
+      "sad": 192,
+      "surprised": 192
+    }
+  },
+  "scan_errors": [
+    {
+      "path": "data\\raw\\Actor_07\\03-01-03-01-02-02-07.wav",
+      "error": "duplicate audio bytes"
+    }
+  ],
+  "feature_errors": [],
+  "test_actors": [
+    "05",
+    "10",
+    "15",
+    "20",
+    "23",
+    "24"
+  ],
+  "training_count": 1079,
+  "test_count": 360,
+  "training_class_counts": {
+    "neutral": 72,
+    "calm": 144,
+    "happy": 143,
+    "sad": 144,
+    "angry": 144,
+    "fearful": 144,
+    "disgust": 144,
+    "surprised": 144
+  },
+  "test_class_counts": {
+    "neutral": 24,
+    "calm": 48,
+    "happy": 48,
+    "sad": 48,
+    "angry": 48,
+    "fearful": 48,
+    "disgust": 48,
+    "surprised": 48
+  },
+  "feature_names": [
+    "mfcc_1_mean",
+    "mfcc_2_mean",
+    "mfcc_3_mean",
+    "mfcc_4_mean",
+    "mfcc_5_mean",
+    "mfcc_6_mean",
+    "mfcc_7_mean",
+    "mfcc_8_mean",
+    "mfcc_9_mean",
+    "mfcc_10_mean",
+    "mfcc_11_mean",
+    "mfcc_12_mean",
+    "mfcc_13_mean",
+    "mfcc_14_mean",
+    "mfcc_15_mean",
+    "mfcc_16_mean",
+    "mfcc_17_mean",
+    "mfcc_18_mean",
+    "mfcc_19_mean",
+    "mfcc_20_mean",
+    "mfcc_1_std",
+    "mfcc_2_std",
+    "mfcc_3_std",
+    "mfcc_4_std",
+    "mfcc_5_std",
+    "mfcc_6_std",
+    "mfcc_7_std",
+    "mfcc_8_std",
+    "mfcc_9_std",
+    "mfcc_10_std",
+    "mfcc_11_std",
+    "mfcc_12_std",
+    "mfcc_13_std",
+    "mfcc_14_std",
+    "mfcc_15_std",
+    "mfcc_16_std",
+    "mfcc_17_std",
+    "mfcc_18_std",
+    "mfcc_19_std",
+    "mfcc_20_std",
+    "rms_mean",
+    "rms_std",
+    "zcr_mean",
+    "zcr_std",
+    "centroid_mean",
+    "centroid_std"
+  ],
+  "random_seed": 42
+}

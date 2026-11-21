@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.calibration import CalibratedClassifierCV
 from sklearn.metrics import (accuracy_score, classification_report, confusion_matrix,
                              precision_recall_fscore_support)
 from sklearn.pipeline import make_pipeline
@@ -23,7 +24,7 @@ from .feature_extraction import extract_features, FEATURE_NAMES
 SEED = 42
 TEST_ACTORS = {"05", "10", "15", "20", "23", "24"}
 MODELS = {
-    "svm": lambda: make_pipeline(StandardScaler(), SVC(C=10, gamma="scale", probability=True, random_state=SEED)),
+    "svm": lambda: make_pipeline(StandardScaler(), CalibratedClassifierCV(SVC(C=10, gamma="scale", random_state=SEED), method="sigmoid", cv=3)),
     "random_forest": lambda: RandomForestClassifier(n_estimators=200, min_samples_leaf=2, class_weight="balanced", random_state=SEED, n_jobs=-1),
     "logistic_regression": lambda: make_pipeline(StandardScaler(), LogisticRegression(max_iter=2000, class_weight="balanced", random_state=SEED)),
 }

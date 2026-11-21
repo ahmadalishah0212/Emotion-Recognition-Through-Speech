@@ -1,0 +1,6 @@
+{
+  "name": "svm",
+  "file": "svm.joblib",
+  "selection_metric": "macro_f1",
+  "feature_count": 46
+}

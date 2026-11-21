@@ -16,18 +16,15 @@ st.title("Vocal Lens")
 st.markdown("<p class='subtle'>Explore the emotion conveyed by a short speech recording.</p>", unsafe_allow_html=True)
 st.info("Predictions are approximate. A voice recording cannot reliably reveal a person's actual feelings.")
 
-tab_upload, tab_record = st.tabs(["Upload audio", "Record with microphone"])
-with tab_upload:
-    uploaded = st.file_uploader("Choose a speech recording", type=["wav", "mp3", "flac", "ogg"], help="WAV is recommended. Use a clear recording of at least 0.4 seconds.")
-with tab_record:
-    recorded = st.audio_input("Record a short speech sample")
-
-audio = recorded if recorded is not None else uploaded
-if recorded is not None and uploaded is not None:
-    st.caption("Using the microphone recording. Clear it to use the uploaded file.")
+source = st.radio("Input source", ["Upload audio", "Record with microphone"], horizontal=True)
+if source == "Upload audio":
+    audio = st.file_uploader("Choose a speech recording", type=["wav", "mp3", "flac", "ogg"], help="WAV is recommended. Use a clear recording of at least 0.4 seconds.")
+else:
+    audio = st.audio_input("Record a short speech sample")
 
 if audio is not None:
     raw = audio.getvalue()
+    st.caption(f"Ready to analyze: {audio.name}")
     st.audio(raw)
     if st.button("Analyze speech", type="primary", use_container_width=True):
         if len(raw) > 25 * 1024 * 1024:

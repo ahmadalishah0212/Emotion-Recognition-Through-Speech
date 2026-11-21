@@ -7,9 +7,9 @@ from src.feature_extraction import extract_features, FEATURE_NAMES
 from src.predict import load_selected, predict_audio
 
 
-def sample_wav(seconds=1):
+def sample_wav(seconds=1, frequency=440):
     t = np.arange(16000 * seconds) / 16000
-    samples = (0.3 * np.sin(2 * np.pi * 440 * t) * 32767).astype("<i2")
+    samples = (0.3 * np.sin(2 * np.pi * frequency * t) * 32767).astype("<i2")
     output = BytesIO()
     with wave.open(output, "wb") as wav:
         wav.setnchannels(1); wav.setsampwidth(2); wav.setframerate(16000)
@@ -21,6 +21,17 @@ def test_feature_dimensions_and_finite_values():
     features = extract_features(sample_wav())
     assert features.shape == (len(FEATURE_NAMES),)
     assert np.isfinite(features).all()
+
+
+def test_different_audio_changes_features_and_bytes_match_training_path(tmp_path):
+    first_audio = sample_wav(frequency=220)
+    second_audio = sample_wav(frequency=660)
+    first = extract_features(first_audio)
+    second = extract_features(second_audio)
+    assert np.linalg.norm(first - second) > 1
+    path = tmp_path / "sample.wav"
+    path.write_bytes(first_audio)
+    np.testing.assert_allclose(first, extract_features(path), rtol=1e-5, atol=1e-4)
 
 
 def test_invalid_audio():

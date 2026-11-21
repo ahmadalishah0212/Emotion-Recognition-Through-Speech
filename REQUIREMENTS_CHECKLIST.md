@@ -21,8 +21,8 @@
 | Proper evaluation metrics | `results/metrics/` | **Verified**: accuracy, macro precision/recall/F1, class reports and confusion matrices generated. |
 | Compare models | `results/model_comparison/comparison.csv`, report | **Verified**: real comparison table and chart generated. |
 | Suggest and explain best model; understand it | `models/selected.json`, report, viva guide | **Verified**: calibrated SVM selected by macro F1 0.3975; weaknesses documented. |
-| Integrate selected model with web/mobile app | `app.py`, `src/predict.py` | **Verified**: real saved SVM loaded; browser upload produced a prediction and chart. |
-| User input and prediction demonstration | `app.py`, `TESTING.md` | **Verified** for upload and prediction; microphone control rendered but capture remains unverified. |
+| Integrate selected model with web/mobile app | `app.py`, `src/predict.py` | **Verified**: real saved SVM loaded; two browser uploads produced distinct predictions. Exclusive source selection prevents a stale microphone recording from overriding an upload. |
+| User input and prediction demonstration | `app.py`, `TESTING.md` | **Verified** for two different uploads and predictions; microphone control rendered but capture remains unverified. |
 | GitHub source link | README, remote `origin` | **Verified**: public repository created; baseline, dataset/EDA and model milestones pushed. |
 | Project report | `reports/project_report.md` | **Verified**: real dataset, plots, metrics, selection and limitations recorded. |
 | Dataset/source link | `data/README.md`, report, README | **Verified**: official Zenodo URL and checksum documented. |

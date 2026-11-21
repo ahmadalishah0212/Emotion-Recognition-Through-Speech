@@ -9,6 +9,7 @@
 - Speaker-independent evaluation of SVM, random forest and logistic regression
 - Saved models, class reports, confusion matrices and macro F1 comparison
 - Streamlit upload and browser microphone input with actual saved-model prediction
+- Explicit input-source selection, so a previous microphone recording cannot override a new upload
 
 ## Windows setup (PowerShell)
 
@@ -29,6 +30,15 @@ python -m streamlit run app.py
 
 If PowerShell blocks activation, run `Set-ExecutionPolicy -Scope Process Bypass` in that PowerShell session. No GPU or paid API is required. `st.audio_input` needs microphone access in the browser. WAV is the safest upload format; MP3 support depends on the audio decoder available to librosa. No separate FFmpeg installation is required for WAV.
 
+From **Command Prompt** in this workspace, use the project Python directly (no activation required):
+
+```bat
+cd /d "C:\Users\ahmad\Desktop\Emotion Recognition"
+.venv\Scripts\python.exe -m streamlit run app.py
+```
+
+Running `python -m streamlit` from `C:\Users\ahmad` uses the system Python instead of this project's environment, which produces `No module named streamlit`.
+
 The official dataset is already extracted in this workspace. For a new clone, if the dataset script cannot connect, download **Audio_Speech_Actors_01-24.zip** from the [official RAVDESS record](https://zenodo.org/records/1188976), place it in `data/raw/`, then rerun `python scripts/download_dataset.py`. The script checks the archive's official MD5 and extracts it. See [data setup](data/README.md). Do not commit the dataset ZIP or extracted audio.
 
 ## Output and interpretation
@@ -42,7 +52,7 @@ Use `python -m src.eda` to regenerate graphs and `python -m src.train` to regene
 1. Open the [dataset source](https://zenodo.org/records/1188976) and run `python scripts/validate_dataset.py`.
 2. Show `results/figures/emotion_distribution.png`, `actor_distribution.png` and `sample_audio.png` after EDA.
 3. Show the actual comparison CSV and three confusion matrices after training; explain macro F1 and the selected model.
-4. Start Streamlit. Upload one of the RAVDESS WAV files, press **Analyze speech**, then use the microphone for a separate live recording.
+4. Start Streamlit. Choose **Upload audio**, select a RAVDESS WAV and press **Analyze speech**. Choose **Record with microphone** for a separate live recording. The app shows which file is ready to analyze.
 5. Explain that the predictions describe acted expressions in training data, not a person's true feelings.
 
 ## Repository and submission

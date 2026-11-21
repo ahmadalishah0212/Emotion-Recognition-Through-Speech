@@ -1,11 +1,13 @@
-# Emotion Recognition Through Speech
+# VocalLens: Multimodal Emotion Recognition Through Speech and Facial Expressions
+
+**Hear the voice. See the emotion.**
 
 **Team:** Ahmad Ali Shah, Saboor Khan, Sardar Bilal  
-**Status:** Dataset, EDA, three-model training and browser upload prediction verified. Microphone capture remains unverified.
+**Status:** Audio evaluation, sample face inference, and local video upload analysis verified. Microphone and physical webcam capture remain unverified.
 
 ## Abstract and problem statement
 
-This project classifies the *acted vocal expression* in a short speech recording into one of eight RAVDESS labels. It compares three CPU-friendly machine learning models using a speaker-independent test set and serves the selected saved model through a local Streamlit app. It cannot determine a person's genuine feelings from voice alone.
+This project classifies *acted vocal expression* in a short speech recording and estimates visible facial-expression categories in a photo or sampled video frames. It compares three CPU-friendly speech models using a speaker-independent test set and uses a separate pretrained FER+ facial model. A local Streamlit app shows the cues separately and offers an explicitly experimental combined score when both are present. It cannot determine a person's genuine feelings from voice or face.
 
 ## Objectives and dataset
 
@@ -55,9 +57,29 @@ The original app showed both upload and microphone widgets and always chose a mi
 
 An independent diagnostic used 24 real WAVs: eight emotions each from Actors 01, 05 and 10. The 46-feature vectors were finite, differed across all tested recordings, and matched between the training file-path and app bytes paths. The saved SVM predicted all eight classes across those 24 clips. Its 360-clip held-out confusion matrix also contains predictions in all eight classes, although neutral and sad are predicted infrequently. The model is therefore not globally stuck on one label; its low macro F1 and weak classes still limit generalization to ordinary microphone speech. The diagnostic input statistics, full score vectors and predictions are recorded in `results/metrics/prediction_diagnostics.json`. No model retraining was required for this app-input fix, so the measured comparison table above is unchanged.
 
+## Facial expression pipeline and source
+
+The face module uses OpenCV's pretrained frontal-face Haar cascade to find face regions. It selects the largest detected face in each frame, converts that crop to grayscale, resizes it to 64×64 pixels, and passes it to the [ONNX Model Zoo Emotion FER+ model](https://github.com/onnx/models/blob/main/validated/vision/body_analysis/emotion_ferplus/README.md). The model's eight outputs are neutral, happiness, surprise, sadness, anger, disgust, fear and contempt; the app displays grammatical variants happy, surprised, sad, angry and fearful. Softmax converts raw model scores to a distribution. The model is distributed under MIT terms and runs with ONNX Runtime on CPU. **Our group did not train this facial model or measure its classification accuracy.**
+
+Camera input captures one browser still image. Uploaded videos are capped at 50 MB and two minutes. At most 12 frames are sampled evenly over the clip, and valid per-frame score vectors are averaged to create one face result. Frames without detected faces are skipped and counted. If no sampled frame contains a face, the app shows no facial result. If several faces appear, the largest detection in each frame is used with a visible warning; this may switch subjects across frames. No facial identity information is extracted or stored.
+
+## Video audio and experimental fusion
+
+`imageio-ffmpeg` extracts a mono 16 kHz WAV track from a video. The existing speech feature and saved-model pipeline processes that track. A video with no decodable audio can still produce a face result. A no-face video can still produce a voice result. The two single-cue predictions and charts remain visible.
+
+The taxonomies share seven reasonably aligned expression names: neutral, happy, sad, angry, fearful, disgust and surprised. Audio **calm** and face **contempt** are omitted because there is no direct counterpart. Each distribution is renormalized over the seven shared classes, and corresponding scores are averaged with equal weights. This symmetric late-fusion display is an **experimental baseline**, not a calibrated joint probability model. Separate model scores need not be equally calibrated; no labeled multimodal test set was used, so **combined accuracy and F1 are unknown**. The app explicitly labels the combined output unvalidated.
+
+## Exact repeated-prediction diagnosis and new tests
+
+Three unrelated MP3s on the laptop had distinct SHA-256 hashes, decoded durations and 46-feature vectors. The crying file `universfield-female-crying-291098.mp3` yielded Fearful 0.407635; an angry stock MP3 yielded Fearful 0.444648; a child-laughter MP3 yielded Fearful 0.441609. Thus the top label repeated, but the score vectors were **not identical**. The crying and angry files were also uploaded through the real Streamlit browser interface and displayed distinct Fearful bars (0.408 versus 0.445). This rules out a stale upload, stale chart and identical feature extraction in those tested flows. The more likely cause is model error on stock non-speech or out-of-domain audio: RAVDESS training used acted spoken sentences, and the selected SVM's held-out macro F1 was only 0.3975. We preserved the measured model and added input hashes, details, and an explicit domain warning rather than manipulating labels. `scripts/diagnose_uploads.py` reproduces the byte, signal, feature and score inspection.
+
+The new implementation was tested with a sample face image, blank no-face image, a three-second local video made from repeated sample frames and a RAVDESS audio clip, and the same video without audio. The video produced 12 sampled face frames, a separate speech result, and an experimental combined result; the silent video produced no audio track. The Streamlit browser rendered the new branding, exact crying-file hash, voice chart, and all three video result cards. Physical webcam and microphone capture were not confirmed in this browser session. These are functional checks, **not facial or multimodal accuracy measurements**.
+
 ## Limitations and conclusion
 
 RAVDESS uses acted North American English speech and a small number of speakers; real-world language, accents, noise, recording devices and spontaneous emotion may differ. SVM probability calibration aligns the label and score chart but does not make a score a reliable measure of someone's feelings. The fixed single split is reproducible but gives one estimate; a future extension could use group cross-validation. The measured macro F1 of 0.3975 shows substantial room for improvement, especially for neutral, happy and sad.
+
+Frontal face detection may fail with profile views, occlusion or poor light. FER+ training conditions and our video inputs differ, and the model may be biased across populations; no independent face benchmark was conducted. Sampled frames can miss short expressions. Equal-weight fusion is a demonstration of integrating two classifiers and should not be used for high-stakes decisions.
 
 ## References
 
@@ -66,3 +88,6 @@ RAVDESS uses acted North American English speech and a small number of speakers;
 - scikit-learn documentation: https://scikit-learn.org/stable/
 - librosa documentation: https://librosa.org/doc/latest/
 - Streamlit documentation: https://docs.streamlit.io/
+- ONNX Model Zoo FER+ model and MIT license: https://github.com/onnx/models/blob/main/validated/vision/body_analysis/emotion_ferplus/README.md
+- ONNX Runtime Python documentation: https://onnxruntime.ai/docs/get-started/with-python
+- OpenCV documentation: https://docs.opencv.org/4.x/db/d28/tutorial_cascade_classifier.html

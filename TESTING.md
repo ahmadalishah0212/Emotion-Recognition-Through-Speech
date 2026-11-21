@@ -1,5 +1,32 @@
 # Testing log
 
+## VocalLens multimodal upgrade (22 November 2026)
+
+| Check | Observed result |
+|---|---|
+| `python -m pytest -q` | **14 passed**, three Python 3.12 `audioread` deprecation warnings. |
+| `python -m compileall -q app.py src scripts` and `pip check` | Passed; no broken requirements. |
+| Official FER+ model download | 35,040,571 bytes; SHA-256 `a2a2ba6a335a3b29c21acb6272f962bd3d47f84952aaffa03b60986e04efa61c`. ONNX Runtime input `(1,1,64,64)` and output `(1,8)` confirmed. |
+| Real face inference | OpenCV detected one face in a local OpenCV sample image; FER+ produced eight finite scores summing to one. A black image produced no face result. Sample image kept only in ignored `data/cache/`. |
+| Multiple and missing faces | Duplicating the sample image side by side yielded two detections and set the multi-face warning count to one; a ten-frame blank video yielded no face result. |
+| Video decoding | A local three-second MP4 with one repeated face frame and RAVDESS audio produced 12 sampled frames, a WAV audio track, separate predictions and a combined display score. A silent MP4 returned `audio=None`. These are pipeline tests, not accuracy results. |
+| Browser exact MP3 | `universfield-female-crying-291098.mp3` uploaded and analyzed in VocalLens. The displayed short hash `597fa4a4bb08` matches local bytes; Fearful score 0.407635 and the full bar chart rendered. |
+| Browser combined mode | Uploaded local MP4, saw voice Disgust, face Neutral and **experimental** combined Neutral, with separate charts and explanatory text. Switching from voice to combined removed the voice upload and its result. |
+| Physical microphone and webcam | Controls render, but hardware capture and permission flow remain **unverified** in this browser session. |
+
+### Exact stock-audio diagnosis
+
+`scripts/diagnose_uploads.py` inspected three stock MP3s from Downloads. All decoded, had different hashes, audio durations and 46-feature vectors. The crying file processed to 12.0 seconds, 16 kHz, 192,000 samples; the angry file to 2.116 seconds; the laughter file to 7.008 seconds. Crying and angry feature vectors were 716.93 Euclidean units apart, and angry and laughter 700.68 apart. The three were all labeled Fearful, but scores were respectively **0.407635, 0.444648, and 0.441609**. In the original browser app, crying and angry produced visibly different score charts at those same values. The repeated top class reflects model generalization limits on stock non-speech material, not identical input or stale chart data in the tested path. The new app displays a hash and detailed processed-input information and cautions about this domain mismatch.
+
+Repeat the check on the user's laptop with:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\diagnose_uploads.py "C:\Users\ahmad\Downloads\universfield-female-crying-291098.mp3" "C:\Users\ahmad\Downloads\universfield-angry-female-144242.mp3" "C:\Users\ahmad\Downloads\floraphonic-child-laughter-3-186730.mp3"
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
+
+In **Voice only**, upload each file in turn and select **Analyze voice**. Check that the filename, hash and score bars update. For known speech labels, use `scripts/diagnose_predictions.py`, which checks 24 real RAVDESS WAVs across all eight classes and three actors. Face and combined checks require `python scripts/download_face_model.py` first.
+
 ## Checks actually performed in this environment
 
 | Check | Result |

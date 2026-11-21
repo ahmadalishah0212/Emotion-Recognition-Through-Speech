@@ -1,4 +1,22 @@
-# Viva preparation: Emotion Recognition Through Speech
+# Viva preparation: VocalLens Multimodal Emotion Recognition
+
+**Tagline:** Hear the voice. See the emotion.
+
+## New multimodal questions
+
+1. **What is multimodal AI here?** It analyzes two types of evidence: speech sound and visible facial expression in video.
+2. **Did the group train both models?** No. We trained and evaluated three speech classifiers; FER+ is a pretrained facial model from the ONNX Model Zoo.
+3. **What is face detection versus face recognition?** Detection finds a face region. Recognition attempts to identify whose face it is. VocalLens only detects and scores expression; it does not identify people.
+4. **How is a video analyzed?** FFmpeg extracts its audio, OpenCV samples up to 12 frames, the speech model scores the audio, and FER+ scores detected face crops.
+5. **What if no face appears?** No face prediction or combined prediction is shown; a valid audio result can still appear.
+6. **What if more than one face appears?** The largest detected face in each sampled frame is used and the app warns that the subject may switch across frames.
+7. **What is late fusion?** Combining the outputs of separate models after each has predicted, rather than training one model on raw audio and images together.
+8. **Why omit calm and contempt from fusion?** Audio calm has no direct face-model counterpart, and face contempt has no direct audio-model counterpart. Mapping them to other labels would invent meaning.
+9. **How are scores combined?** The seven shared classes are normalized within each model and averaged equally. This is a transparent classroom baseline, not a validated joint probability.
+10. **What is combined accuracy?** Unknown. We have no labeled multimodal test set, so we do not claim an accuracy or F1 for fusion.
+11. **Why can different clips get the same label?** A top label discards score detail. Our three stock MP3s had different bytes, features and score charts but all received Fearful. The speech model was trained on acted sentences and can misclassify crying or laughter.
+12. **What does confidence mean here?** It is a model score for a class, not certainty about a person's true feelings. The face and voice scores are not jointly calibrated.
+13. **What remains unverified?** Actual camera and microphone hardware capture on the presentation laptop, facial-model accuracy on an independent dataset, and combined accuracy.
 
 ## Project in plain language
 

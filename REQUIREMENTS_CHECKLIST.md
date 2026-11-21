@@ -1,5 +1,20 @@
 # Instructor requirements and verification checklist
 
+## VocalLens extension
+
+The original PDF requirements below concern speech classification and remain satisfied by the existing three-model evaluation. The user-requested multimodal extension adds:
+
+| Extension | Status and evidence |
+|---|---|
+| VocalLens branding and three clear modes | **Verified in browser:** Voice only, Face only, Voice + Face; dark theme and cyan/red accents preserved. |
+| Exact stock MP3 diagnosis | **Verified:** three distinct hashes and feature vectors; all predicted Fearful with different scores. Browser charts differed for crying and angry uploads. See `TESTING.md`. |
+| Camera face capture | **Implemented:** `st.camera_input` analyzes a still. **Physical webcam capture unverified** in this browser session. |
+| Video face analysis | **Verified:** local three-second sample video yielded 12 sampled frames and a face prediction. Blank frame produced no prediction. |
+| Video audio extraction | **Verified:** video with audio yielded a WAV track and speech result; silent video returned no audio. |
+| Combined analysis | **Verified as a functional display:** separate voice and face outputs plus shared-class experimental fusion. **No measured multimodal accuracy**. |
+| Face model provenance | **Verified:** pretrained MIT-licensed ONNX Model Zoo FER+ downloaded with SHA-256 check. Our group did not train or benchmark its accuracy. |
+
+
 **Source:** `AI Project Requirements.pdf` (2 pages). **Verified** means code or documentation was executed or inspected; **Pending** identifies a remaining user-facing verification. The instructor requires three team members, 2–4 trained models and a web/mobile app.
 
 | PDF requirement | Location | Status / verification |

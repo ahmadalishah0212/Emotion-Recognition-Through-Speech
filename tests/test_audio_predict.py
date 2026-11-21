@@ -26,6 +26,8 @@ def test_feature_dimensions_and_finite_values():
 def test_invalid_audio():
     with pytest.raises(ValueError):
         extract_features(b"")
+    with pytest.raises(ValueError, match="could not be decoded"):
+        extract_features(b"not audio")
 
 
 def test_missing_model(tmp_path):
@@ -42,3 +44,18 @@ def test_audio_prediction_through_saved_pipeline(tmp_path):
     (tmp_path / "selected.json").write_text(json.dumps({"name": "dummy", "file": "dummy.joblib"}))
     result = predict_audio(sample_wav(), tmp_path)
     assert result["emotion"] == "happy" and result["model"] == "dummy"
+    assert result["emotion"] == max(result["probabilities"], key=result["probabilities"].get)
+
+
+def test_svm_label_matches_its_score_distribution():
+    """Regression check for a label/score mismatch seen in the live app."""
+    from src.train import MODELS
+    rng = np.random.default_rng(42)
+    x = rng.normal(size=(36, len(FEATURE_NAMES)))
+    y = np.array(["calm", "angry"] * 18)
+    model = MODELS["svm"]()
+    model.fit(x, y)
+    probes = rng.normal(size=(5, len(FEATURE_NAMES)))
+    labels = model.predict(probes)
+    score_labels = model.classes_[model.predict_proba(probes).argmax(axis=1)]
+    assert np.array_equal(labels, score_labels)

@@ -21,6 +21,8 @@ def load_audio(source):
             try:
                 signal, sr = sf.read(BytesIO(source), dtype="float32", always_2d=False)
             except Exception:
+                if not (source.startswith(b"ID3") or (len(source) >= 2 and source[0] == 0xFF and source[1] & 0xE0 == 0xE0)):
+                    raise ValueError("Audio could not be decoded. Try a valid WAV or MP3 file.")
                 import tempfile
                 from pathlib import Path
                 with tempfile.TemporaryDirectory() as folder:

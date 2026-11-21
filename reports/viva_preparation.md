@@ -8,7 +8,7 @@ The dataset filename encodes modality, speech/song, emotion, intensity, statemen
 
 Each recording becomes 46 numbers. MFCCs summarize the shape of the sound spectrum, which relates to voice quality. RMS energy measures loudness; zero-crossing rate measures rapid waveform sign changes; spectral centroid measures how much energy is in higher frequencies. We use mean and standard deviation to capture both typical value and variation. We scale features for SVM and logistic regression using only training data. The saved pipeline applies the same scaling in the app.
 
-SVM learns boundaries between classes and can model curved boundaries with an RBF kernel, but scaling matters and it may be harder to explain. Random forest votes across many decision trees, handles nonlinear patterns and needs no scaling, but can overfit and may be less smooth. Logistic regression is a fast, clear linear baseline, but may miss nonlinear class patterns. The actual chosen model is **pending training**. The script selects the highest held-out macro F1; read the generated comparison and confusion matrices before claiming why one won.
+SVM learns boundaries between classes and can model curved boundaries with an RBF kernel, but scaling matters and it may be harder to explain. We calibrate its score distribution on training actors so the displayed label matches the top score. Random forest votes across many decision trees, handles nonlinear patterns and needs no scaling, but can overfit and may be less smooth. Logistic regression is a fast, clear linear baseline, but may miss nonlinear class patterns. The **calibrated SVM** was selected: macro F1 **0.3975**, compared with **0.3927** for logistic regression and **0.3738** for random forest on 360 held-out clips. Its lead over logistic regression is small, and it struggles with neutral, happy and sad. The nonlinear boundary may help, but we cannot prove the cause from this comparison alone.
 
 Accuracy is the share of all correct predictions. Precision asks: of clips predicted as one emotion, how many were right? Recall asks: of clips truly in that emotion, how many were found? F1 balances precision and recall. Macro F1 averages equally across emotions, so a weak small class is not hidden by a large class. A confusion matrix shows actual labels against predicted labels and reveals which emotions get mixed up.
 
@@ -42,11 +42,11 @@ In the app, the browser uploads a file or records microphone audio. The app vali
 24. **What is F1?** The harmonic mean of precision and recall.
 25. **Why use macro F1?** It gives every emotion equal influence despite class imbalance.
 26. **What does a confusion matrix show?** Which true emotion classes the model confuses with others.
-27. **Which model was best?** Check `results/model_comparison/comparison.csv` after training; no measured winner exists yet.
-28. **Why might the winner beat the others?** Use the real per-class results to explain whether its boundaries capture the feature patterns better.
+27. **Which model was best?** Calibrated SVM by macro F1 (0.3975) and accuracy (0.4417) on this held-out actor split.
+28. **Why might the winner beat the others?** Its nonlinear boundary may capture patterns the linear baseline misses, but the margin is small and the cause is not proven.
 29. **How does an upload become a prediction?** Decode, validate, resample, extract 46 features, load selected model, predict.
 30. **What are model score bars?** The classifier's estimated class probabilities, not certainty about genuine feelings.
 31. **Can it identify anyone's true emotion?** No; voice is context dependent and the model was trained on acted examples.
 32. **What would improve it?** More diverse spontaneous speech, more speakers, noise testing and group cross-validation.
 
-Before the viva, all three members should inspect the *actual* dataset audit, comparison CSV and confusion matrices, then add the observed model name and numbers to this guide and the report.
+Before the viva, all three members should inspect the dataset audit, comparison CSV and confusion matrices and be ready to explain why low neutral, happy and sad recall limits the result.

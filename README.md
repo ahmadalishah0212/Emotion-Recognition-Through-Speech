@@ -1,6 +1,6 @@
 # Emotion Recognition Through Speech
 
-**Team:** Ahmad Ali Shah, Saboor Khan, Sardar Bilal. A Python and Streamlit course project that compares three speech emotion classifiers on RAVDESS audio. The project is implemented, but genuine training results require the official dataset and dependencies; see [testing status](TESTING.md).
+**Team:** Ahmad Ali Shah, Saboor Khan, Sardar Bilal. A Python and Streamlit course project that compares three speech emotion classifiers on RAVDESS audio. The official dataset was validated, all three models were trained and the upload-to-prediction app flow was tested. See [testing status](TESTING.md).
 
 ## Features
 
@@ -12,7 +12,7 @@
 
 ## Windows setup (PowerShell)
 
-Install Python **3.11 or 3.12** from [python.org](https://www.python.org/downloads/) and select **Add Python to PATH**. In PowerShell, from this project directory:
+Install Python **3.12** from [python.org](https://www.python.org/downloads/) and select **Add Python to PATH**. The saved model was trained with Python 3.12, scikit-learn 1.9.1, NumPy 2.5.5, SciPy 1.18.1 and joblib 1.6.0; `requirements.txt` pins those model-loading dependencies. In PowerShell, from this project directory:
 
 ```powershell
 py -3.12 -m venv .venv
@@ -27,13 +27,13 @@ python -m pytest -q
 python -m streamlit run app.py
 ```
 
-If PowerShell blocks activation, run `Set-ExecutionPolicy -Scope Process Bypass` in that PowerShell session. On a Python 3.11 installation, change `py -3.12` to `py -3.11`. No GPU or paid API is required. `st.audio_input` needs microphone access in the browser. WAV is the safest upload format; MP3 support depends on the audio decoder available to librosa. No separate FFmpeg installation is required for WAV.
+If PowerShell blocks activation, run `Set-ExecutionPolicy -Scope Process Bypass` in that PowerShell session. No GPU or paid API is required. `st.audio_input` needs microphone access in the browser. WAV is the safest upload format; MP3 support depends on the audio decoder available to librosa. No separate FFmpeg installation is required for WAV.
 
-If the dataset script cannot connect, use a browser to download **Audio_Speech_Actors_01-24.zip** from the [official RAVDESS record](https://zenodo.org/records/1188976), place it in `data/raw/`, then rerun `python scripts/download_dataset.py`. The script checks the archive's official MD5 and extracts it. See [data setup](data/README.md). Do not commit the dataset ZIP or extracted audio.
+The official dataset is already extracted in this workspace. For a new clone, if the dataset script cannot connect, download **Audio_Speech_Actors_01-24.zip** from the [official RAVDESS record](https://zenodo.org/records/1188976), place it in `data/raw/`, then rerun `python scripts/download_dataset.py`. The script checks the archive's official MD5 and extracts it. See [data setup](data/README.md). Do not commit the dataset ZIP or extracted audio.
 
 ## Output and interpretation
 
-The instructor's required 2–4 model range is met by three models. Training creates `models/{svm,random_forest,logistic_regression}.joblib` and `models/selected.json`; the app never retrains. Results appear in `results/metrics/`, `results/figures/` and `results/model_comparison/comparison.csv`. The winner is selected by held-out actor macro F1. Read the per-class report and confusion matrices before presenting any accuracy claim. The selected model and observed scores are **pending a real run** in the current workspace.
+The instructor's required 2–4 model range is met by three trained models. Training created `models/{svm,random_forest,logistic_regression}.joblib` and `models/selected.json`; the app never retrains. Results appear in `results/metrics/`, `results/figures/` and `results/model_comparison/comparison.csv`. On 360 recordings from six held-out actors, the calibrated SVM was selected by macro F1: **0.3975** (accuracy **0.4417**), versus logistic regression **0.3927** and random forest **0.3738** macro F1. The margin over logistic regression is small, and neutral, happy and sad are weak classes. Read the per-class report and confusion matrices before presenting the result.
 
 Use `python -m src.eda` to regenerate graphs and `python -m src.train` to regenerate model results. To launch only the app after training, use `python -m streamlit run app.py`. The app explains missing model files and asks you to train first.
 
@@ -47,18 +47,15 @@ Use `python -m src.eda` to regenerate graphs and `python -m src.train` to regene
 
 ## Repository and submission
 
-`REQUIREMENTS_CHECKLIST.md`, `reports/project_report.md`, `reports/model_explanation.md`, `reports/team_roles.md`, `reports/viva_preparation.md`, and `TESTING.md` contain the report, method, roles and audit. The generated models, metrics and graphs can be committed after the real run; the large dataset remains excluded. Once genuine results have been generated and the report updated, create a GitHub repository and run:
+`REQUIREMENTS_CHECKLIST.md`, `reports/project_report.md`, `reports/model_explanation.md`, `reports/team_roles.md`, `reports/viva_preparation.md`, and `TESTING.md` contain the report, method, roles and audit. The generated models, metrics and graphs can be committed; the large dataset remains excluded. The project repository is [Emotion-Recognition-Through-Speech](https://github.com/ahmadalishah0212/Emotion-Recognition-Through-Speech). To push later local changes from this checkout, run:
 
 ```powershell
-git init
 git add .
-git commit -m "Build speech emotion recognition project"
-git branch -M main
-git remote add origin https://github.com/YOUR-ACCOUNT/YOUR-REPOSITORY.git
-git push -u origin main
+git commit -m "Describe your update"
+git push origin main
 ```
 
-Replace the remote URL with the repository you created. Submit that GitHub link, the official dataset link, the report, and a live app demo. Nothing has been pushed from this workspace.
+Submit the GitHub link, the official dataset link, the report, and a live app demo. The baseline, dataset/EDA and model milestones were pushed; check `git status` and `git log` for later milestones.
 
 ## Limitations
 

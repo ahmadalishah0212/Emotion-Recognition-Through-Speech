@@ -3,8 +3,8 @@ import hashlib
 from pathlib import Path
 import pandas as pd
 import streamlit as st
-from src.feature_extraction import load_audio
 from src.predict import predict_audio
+from src.audio_debug import trace_audio
 from src.face import aggregate_frames, decode_image, load_face_model
 from src.video import analyze_video_payload
 from src.fusion import experimental_fusion
@@ -21,12 +21,12 @@ h1,h2,h3 {font-family:'Space Grotesk',sans-serif;letter-spacing:-.035em;}
 .hero .tagline {font-size:1.25rem;color:#65d9e9;font-weight:600;margin:0 0 .4rem;}
 .hero .support {color:#a9b9ca;margin:0;}
 .eyebrow {color:#52d5e8;font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;}
-.result {border:1px solid #2d4659;border-left:4px solid #42d4e7;background:#0e1b29;border-radius:18px;padding:1.25rem 1.5rem;margin:.65rem 0;}
+.result {border:1px solid #2d4659;border-left:4px solid #e46b72;background:#0e1b29;border-radius:18px;padding:1.25rem 1.5rem;margin:.65rem 0;}
 .result .kind {color:#99aebe;font-size:.77rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;}
 .result .emotion {color:#e9fcff;font:700 2rem 'Space Grotesk',sans-serif;line-height:1.25;}
-.result .score {color:#7ddce9;font-size:.88rem;}
-.stButton button[kind="primary"] {background:#09bdd2;color:#06121b;border:none;font-weight:700;border-radius:10px;}
-.stButton button[kind="primary"]:hover {background:#5de1ed;color:#06121b;}
+.result .score {color:#e99197;font-size:.88rem;}
+.stButton button[kind="primary"] {background:#e46b72;color:#fff;border:none;font-weight:700;border-radius:10px;}
+.stButton button[kind="primary"]:hover {background:#f08289;color:#fff;}
 div[data-testid="stAlert"] {border-radius:12px;}
 .footer {border-top:1px solid #223146;margin-top:2rem;padding-top:1rem;color:#879bad;font-size:.83rem;}
 </style>""", unsafe_allow_html=True)
@@ -53,13 +53,15 @@ def input_details(name, payload, signal=None, sr=None):
                 st.caption("The speech model uses at most the first 12 seconds.")
 
 
-def voice_analysis(payload, name):
+def voice_analysis(payload, name, debug=False):
     if len(payload) > 25 * 1024 * 1024:
         raise ValueError("Audio file must be under 25 MB")
-    signal, sr = load_audio(payload)
     result = predict_audio(payload)
     show_result(result, "Voice", result["model"].replace("_", " ").upper())
-    input_details(name, payload, signal, sr)
+    if debug:
+        with st.expander("Developer audio trace", expanded=True):
+            st.write(f"**Current file:** {name}")
+            st.json(trace_audio(payload, result))
     st.caption("The speech model was trained on acted spoken sentences. Crying, laughter, music and unrelated recordings may receive misleading labels. Scores are model outputs, not a person's feelings.")
     return result
 
@@ -86,6 +88,7 @@ st.caption("Choose one mode. Each analysis uses the file or capture shown below;
 
 if mode == "Voice only":
     source = st.radio("Voice input", ["Upload audio", "Record with microphone"], horizontal=True)
+    debug_audio = st.toggle("Developer audio trace", value=False, help="Show decoded audio, feature and model details after analysis.")
     audio = (st.file_uploader("Upload a spoken recording", type=["wav", "mp3", "flac", "ogg"], key="voice_upload")
              if source == "Upload audio" else st.audio_input("Record a spoken sample", key="voice_microphone"))
     if audio is None:
@@ -93,11 +96,11 @@ if mode == "Voice only":
     else:
         raw = audio.getvalue()
         st.audio(raw)
-        st.caption(f"Ready: {audio.name} · {len(raw):,} bytes · SHA-256 {hashlib.sha256(raw).hexdigest()[:12]}")
+        st.caption(f"Ready: {audio.name} · {len(raw):,} bytes")
         if st.button("Analyze voice", type="primary", use_container_width=True):
             try:
                 with st.spinner("Decoding audio and scoring the speech model…"):
-                    voice_analysis(raw, audio.name)
+                    voice_analysis(raw, audio.name, debug=debug_audio)
             except (ValueError, FileNotFoundError) as exc:
                 st.error(str(exc))
             except Exception as exc:

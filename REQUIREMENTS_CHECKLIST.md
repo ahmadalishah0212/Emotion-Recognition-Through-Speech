@@ -2,6 +2,8 @@
 
 ## VocalLens extension
 
+**Deep audio follow-up:** The saved SVM's repeated ~44% Fearful output on distant inputs was traced to RBF kernel saturation and subsequent calibration. A 29-input diagnostic and a full 360-clip re-evaluation of all three saved models reproduced the original metrics. A small actor-disjoint tuning gain did not justify replacing the model. The app now offers an optional developer trace and restores the existing red `#e46b72` on the Analyze button and result highlight. See `TESTING.md` and `results/diagnostics/`.
+
 The original PDF requirements below concern speech classification and remain satisfied by the existing three-model evaluation. The user-requested multimodal extension adds:
 
 | Extension | Status and evidence |

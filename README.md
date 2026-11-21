@@ -14,7 +14,7 @@
 - Explicit input-source selection, so a previous microphone recording cannot override a new upload
 - Camera still capture and video face analysis using pretrained FER+ and OpenCV face detection
 - Video audio extraction and separate voice/face results, with labeled experimental late fusion
-- File fingerprint and processing details to verify which input was analyzed
+- Optional developer audio trace with file fingerprint, processed signal, feature sample, saved model and complete score vector
 
 ## Windows setup (PowerShell)
 
@@ -51,6 +51,18 @@ The official dataset is already extracted in this workspace. For a new clone, if
 
 ## Output and interpretation
 
+### Why different outside recordings can show ~44% Fearful
+
+The reported value comes from the saved calibrated SVM, not a hardcoded result. On this laptop the stock angry MP3 yields Fearful `0.444647515` (shown as **44.5%** by one-decimal rounding), while the crying MP3 yields `0.407634972` and the laughter MP3 `0.441609287`. Two different pure tones yield an **identical** Fearful `0.444324897` score vector despite different audio and features: they are so far from the acted-speech training data that the SVM's RBF similarity to its support vectors is effectively zero. Thus similar or identical scores on unrelated audio can be genuine model behavior. The app's normal result remains the real model output; turn on **Developer audio trace** before analyzing to inspect the active file, hash, feature shape, model path and all scores. The Analyze button uses the existing red `#e46b72` accent.
+
+For a repeatable audit of all three saved models on 24 known-label RAVDESS clips, all 360 held-out actor clips, and optional external files, run:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\deep_audio_diagnostic.py "C:\Users\ahmad\Downloads\universfield-female-crying-291098.mp3" "C:\Users\ahmad\Downloads\universfield-angry-female-144242.mp3"
+```
+
+The results are in `results/diagnostics/`. A training-actor-only SVM tuning check found a small possible gain, but its actor-bootstrap interval included zero; the deployed model and original metrics were kept. See [testing evidence](TESTING.md).
+
 The instructor's required 2–4 model range is met by three trained models. Training created `models/{svm,random_forest,logistic_regression}.joblib` and `models/selected.json`; the app never retrains. Results appear in `results/metrics/`, `results/figures/` and `results/model_comparison/comparison.csv`. On 360 recordings from six held-out actors, the calibrated SVM was selected by macro F1: **0.3975** (accuracy **0.4417**), versus logistic regression **0.3927** and random forest **0.3738** macro F1. The margin over logistic regression is small, and neutral, happy and sad are weak classes. Read the per-class report and confusion matrices before presenting the result.
 
 Use `python -m src.eda` to regenerate graphs and `python -m src.train` to regenerate model results. To launch only the app after training, use `python -m streamlit run app.py`. The app explains missing model files and asks you to train first.
@@ -60,7 +72,7 @@ Use `python -m src.eda` to regenerate graphs and `python -m src.train` to regene
 1. Open the [dataset source](https://zenodo.org/records/1188976) and run `python scripts/validate_dataset.py`.
 2. Show `results/figures/emotion_distribution.png`, `actor_distribution.png` and `sample_audio.png` after EDA.
 3. Show the actual comparison CSV and three confusion matrices after training; explain macro F1 and the selected model.
-4. Start Streamlit. In **Voice only**, upload two different RAVDESS WAVs and press **Analyze voice** for each. The file hash and chart should update. A stock crying MP3 can still be labeled Fearful because the model was trained on spoken sentences, not non-speech crying.
+4. Start Streamlit. In **Voice only**, enable **Developer audio trace**, upload two different RAVDESS WAVs and press **Analyze voice** for each. The file hash and chart should update. A stock crying MP3 can still be labeled Fearful because the model was trained on spoken sentences, not non-speech crying.
 5. In **Face only**, capture a camera still or upload a video. In **Voice + Face**, upload a video with sound to show separate predictions and the experimental combined cue.
 6. Explain that outputs describe expression cues, not a person's true feelings; the combined cue has no measured accuracy.
 

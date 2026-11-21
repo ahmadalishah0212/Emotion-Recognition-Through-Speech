@@ -1,10 +1,13 @@
 from io import BytesIO
 import json
+from hashlib import sha256
+from pathlib import Path
 import wave
 import numpy as np
 import pytest
 from src.feature_extraction import extract_features, FEATURE_NAMES
 from src.predict import load_selected, predict_audio
+from src.audio_debug import trace_audio
 
 
 def sample_wav(seconds=1, frequency=440):
@@ -70,3 +73,36 @@ def test_svm_label_matches_its_score_distribution():
     labels = model.predict(probes)
     score_labels = model.classes_[model.predict_proba(probes).argmax(axis=1)]
     assert np.array_equal(labels, score_labels)
+
+
+def test_current_bytes_drive_card_chart_and_debug_trace():
+    first_audio = sample_wav(frequency=220)
+    second_audio = sample_wav(frequency=660)
+    first = predict_audio(first_audio)
+    second = predict_audio(second_audio)
+    repeat = predict_audio(first_audio)
+    first_trace = trace_audio(first_audio, first)
+    second_trace = trace_audio(second_audio, second)
+    assert first_trace["audio_sha256"] == sha256(first_audio).hexdigest()
+    assert second_trace["audio_sha256"] == sha256(second_audio).hexdigest()
+    assert first_trace["feature_shape"] == [len(FEATURE_NAMES)]
+    assert first_trace["model_file"].endswith("svm.joblib")
+    assert first["probabilities"] == first_trace["probabilities"]
+    assert first["emotion"] == max(first["probabilities"], key=first["probabilities"].get)
+    assert first["probabilities"] == repeat["probabilities"]
+    # Pure tones are far outside acted-speech training and can saturate the RBF
+    # classifier to an identical score vector despite different features.
+    assert not np.array_equal(extract_features(first_audio), extract_features(second_audio))
+
+
+def test_real_heldout_speech_changes_saved_model_scores():
+    root = Path(__file__).resolve().parents[1] / "data/raw"
+    angry = root / "Actor_05/03-01-05-01-01-01-05.wav"
+    happy = root / "Actor_10/03-01-03-01-01-01-10.wav"
+    if not angry.exists() or not happy.exists():
+        pytest.skip("Download RAVDESS for the real speech integration check")
+    first = predict_audio(angry.read_bytes())
+    second = predict_audio(happy.read_bytes())
+    assert first["emotion"] == "angry"
+    assert second["emotion"] == "happy"
+    assert first["probabilities"] != second["probabilities"]

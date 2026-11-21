@@ -1,5 +1,34 @@
 # Testing log
 
+## Deep audio investigation and red accent restoration (22 November 2026)
+
+`scripts/deep_audio_diagnostic.py` processed **24 known-label RAVDESS clips** (all eight emotions from Actors 01, 05 and 10), **three stock MP3s**, and **two generated pure tones**. It recorded each file's hash, processed duration and signal shape, feature dimensions, all eight probabilities from each saved model, top-two margin, and repeated-inference agreement. All 29 inputs had distinct hashes and distinct 46-feature vectors; repeated inference matched exactly. All three models use the same class order: angry, calm, disgust, fearful, happy, neutral, sad, surprised. Their `predict()` outputs matched the top `predict_proba()` class. The JSON and CSV are in `results/diagnostics/`.
+
+The diagnostic independently reloaded all three **saved** models and re-predicted all **360 held-out actor clips**. It exactly reproduced the original metrics, so the saved artifacts match the recorded evaluation:
+
+| Saved model | Accuracy | Macro precision | Macro recall | Macro F1 |
+|---|---:|---:|---:|---:|
+| Calibrated SVM | 0.4417 | 0.4391 | 0.4219 | 0.3975 |
+| Logistic regression | 0.4000 | 0.4020 | 0.3932 | 0.3927 |
+| Random forest | 0.3917 | 0.3740 | 0.3854 | 0.3738 |
+
+The exact source of the repeatedly reported ~44.4% is the SVM's `predict_proba()` result for audio far from acted speech. The stock angry MP3 returns Fearful **0.444647515** (displayed as **44.5%** with one-decimal rounding); the laughter MP3 returns Fearful **0.441609287**; the crying MP3 returns Fearful **0.407634972**. Their charts are different. More decisively, two generated one-second tones with different audio bytes and feature vectors both return the **identical full score vector**, with Fearful **0.444324897**. Their maximum RBF similarity to each calibration fold's nearest support vector is around **10⁻²⁰ to 10⁻²¹**. With negligible similarity to support vectors, SVM decision scores approach a nearly fixed value and the saved calibration maps them to nearly fixed probabilities. The stock angry file's maximum similarity is only about **0.006**. This explains genuine model saturation on unsuitable inputs; there is no hardcoded 44.4%, class-index mismatch, cached score vector, or decoder identity issue in the tested path.
+
+`scripts/evaluate_audio_tuning.py` tested five SVM C/gamma settings with **3-fold actor GroupKFold on the 18 training actors**, then evaluated the CV-selected candidate once on the untouched six-actor test set. The candidate's test accuracy was **0.4472** and macro F1 **0.4086**, versus saved baseline **0.4417 / 0.3975**. Its actor-bootstrap 95% interval for the macro-F1 gain is **-0.0146 to +0.0373**. The CV difference between the candidate and current C=10 setting was also only about **0.00056** macro F1. This is insufficient evidence for a dependable improvement, so **no model was replaced or retrained for the app**. The experiment and train-only feature-distance audit are saved in `results/diagnostics/audio_tuning.json`.
+
+The distance audit is descriptive, not a validated out-of-distribution classifier. After a scaler fit on training actors only, nearest-training-clip distance among held-out RAVDESS clips had median **4.54** and maximum **8.26**. The crying, angry and laughter MP3 distances were **8.18**, **15.16** and **11.88**, respectively. The stock files have no reliable eight-class ground-truth annotation, so no external-audio accuracy is claimed.
+
+The live Streamlit app was tested with the stock angry MP3, then the crying MP3, then an Actor_05 angry WAV. The filename, developer SHA-256, feature sample, result card and chart changed together: Fearful **44.5%**, Fearful **40.8%**, then Angry **38.7%**. The chart's Fearful bars were **0.444647515** and **0.407634972**, exactly matching the trace and saved-model diagnostic. No stale result remained when the upload changed. The Analyze button and result highlight visibly used the existing VocalLens red `#e46b72`; the dark background and cyan chart remained. The repository history contained this red value in the VocalLens header dot but no earlier custom red button rule.
+
+`python -m pytest -q` passed **16 tests** after the final changes (three existing `audioread` deprecation warnings). The suite includes a real held-out angry/happy WAV score-change check and a deliberate saturation check showing that different pure tones can legitimately have equal probabilities. Webcam and microphone hardware capture remain unverified; face and video behavior was left intact.
+
+Repeat the diagnostic from this directory in PowerShell:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\deep_audio_diagnostic.py "C:\Users\ahmad\Downloads\universfield-female-crying-291098.mp3" "C:\Users\ahmad\Downloads\universfield-angry-female-144242.mp3" "C:\Users\ahmad\Downloads\floraphonic-child-laughter-3-186730.mp3"
+.\.venv\Scripts\python.exe scripts\evaluate_audio_tuning.py "C:\Users\ahmad\Downloads\universfield-female-crying-291098.mp3" "C:\Users\ahmad\Downloads\universfield-angry-female-144242.mp3" "C:\Users\ahmad\Downloads\floraphonic-child-laughter-3-186730.mp3"
+```
+
 ## VocalLens multimodal upgrade (22 November 2026)
 
 | Check | Observed result |
@@ -16,7 +45,7 @@
 
 ### Exact stock-audio diagnosis
 
-`scripts/diagnose_uploads.py` inspected three stock MP3s from Downloads. All decoded, had different hashes, audio durations and 46-feature vectors. The crying file processed to 12.0 seconds, 16 kHz, 192,000 samples; the angry file to 2.116 seconds; the laughter file to 7.008 seconds. Crying and angry feature vectors were 716.93 Euclidean units apart, and angry and laughter 700.68 apart. The three were all labeled Fearful, but scores were respectively **0.407635, 0.444648, and 0.441609**. In the original browser app, crying and angry produced visibly different score charts at those same values. The repeated top class reflects model generalization limits on stock non-speech material, not identical input or stale chart data in the tested path. The new app displays a hash and detailed processed-input information and cautions about this domain mismatch.
+`scripts/diagnose_uploads.py` inspected three stock MP3s from Downloads. All decoded, had different hashes, audio durations and 46-feature vectors. The crying file processed to 12.0 seconds, 16 kHz, 192,000 samples; the angry file to 2.116 seconds; the laughter file to 7.008 seconds. Crying and angry feature vectors were 716.93 Euclidean units apart, and angry and laughter 700.68 apart. The three were all labeled Fearful, but scores were respectively **0.407635, 0.444648, and 0.441609**. In the original browser app, crying and angry produced visibly different score charts at those same values. The repeated top class reflects model generalization limits on stock non-speech material, not identical input or stale chart data in the tested path. The updated app shows the hash and processed-input details when **Developer audio trace** is enabled and cautions about the domain mismatch.
 
 Repeat the check on the user's laptop with:
 
@@ -25,7 +54,7 @@ Repeat the check on the user's laptop with:
 .\.venv\Scripts\python.exe -m streamlit run app.py
 ```
 
-In **Voice only**, upload each file in turn and select **Analyze voice**. Check that the filename, hash and score bars update. For known speech labels, use `scripts/diagnose_predictions.py`, which checks 24 real RAVDESS WAVs across all eight classes and three actors. Face and combined checks require `python scripts/download_face_model.py` first.
+In **Voice only**, enable **Developer audio trace**, upload each file in turn and select **Analyze voice**. Check that the filename, hash and score bars update. For known speech labels, use `scripts/diagnose_predictions.py`, which checks 24 real RAVDESS WAVs across all eight classes and three actors. Face and combined checks require `python scripts/download_face_model.py` first.
 
 ## Checks actually performed in this environment
 

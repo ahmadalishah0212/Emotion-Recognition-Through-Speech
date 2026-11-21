@@ -2,9 +2,10 @@
 import json
 from pathlib import Path
 import joblib
+import numpy as np
 from .feature_extraction import extract_features, FEATURE_NAMES
 
-MODEL_DIR = Path("models")
+MODEL_DIR = Path(__file__).resolve().parents[1] / "models"
 
 
 def load_selected(model_dir=MODEL_DIR):
@@ -23,10 +24,16 @@ def load_selected(model_dir=MODEL_DIR):
 
 
 def predict_audio(audio_bytes, model_dir=MODEL_DIR):
+    """Return one prediction and its chart-ready score vector from current bytes."""
     model, info = load_selected(model_dir)
     features = extract_features(audio_bytes).reshape(1, -1)
+    if not hasattr(model, "predict_proba"):
+        raise ValueError("Selected model does not provide class scores")
+    scores = np.asarray(model.predict_proba(features)[0], dtype=np.float64)
+    if len(scores) != len(model.classes_) or not np.isfinite(scores).all() or abs(float(scores.sum()) - 1) > 1e-4:
+        raise ValueError("Selected model returned invalid class scores")
+    probabilities = {str(label): float(score) for label, score in zip(model.classes_, scores)}
     label = str(model.predict(features)[0])
-    probabilities = None
-    if hasattr(model, "predict_proba"):
-        probabilities = {str(k): float(v) for k, v in zip(model.classes_, model.predict_proba(features)[0])}
+    if label != max(probabilities, key=probabilities.get):
+        raise ValueError("Model class and score order disagree; result was not displayed")
     return {"emotion": label, "probabilities": probabilities, "model": info["name"]}

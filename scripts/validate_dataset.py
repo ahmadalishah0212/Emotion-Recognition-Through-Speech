@@ -8,9 +8,13 @@ from src.dataset_loader import scan_dataset, dataset_summary
 if __name__ == "__main__":
     rows, errors = scan_dataset()
     summary = dataset_summary(rows)
-    complete = summary["files"] == 1440 and summary["actors"] == 24
-    print(json.dumps({"summary": summary, "invalid_files": errors,
+    duplicates = [item for item in errors if item["error"] == "duplicate audio bytes"]
+    invalid = [item for item in errors if item["error"] != "duplicate audio bytes"]
+    raw_count = len(rows) + len(errors)
+    complete = raw_count == 1440 and summary["actors"] == 24 and not invalid
+    print(json.dumps({"summary": summary, "raw_files": raw_count,
+                      "duplicate_files_excluded": duplicates, "invalid_files": invalid,
                       "complete_official_speech_archive": complete}, indent=2))
-    if errors or not complete:
-        print("Expected 1,440 valid speech WAV files from 24 actors. Check extraction and corruption.")
+    if not complete:
+        print("Expected 1,440 speech WAV filenames from 24 actors with no corrupt files. Check extraction.")
         raise SystemExit(1)

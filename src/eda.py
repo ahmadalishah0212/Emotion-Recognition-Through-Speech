@@ -30,7 +30,10 @@ def run_eda(data_dir="data/raw"):
     spectrum = librosa.amplitude_to_db(abs(librosa.stft(signal)), ref=np.max)
     librosa.display.specshow(spectrum, sr=sr, x_axis="time", y_axis="hz", ax=axes[1]); axes[1].set_title("Spectrogram")
     fig.tight_layout(); fig.savefig("results/figures/sample_audio.png", dpi=160); plt.close(fig)
-    return {"summary": dataset_summary(rows), "invalid_files": len(errors), "sample": rows[0]["path"]}
+    return {"summary": dataset_summary(rows),
+            "duplicate_files_excluded": sum(item["error"] == "duplicate audio bytes" for item in errors),
+            "invalid_files": sum(item["error"] != "duplicate audio bytes" for item in errors),
+            "sample": rows[0]["path"]}
 
 
 if __name__ == "__main__":

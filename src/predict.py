@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import joblib
 import numpy as np
-from .feature_extraction import extract_features, FEATURE_NAMES
+from .feature_extraction import extract_features, extract_features_v2, FEATURE_NAMES, FEATURE_NAMES_V2
 
 MODEL_DIR = Path(__file__).resolve().parents[1] / "models"
 
@@ -18,7 +18,9 @@ def load_selected(model_dir=MODEL_DIR):
     if not model_path.exists():
         raise FileNotFoundError(f"Selected model file is missing: {model_path}. Run python -m src.train.")
     model = joblib.load(model_path)
-    if model.n_features_in_ != len(FEATURE_NAMES):
+    version = info.get("feature_version", "v1")
+    expected = len(FEATURE_NAMES_V2) if version == "v2" else len(FEATURE_NAMES) if version == "v1" else -1
+    if model.n_features_in_ != expected or info.get("feature_count", expected) != expected:
         raise ValueError("Saved model expects a different feature version; retrain the models.")
     return model, info
 
@@ -26,7 +28,8 @@ def load_selected(model_dir=MODEL_DIR):
 def predict_audio(audio_bytes, model_dir=MODEL_DIR):
     """Return one prediction and its chart-ready score vector from current bytes."""
     model, info = load_selected(model_dir)
-    features = extract_features(audio_bytes).reshape(1, -1)
+    extractor = extract_features_v2 if info.get("feature_version", "v1") == "v2" else extract_features
+    features = extractor(audio_bytes).reshape(1, -1)
     if not hasattr(model, "predict_proba"):
         raise ValueError("Selected model does not provide class scores")
     scores = np.asarray(model.predict_proba(features)[0], dtype=np.float64)

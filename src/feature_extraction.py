@@ -10,6 +10,11 @@ MAX_SECONDS = 12.0
 N_MFCC = 20
 FEATURE_NAMES = ([f"mfcc_{i+1}_{stat}" for stat in ("mean", "std") for i in range(N_MFCC)]
                  + ["rms_mean", "rms_std", "zcr_mean", "zcr_std", "centroid_mean", "centroid_std"])
+FEATURE_NAMES_V2 = (FEATURE_NAMES[:40]
+                    + [f"mfcc_delta{order}_{i+1}_{stat}" for order in (1, 2)
+                       for stat in ("mean", "std") for i in range(N_MFCC)]
+                    + FEATURE_NAMES[40:]
+                    + ["bandwidth_mean", "bandwidth_std", "rolloff_mean", "rolloff_std"])
 
 
 def load_audio(source):
@@ -65,4 +70,26 @@ def extract_features(source):
                                 centroid.mean(), centroid.std()]]).astype(np.float32)
     if len(features) != len(FEATURE_NAMES) or not np.isfinite(features).all():
         raise ValueError("Feature extraction produced invalid values")
+    return features
+
+
+def extract_features_v2(source):
+    """Experimental richer summary; the saved baseline still uses v1."""
+    signal, sr = load_audio(source)
+    mfcc = librosa.feature.mfcc(y=signal, sr=sr, n_mfcc=N_MFCC)
+    components = [mfcc.mean(axis=1), mfcc.std(axis=1)]
+    for order in (1, 2):
+        delta = librosa.feature.delta(mfcc, order=order)
+        components.extend((delta.mean(axis=1), delta.std(axis=1)))
+    rms = librosa.feature.rms(y=signal)[0]
+    zcr = librosa.feature.zero_crossing_rate(signal)[0]
+    centroid = librosa.feature.spectral_centroid(y=signal, sr=sr)[0]
+    bandwidth = librosa.feature.spectral_bandwidth(y=signal, sr=sr)[0]
+    rolloff = librosa.feature.spectral_rolloff(y=signal, sr=sr)[0]
+    components.append(np.array([rms.mean(), rms.std(), zcr.mean(), zcr.std(),
+                                centroid.mean(), centroid.std(), bandwidth.mean(), bandwidth.std(),
+                                rolloff.mean(), rolloff.std()]))
+    features = np.concatenate(components).astype(np.float32)
+    if features.shape != (len(FEATURE_NAMES_V2),) or not np.isfinite(features).all():
+        raise ValueError("Experimental feature extraction produced invalid values")
     return features

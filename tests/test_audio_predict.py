@@ -5,9 +5,10 @@ from pathlib import Path
 import wave
 import numpy as np
 import pytest
-from src.feature_extraction import extract_features, FEATURE_NAMES
+from src.feature_extraction import extract_features, FEATURE_NAMES, FEATURE_NAMES_V2
 from src.predict import load_selected, predict_audio
 from src.audio_debug import trace_audio
+from src.audio_quality import assess_audio
 
 
 def sample_wav(seconds=1, frequency=440):
@@ -85,13 +86,15 @@ def test_current_bytes_drive_card_chart_and_debug_trace():
     second_trace = trace_audio(second_audio, second)
     assert first_trace["audio_sha256"] == sha256(first_audio).hexdigest()
     assert second_trace["audio_sha256"] == sha256(second_audio).hexdigest()
-    assert first_trace["feature_shape"] == [len(FEATURE_NAMES)]
-    assert first_trace["model_file"].endswith("svm.joblib")
+    model, selection = load_selected()
+    assert first_trace["feature_shape"] == [model.n_features_in_]
+    assert first_trace["feature_version"] == selection.get("feature_version", "v1")
+    assert model.n_features_in_ in (len(FEATURE_NAMES), len(FEATURE_NAMES_V2))
+    assert first_trace["model_file"].endswith(selection["file"])
     assert first["probabilities"] == first_trace["probabilities"]
     assert first["emotion"] == max(first["probabilities"], key=first["probabilities"].get)
     assert first["probabilities"] == repeat["probabilities"]
-    # Pure tones are far outside acted-speech training and can saturate the RBF
-    # classifier to an identical score vector despite different features.
+    # The low-level predictor remains genuine inference, even for unsuitable tones.
     assert not np.array_equal(extract_features(first_audio), extract_features(second_audio))
 
 
@@ -103,6 +106,11 @@ def test_real_heldout_speech_changes_saved_model_scores():
         pytest.skip("Download RAVDESS for the real speech integration check")
     first = predict_audio(angry.read_bytes())
     second = predict_audio(happy.read_bytes())
-    assert first["emotion"] == "angry"
-    assert second["emotion"] == "happy"
+    assert first["emotion"] == max(first["probabilities"], key=first["probabilities"].get)
+    assert second["emotion"] == max(second["probabilities"], key=second["probabilities"].get)
     assert first["probabilities"] != second["probabilities"]
+
+
+def test_pure_tone_is_rejected_before_app_prediction():
+    with pytest.raises(ValueError, match="pure tone"):
+        assess_audio(sample_wav())

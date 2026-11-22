@@ -1,0 +1,1208 @@
+{
+  "protocol": "RAVDESS six actors untouched; TESS OAF 70/class train, YAF test; EmoDB all unseen",
+  "dataset_counts": {
+    "ravdess": {
+      "clips": 1439,
+      "speakers": 24,
+      "labels": {
+        "neutral": 96,
+        "calm": 192,
+        "happy": 191,
+        "sad": 192,
+        "angry": 192,
+        "fearful": 192,
+        "disgust": 192,
+        "surprised": 192
+      }
+    },
+    "tess": {
+      "clips": 2800,
+      "speakers": 2,
+      "labels": {
+        "angry": 400,
+        "disgust": 400,
+        "fearful": 400,
+        "happy": 400,
+        "neutral": 400,
+        "surprised": 400,
+        "sad": 400
+      }
+    },
+    "emodb": {
+      "clips": 454,
+      "speakers": 10,
+      "labels": {
+        "happy": 71,
+        "neutral": 79,
+        "angry": 127,
+        "sad": 62,
+        "fearful": 69,
+        "disgust": 46
+      }
+    }
+  },
+  "dataset_scan_errors": {
+    "ravdess": [
+      {
+        "path": "data\\raw\\Actor_07\\03-01-03-01-02-02-07.wav",
+        "error": "duplicate audio bytes"
+      }
+    ],
+    "tess": [],
+    "emodb": []
+  },
+  "feature_count": {
+    "v1": 46,
+    "v2": 130
+  },
+  "tess_training_clips": 490,
+  "train_speakers": [
+    "ravdess:01",
+    "ravdess:02",
+    "ravdess:03",
+    "ravdess:04",
+    "ravdess:06",
+    "ravdess:07",
+    "ravdess:08",
+    "ravdess:09",
+    "ravdess:11",
+    "ravdess:12",
+    "ravdess:13",
+    "ravdess:14",
+    "ravdess:16",
+    "ravdess:17",
+    "ravdess:18",
+    "ravdess:19",
+    "ravdess:21",
+    "ravdess:22",
+    "tess:OAF"
+  ],
+  "test_speakers": {
+    "ravdess_unseen_actors": [
+      "ravdess:05",
+      "ravdess:10",
+      "ravdess:15",
+      "ravdess:20",
+      "ravdess:23",
+      "ravdess:24"
+    ],
+    "tess_unseen_actor": [
+      "tess:YAF"
+    ],
+    "emodb_unseen_dataset": [
+      "emodb:03",
+      "emodb:08",
+      "emodb:09",
+      "emodb:10",
+      "emodb:11",
+      "emodb:12",
+      "emodb:13",
+      "emodb:14",
+      "emodb:15",
+      "emodb:16"
+    ]
+  },
+  "training_cv": [
+    {
+      "candidate": "baseline_v1",
+      "fold_macro_f1": [
+        0.3799424848123822,
+        0.3305574221794877,
+        0.4411837718147612
+      ],
+      "mean_macro_f1": 0.38389455960221036
+    },
+    {
+      "candidate": "svm_expanded_v1",
+      "fold_macro_f1": [
+        0.3780496436864911,
+        0.3193403819666316,
+        0.4146496064654982
+      ],
+      "mean_macro_f1": 0.3706798773728736
+    },
+    {
+      "candidate": "logistic_expanded_v1",
+      "fold_macro_f1": [
+        0.3960710782203206,
+        0.318314599124264,
+        0.38856323892408506
+      ],
+      "mean_macro_f1": 0.3676496387562233
+    },
+    {
+      "candidate": "forest_v1",
+      "fold_macro_f1": [
+        0.34277174819771167,
+        0.3222185428278358,
+        0.3342841876251637
+      ],
+      "mean_macro_f1": 0.3330914928835704
+    },
+    {
+      "candidate": "svm_expanded_v2",
+      "fold_macro_f1": [
+        0.4061700551987858,
+        0.4005512402176308,
+        0.4091260666945389
+      ],
+      "mean_macro_f1": 0.4052824540369852
+    },
+    {
+      "candidate": "logistic_expanded_v2",
+      "fold_macro_f1": [
+        0.44421558506092296,
+        0.361935255099244,
+        0.4217760124757252
+      ],
+      "mean_macro_f1": 0.40930895087863073
+    }
+  ],
+  "selected_candidate": "logistic_expanded_v2",
+  "evaluation": {
+    "ravdess_unseen_actors": {
+      "clips": 360,
+      "speakers": 6,
+      "source_labels": [
+        "angry",
+        "calm",
+        "disgust",
+        "fearful",
+        "happy",
+        "neutral",
+        "sad",
+        "surprised"
+      ],
+      "saved_baseline": {
+        "accuracy": 0.44166666666666665,
+        "macro_precision": 0.4390859112298122,
+        "macro_recall": 0.421875,
+        "macro_f1": 0.3975083619313942,
+        "per_class": {
+          "angry": {
+            "precision": 0.46774193548387094,
+            "recall": 0.6041666666666666,
+            "f1-score": 0.5272727272727272,
+            "support": 48.0
+          },
+          "calm": {
+            "precision": 0.4675324675324675,
+            "recall": 0.75,
+            "f1-score": 0.576,
+            "support": 48.0
+          },
+          "disgust": {
+            "precision": 0.5135135135135135,
+            "recall": 0.3958333333333333,
+            "f1-score": 0.4470588235294118,
+            "support": 48.0
+          },
+          "fearful": {
+            "precision": 0.4142857142857143,
+            "recall": 0.6041666666666666,
+            "f1-score": 0.4915254237288136,
+            "support": 48.0
+          },
+          "happy": {
+            "precision": 0.1875,
+            "recall": 0.125,
+            "f1-score": 0.15,
+            "support": 48.0
+          },
+          "neutral": {
+            "precision": 0.5,
+            "recall": 0.125,
+            "f1-score": 0.2,
+            "support": 24.0
+          },
+          "sad": {
+            "precision": 0.47058823529411764,
+            "recall": 0.16666666666666666,
+            "f1-score": 0.24615384615384617,
+            "support": 48.0
+          },
+          "surprised": {
+            "precision": 0.4915254237288136,
+            "recall": 0.6041666666666666,
+            "f1-score": 0.5420560747663551,
+            "support": 48.0
+          },
+          "accuracy": 0.44166666666666665,
+          "macro avg": {
+            "precision": 0.4390859112298122,
+            "recall": 0.421875,
+            "f1-score": 0.3975083619313942,
+            "support": 360.0
+          },
+          "weighted avg": {
+            "precision": 0.4350249719784663,
+            "recall": 0.44166666666666665,
+            "f1-score": 0.4106755860601538,
+            "support": 360.0
+          }
+        },
+        "confusion_labels": [
+          "angry",
+          "calm",
+          "disgust",
+          "fearful",
+          "happy",
+          "neutral",
+          "sad",
+          "surprised"
+        ],
+        "confusion_matrix": [
+          [
+            29,
+            1,
+            2,
+            6,
+            3,
+            0,
+            0,
+            7
+          ],
+          [
+            0,
+            36,
+            2,
+            5,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            10,
+            5,
+            19,
+            5,
+            7,
+            0,
+            1,
+            1
+          ],
+          [
+            2,
+            9,
+            0,
+            29,
+            2,
+            0,
+            1,
+            5
+          ],
+          [
+            9,
+            0,
+            7,
+            13,
+            6,
+            1,
+            2,
+            10
+          ],
+          [
+            1,
+            5,
+            2,
+            2,
+            4,
+            3,
+            4,
+            3
+          ],
+          [
+            3,
+            21,
+            3,
+            7,
+            4,
+            2,
+            8,
+            0
+          ],
+          [
+            8,
+            0,
+            2,
+            3,
+            6,
+            0,
+            0,
+            29
+          ]
+        ],
+        "prediction_counts": {
+          "calm": 77,
+          "disgust": 37,
+          "angry": 62,
+          "happy": 32,
+          "neutral": 6,
+          "fearful": 70,
+          "surprised": 59,
+          "sad": 17
+        }
+      },
+      "selected_candidate": {
+        "accuracy": 0.4583333333333333,
+        "macro_precision": 0.45345365779787294,
+        "macro_recall": 0.46614583333333337,
+        "macro_f1": 0.4511518139534918,
+        "per_class": {
+          "angry": {
+            "precision": 0.5714285714285714,
+            "recall": 0.5,
+            "f1-score": 0.5333333333333333,
+            "support": 48.0
+          },
+          "calm": {
+            "precision": 0.4482758620689655,
+            "recall": 0.2708333333333333,
+            "f1-score": 0.33766233766233766,
+            "support": 48.0
+          },
+          "disgust": {
+            "precision": 0.4745762711864407,
+            "recall": 0.5833333333333334,
+            "f1-score": 0.5233644859813084,
+            "support": 48.0
+          },
+          "fearful": {
+            "precision": 0.5641025641025641,
+            "recall": 0.4583333333333333,
+            "f1-score": 0.5057471264367817,
+            "support": 48.0
+          },
+          "happy": {
+            "precision": 0.275,
+            "recall": 0.22916666666666666,
+            "f1-score": 0.25,
+            "support": 48.0
+          },
+          "neutral": {
+            "precision": 0.3783783783783784,
+            "recall": 0.5833333333333334,
+            "f1-score": 0.45901639344262296,
+            "support": 24.0
+          },
+          "sad": {
+            "precision": 0.3584905660377358,
+            "recall": 0.3958333333333333,
+            "f1-score": 0.37623762376237624,
+            "support": 48.0
+          },
+          "surprised": {
+            "precision": 0.5573770491803278,
+            "recall": 0.7083333333333334,
+            "f1-score": 0.6238532110091743,
+            "support": 48.0
+          },
+          "accuracy": 0.4583333333333333,
+          "macro avg": {
+            "precision": 0.45345365779787294,
+            "recall": 0.46614583333333337,
+            "f1-score": 0.4511518139534918,
+            "support": 360.0
+          },
+          "weighted avg": {
+            "precision": 0.45845867642583926,
+            "recall": 0.4583333333333333,
+            "f1-score": 0.45062750865421636,
+            "support": 360.0
+          }
+        },
+        "confusion_labels": [
+          "angry",
+          "calm",
+          "disgust",
+          "fearful",
+          "happy",
+          "neutral",
+          "sad",
+          "surprised"
+        ],
+        "confusion_matrix": [
+          [
+            24,
+            1,
+            6,
+            4,
+            7,
+            0,
+            1,
+            5
+          ],
+          [
+            0,
+            13,
+            8,
+            1,
+            1,
+            10,
+            14,
+            1
+          ],
+          [
+            3,
+            2,
+            28,
+            1,
+            5,
+            0,
+            5,
+            4
+          ],
+          [
+            2,
+            3,
+            4,
+            22,
+            4,
+            1,
+            9,
+            3
+          ],
+          [
+            9,
+            1,
+            5,
+            9,
+            11,
+            3,
+            0,
+            10
+          ],
+          [
+            0,
+            1,
+            1,
+            1,
+            2,
+            14,
+            4,
+            1
+          ],
+          [
+            1,
+            8,
+            2,
+            1,
+            6,
+            8,
+            19,
+            3
+          ],
+          [
+            3,
+            0,
+            5,
+            0,
+            4,
+            1,
+            1,
+            34
+          ]
+        ],
+        "prediction_counts": {
+          "neutral": 37,
+          "disgust": 59,
+          "sad": 53,
+          "happy": 40,
+          "angry": 42,
+          "calm": 29,
+          "fearful": 39,
+          "surprised": 61
+        }
+      }
+    },
+    "tess_unseen_actor": {
+      "clips": 1400,
+      "speakers": 1,
+      "source_labels": [
+        "angry",
+        "disgust",
+        "fearful",
+        "happy",
+        "neutral",
+        "sad",
+        "surprised"
+      ],
+      "saved_baseline": {
+        "accuracy": 0.3385714285714286,
+        "macro_precision": 0.35579408612319524,
+        "macro_recall": 0.3385714285714286,
+        "macro_f1": 0.24076624634652471,
+        "per_class": {
+          "angry": {
+            "precision": 1.0,
+            "recall": 0.005,
+            "f1-score": 0.009950248756218905,
+            "support": 200.0
+          },
+          "disgust": {
+            "precision": 0.75,
+            "recall": 0.795,
+            "f1-score": 0.7718446601941747,
+            "support": 200.0
+          },
+          "fearful": {
+            "precision": 0.21114683815648447,
+            "recall": 0.985,
+            "f1-score": 0.34774933804060015,
+            "support": 200.0
+          },
+          "happy": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 200.0
+          },
+          "neutral": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 200.0
+          },
+          "sad": {
+            "precision": 0.5294117647058824,
+            "recall": 0.585,
+            "f1-score": 0.5558194774346793,
+            "support": 200.0
+          },
+          "surprised": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 200.0
+          },
+          "micro avg": {
+            "precision": 0.3467446964155084,
+            "recall": 0.3385714285714286,
+            "f1-score": 0.3426093241778099,
+            "support": 1400.0
+          },
+          "macro avg": {
+            "precision": 0.35579408612319524,
+            "recall": 0.3385714285714286,
+            "f1-score": 0.24076624634652471,
+            "support": 1400.0
+          },
+          "weighted avg": {
+            "precision": 0.35579408612319524,
+            "recall": 0.3385714285714286,
+            "f1-score": 0.24076624634652474,
+            "support": 1400.0
+          }
+        },
+        "confusion_labels": [
+          "angry",
+          "calm",
+          "disgust",
+          "fearful",
+          "happy",
+          "neutral",
+          "sad",
+          "surprised"
+        ],
+        "confusion_matrix": [
+          [
+            1,
+            0,
+            28,
+            159,
+            0,
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            159,
+            22,
+            0,
+            0,
+            19,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            197,
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            0,
+            20,
+            173,
+            0,
+            0,
+            7,
+            0
+          ],
+          [
+            0,
+            2,
+            4,
+            131,
+            0,
+            0,
+            63,
+            0
+          ],
+          [
+            0,
+            31,
+            1,
+            51,
+            0,
+            0,
+            117,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            200,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "prediction_counts": {
+          "fearful": 933,
+          "disgust": 212,
+          "calm": 33,
+          "sad": 221,
+          "angry": 1
+        }
+      },
+      "selected_candidate": {
+        "accuracy": 0.37785714285714284,
+        "macro_precision": 0.454683426649446,
+        "macro_recall": 0.37785714285714284,
+        "macro_f1": 0.33369084689498385,
+        "per_class": {
+          "angry": {
+            "precision": 0.32727272727272727,
+            "recall": 0.18,
+            "f1-score": 0.23225806451612904,
+            "support": 200.0
+          },
+          "disgust": {
+            "precision": 0.32094594594594594,
+            "recall": 0.95,
+            "f1-score": 0.4797979797979798,
+            "support": 200.0
+          },
+          "fearful": {
+            "precision": 0.5714285714285714,
+            "recall": 0.02,
+            "f1-score": 0.03864734299516908,
+            "support": 200.0
+          },
+          "happy": {
+            "precision": 0.13068181818181818,
+            "recall": 0.115,
+            "f1-score": 0.12234042553191489,
+            "support": 200.0
+          },
+          "neutral": {
+            "precision": 0.7,
+            "recall": 0.595,
+            "f1-score": 0.6432432432432432,
+            "support": 200.0
+          },
+          "sad": {
+            "precision": 0.42857142857142855,
+            "recall": 0.06,
+            "f1-score": 0.10526315789473684,
+            "support": 200.0
+          },
+          "surprised": {
+            "precision": 0.7038834951456311,
+            "recall": 0.725,
+            "f1-score": 0.7142857142857143,
+            "support": 200.0
+          },
+          "micro avg": {
+            "precision": 0.41039565554693563,
+            "recall": 0.37785714285714284,
+            "f1-score": 0.3934548159166977,
+            "support": 1400.0
+          },
+          "macro avg": {
+            "precision": 0.454683426649446,
+            "recall": 0.37785714285714284,
+            "f1-score": 0.33369084689498385,
+            "support": 1400.0
+          },
+          "weighted avg": {
+            "precision": 0.4546834266494461,
+            "recall": 0.37785714285714284,
+            "f1-score": 0.33369084689498385,
+            "support": 1400.0
+          }
+        },
+        "confusion_labels": [
+          "angry",
+          "calm",
+          "disgust",
+          "fearful",
+          "happy",
+          "neutral",
+          "sad",
+          "surprised"
+        ],
+        "confusion_matrix": [
+          [
+            36,
+            0,
+            157,
+            0,
+            0,
+            0,
+            0,
+            7
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            190,
+            0,
+            1,
+            0,
+            2,
+            6
+          ],
+          [
+            27,
+            2,
+            20,
+            4,
+            138,
+            0,
+            6,
+            3
+          ],
+          [
+            29,
+            1,
+            114,
+            0,
+            23,
+            0,
+            5,
+            28
+          ],
+          [
+            4,
+            2,
+            54,
+            3,
+            11,
+            119,
+            2,
+            5
+          ],
+          [
+            1,
+            106,
+            16,
+            0,
+            2,
+            51,
+            12,
+            12
+          ],
+          [
+            12,
+            0,
+            41,
+            0,
+            1,
+            0,
+            1,
+            145
+          ]
+        ],
+        "prediction_counts": {
+          "disgust": 592,
+          "happy": 176,
+          "angry": 110,
+          "surprised": 206,
+          "neutral": 170,
+          "calm": 111,
+          "sad": 28,
+          "fearful": 7
+        }
+      }
+    },
+    "emodb_unseen_dataset": {
+      "clips": 454,
+      "speakers": 10,
+      "source_labels": [
+        "angry",
+        "disgust",
+        "fearful",
+        "happy",
+        "neutral",
+        "sad"
+      ],
+      "saved_baseline": {
+        "accuracy": 0.11013215859030837,
+        "macro_precision": 0.26959992574027664,
+        "macro_recall": 0.12282501155462948,
+        "macro_f1": 0.10716078790619449,
+        "per_class": {
+          "angry": {
+            "precision": 0.75,
+            "recall": 0.07086614173228346,
+            "f1-score": 0.12949640287769784,
+            "support": 127.0
+          },
+          "disgust": {
+            "precision": 0.14035087719298245,
+            "recall": 0.17391304347826086,
+            "f1-score": 0.1553398058252427,
+            "support": 46.0
+          },
+          "fearful": {
+            "precision": 0.16296296296296298,
+            "recall": 0.3188405797101449,
+            "f1-score": 0.21568627450980393,
+            "support": 69.0
+          },
+          "happy": {
+            "precision": 0.5,
+            "recall": 0.028169014084507043,
+            "f1-score": 0.05333333333333334,
+            "support": 71.0
+          },
+          "neutral": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 79.0
+          },
+          "sad": {
+            "precision": 0.06428571428571428,
+            "recall": 0.14516129032258066,
+            "f1-score": 0.0891089108910891,
+            "support": 62.0
+          },
+          "micro avg": {
+            "precision": 0.14367816091954022,
+            "recall": 0.11013215859030837,
+            "f1-score": 0.12468827930174564,
+            "support": 454.0
+          },
+          "macro avg": {
+            "precision": 0.26959992574027664,
+            "recall": 0.12282501155462948,
+            "f1-score": 0.10716078790619449,
+            "support": 454.0
+          },
+          "weighted avg": {
+            "precision": 0.3357627733062465,
+            "recall": 0.11013215859030837,
+            "f1-score": 0.10525428704079175,
+            "support": 454.0
+          }
+        },
+        "confusion_labels": [
+          "angry",
+          "calm",
+          "disgust",
+          "fearful",
+          "happy",
+          "neutral",
+          "sad",
+          "surprised"
+        ],
+        "confusion_matrix": [
+          [
+            9,
+            0,
+            28,
+            66,
+            2,
+            0,
+            22,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            15,
+            8,
+            1,
+            0,
+            0,
+            19,
+            0
+          ],
+          [
+            0,
+            15,
+            6,
+            22,
+            0,
+            0,
+            26,
+            0
+          ],
+          [
+            0,
+            5,
+            10,
+            33,
+            2,
+            0,
+            21,
+            0
+          ],
+          [
+            0,
+            26,
+            5,
+            5,
+            0,
+            0,
+            43,
+            0
+          ],
+          [
+            0,
+            45,
+            0,
+            8,
+            0,
+            0,
+            9,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "prediction_counts": {
+          "calm": 106,
+          "happy": 4,
+          "sad": 140,
+          "disgust": 57,
+          "fearful": 135,
+          "angry": 12
+        }
+      },
+      "selected_candidate": {
+        "accuracy": 0.31938325991189426,
+        "macro_precision": 0.46121107863435223,
+        "macro_recall": 0.270263213024387,
+        "macro_f1": 0.30037681777694286,
+        "per_class": {
+          "angry": {
+            "precision": 0.6013071895424836,
+            "recall": 0.7244094488188977,
+            "f1-score": 0.6571428571428571,
+            "support": 127.0
+          },
+          "disgust": {
+            "precision": 0.4444444444444444,
+            "recall": 0.34782608695652173,
+            "f1-score": 0.3902439024390244,
+            "support": 46.0
+          },
+          "fearful": {
+            "precision": 0.6111111111111112,
+            "recall": 0.15942028985507245,
+            "f1-score": 0.25287356321839083,
+            "support": 69.0
+          },
+          "happy": {
+            "precision": 0.4782608695652174,
+            "recall": 0.15492957746478872,
+            "f1-score": 0.23404255319148937,
+            "support": 71.0
+          },
+          "neutral": {
+            "precision": 0.4,
+            "recall": 0.02531645569620253,
+            "f1-score": 0.047619047619047616,
+            "support": 79.0
+          },
+          "sad": {
+            "precision": 0.23214285714285715,
+            "recall": 0.20967741935483872,
+            "f1-score": 0.22033898305084745,
+            "support": 62.0
+          },
+          "micro avg": {
+            "precision": 0.49828178694158076,
+            "recall": 0.31938325991189426,
+            "f1-score": 0.38926174496644295,
+            "support": 454.0
+          },
+          "macro avg": {
+            "precision": 0.46121107863435223,
+            "recall": 0.270263213024387,
+            "f1-score": 0.30037681777694286,
+            "support": 454.0
+          },
+          "weighted avg": {
+            "precision": 0.48221696710351125,
+            "recall": 0.31938325991189426,
+            "f1-score": 0.3367766106146696,
+            "support": 454.0
+          }
+        },
+        "confusion_labels": [
+          "angry",
+          "calm",
+          "disgust",
+          "fearful",
+          "happy",
+          "neutral",
+          "sad",
+          "surprised"
+        ],
+        "confusion_matrix": [
+          [
+            92,
+            9,
+            8,
+            3,
+            9,
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            9,
+            12,
+            16,
+            1,
+            1,
+            0,
+            7,
+            0
+          ],
+          [
+            12,
+            30,
+            5,
+            11,
+            2,
+            1,
+            7,
+            1
+          ],
+          [
+            27,
+            14,
+            2,
+            3,
+            11,
+            0,
+            11,
+            3
+          ],
+          [
+            11,
+            45,
+            5,
+            0,
+            0,
+            2,
+            16,
+            0
+          ],
+          [
+            2,
+            45,
+            0,
+            0,
+            0,
+            1,
+            13,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "prediction_counts": {
+          "happy": 23,
+          "sad": 56,
+          "angry": 153,
+          "fearful": 18,
+          "neutral": 5,
+          "calm": 155,
+          "disgust": 36,
+          "surprised": 8
+        }
+      }
+    }
+  }
+}

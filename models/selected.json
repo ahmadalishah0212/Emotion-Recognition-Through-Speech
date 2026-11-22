@@ -1,6 +1,8 @@
 {
-  "name": "svm",
-  "file": "svm.joblib",
-  "selection_metric": "macro_f1",
-  "feature_count": 46
+  "name": "logistic_expanded_v2",
+  "file": "logistic_expanded_v2.joblib",
+  "selection_metric": "training_actor_cv_macro_f1",
+  "feature_version": "v2",
+  "feature_count": 130,
+  "evaluation": "results/expanded/evaluation.json"
 }

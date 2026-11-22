@@ -8,6 +8,7 @@ import imageio_ffmpeg
 MAX_VIDEO_BYTES = 50 * 1024 * 1024
 MAX_VIDEO_SECONDS = 120
 MAX_FRAMES = 12
+MAX_FRAME_EDGE = 960
 
 
 def analyze_video_payload(payload, suffix=".mp4"):
@@ -36,6 +37,11 @@ def analyze_video_payload(payload, suffix=".mp4"):
             capture.set(cv2.CAP_PROP_POS_FRAMES, index)
             ok, frame = capture.read()
             if ok and frame is not None:
+                height, width = frame.shape[:2]
+                if max(height, width) > MAX_FRAME_EDGE:
+                    scale = MAX_FRAME_EDGE / max(height, width)
+                    frame = cv2.resize(frame, (round(width * scale), round(height * scale)),
+                                       interpolation=cv2.INTER_AREA)
                 frames.append(frame)
         capture.release()
         if not frames:

@@ -1,0 +1,3501 @@
+{
+  "source_archive": "Video_Speech_Actor_05.zip",
+  "actor": "05",
+  "face_model": "ferplus",
+  "independent_voice_test": true,
+  "protocol_note": "Face results use intended acted clip labels. Central-frame comparison is exploratory if chosen on this archive. Voice/fusion are independent only for original held-out RAVDESS actors.",
+  "clips": 60,
+  "face_full": {
+    "clips": 52,
+    "accuracy": 0.34615384615384615,
+    "macro_f1": 0.2850174216027875,
+    "per_class": {
+      "neutral": {
+        "precision": 0.10810810810810811,
+        "recall": 1.0,
+        "f1-score": 0.1951219512195122,
+        "support": 4.0
+      },
+      "happy": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 8.0
+      },
+      "sad": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "angry": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "fearful": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "disgust": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "surprised": {
+        "precision": 0.8571428571428571,
+        "recall": 0.75,
+        "f1-score": 0.8,
+        "support": 8.0
+      },
+      "accuracy": 0.34615384615384615,
+      "macro avg": {
+        "precision": 0.280750137892995,
+        "recall": 0.39285714285714285,
+        "f1-score": 0.2850174216027875,
+        "support": 52.0
+      },
+      "weighted avg": {
+        "precision": 0.294030294030294,
+        "recall": 0.34615384615384615,
+        "f1-score": 0.2919324577861163,
+        "support": 52.0
+      }
+    },
+    "confusion_labels": [
+      "neutral",
+      "happy",
+      "sad",
+      "angry",
+      "fearful",
+      "disgust",
+      "surprised",
+      "contempt",
+      "calm"
+    ],
+    "confusion_matrix": [
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        6,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "prediction_counts": {
+      "neutral": 37,
+      "happy": 8,
+      "surprised": 7
+    }
+  },
+  "face_central": {
+    "clips": 52,
+    "accuracy": 0.34615384615384615,
+    "macro_f1": 0.2737484737484737,
+    "per_class": {
+      "neutral": {
+        "precision": 0.11428571428571428,
+        "recall": 1.0,
+        "f1-score": 0.20512820512820512,
+        "support": 4.0
+      },
+      "happy": {
+        "precision": 1.0,
+        "recall": 0.875,
+        "f1-score": 0.9333333333333333,
+        "support": 8.0
+      },
+      "sad": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "angry": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "fearful": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "disgust": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "surprised": {
+        "precision": 0.7,
+        "recall": 0.875,
+        "f1-score": 0.7777777777777778,
+        "support": 8.0
+      },
+      "accuracy": 0.34615384615384615,
+      "macro avg": {
+        "precision": 0.25918367346938775,
+        "recall": 0.39285714285714285,
+        "f1-score": 0.2737484737484737,
+        "support": 52.0
+      },
+      "weighted avg": {
+        "precision": 0.2703296703296703,
+        "recall": 0.34615384615384615,
+        "f1-score": 0.2790269559500329,
+        "support": 52.0
+      }
+    },
+    "confusion_labels": [
+      "neutral",
+      "happy",
+      "sad",
+      "angry",
+      "fearful",
+      "disgust",
+      "surprised",
+      "contempt",
+      "calm"
+    ],
+    "confusion_matrix": [
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        7,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "prediction_counts": {
+      "neutral": 35,
+      "happy": 7,
+      "surprised": 10
+    }
+  },
+  "voice": {
+    "clips": 52,
+    "accuracy": 0.4423076923076923,
+    "macro_f1": 0.41669055582099057,
+    "per_class": {
+      "neutral": {
+        "precision": 0.5,
+        "recall": 0.25,
+        "f1-score": 0.3333333333333333,
+        "support": 4.0
+      },
+      "happy": {
+        "precision": 0.5,
+        "recall": 0.125,
+        "f1-score": 0.2,
+        "support": 8.0
+      },
+      "sad": {
+        "precision": 0.8,
+        "recall": 0.5,
+        "f1-score": 0.6153846153846154,
+        "support": 8.0
+      },
+      "angry": {
+        "precision": 0.3333333333333333,
+        "recall": 0.625,
+        "f1-score": 0.43478260869565216,
+        "support": 8.0
+      },
+      "fearful": {
+        "precision": 0.6666666666666666,
+        "recall": 0.25,
+        "f1-score": 0.36363636363636365,
+        "support": 8.0
+      },
+      "disgust": {
+        "precision": 0.5,
+        "recall": 0.875,
+        "f1-score": 0.6363636363636364,
+        "support": 8.0
+      },
+      "surprised": {
+        "precision": 0.3,
+        "recall": 0.375,
+        "f1-score": 0.3333333333333333,
+        "support": 8.0
+      },
+      "micro avg": {
+        "precision": 0.45098039215686275,
+        "recall": 0.4423076923076923,
+        "f1-score": 0.44660194174757284,
+        "support": 52.0
+      },
+      "macro avg": {
+        "precision": 0.5142857142857142,
+        "recall": 0.42857142857142855,
+        "f1-score": 0.41669055582099057,
+        "support": 52.0
+      },
+      "weighted avg": {
+        "precision": 0.5153846153846153,
+        "recall": 0.4423076923076923,
+        "f1-score": 0.4231026498585027,
+        "support": 52.0
+      }
+    },
+    "confusion_labels": [
+      "neutral",
+      "happy",
+      "sad",
+      "angry",
+      "fearful",
+      "disgust",
+      "surprised",
+      "contempt",
+      "calm"
+    ],
+    "confusion_matrix": [
+      [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        5,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        4,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        5,
+        1,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        2,
+        0,
+        4,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        7,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        3,
+        0,
+        2,
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "prediction_counts": {
+      "neutral": 2,
+      "angry": 15,
+      "disgust": 14,
+      "sad": 5,
+      "happy": 2,
+      "surprised": 10,
+      "calm": 1,
+      "fearful": 3
+    }
+  },
+  "fusion_central": {
+    "clips": 52,
+    "accuracy": 0.46153846153846156,
+    "macro_f1": 0.44496336996337,
+    "per_class": {
+      "neutral": {
+        "precision": 0.18181818181818182,
+        "recall": 1.0,
+        "f1-score": 0.3076923076923077,
+        "support": 4.0
+      },
+      "happy": {
+        "precision": 0.8,
+        "recall": 0.5,
+        "f1-score": 0.6153846153846154,
+        "support": 8.0
+      },
+      "sad": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "angry": {
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1-score": 0.5,
+        "support": 8.0
+      },
+      "fearful": {
+        "precision": 1.0,
+        "recall": 0.25,
+        "f1-score": 0.4,
+        "support": 8.0
+      },
+      "disgust": {
+        "precision": 0.625,
+        "recall": 0.625,
+        "f1-score": 0.625,
+        "support": 8.0
+      },
+      "surprised": {
+        "precision": 0.7142857142857143,
+        "recall": 0.625,
+        "f1-score": 0.6666666666666666,
+        "support": 8.0
+      },
+      "accuracy": 0.46153846153846156,
+      "macro avg": {
+        "precision": 0.5458719851576995,
+        "recall": 0.5,
+        "f1-score": 0.44496336996337,
+        "support": 52.0
+      },
+      "weighted avg": {
+        "precision": 0.573876123876124,
+        "recall": 0.46153846153846156,
+        "f1-score": 0.45552268244575933,
+        "support": 52.0
+      }
+    },
+    "confusion_labels": [
+      "neutral",
+      "happy",
+      "sad",
+      "angry",
+      "fearful",
+      "disgust",
+      "surprised",
+      "contempt",
+      "calm"
+    ],
+    "confusion_matrix": [
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        4,
+        0,
+        3,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        4,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        1,
+        0,
+        1,
+        2,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        0,
+        0,
+        0,
+        5,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        2,
+        5,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "prediction_counts": {
+      "neutral": 22,
+      "happy": 5,
+      "disgust": 8,
+      "angry": 8,
+      "surprised": 7,
+      "fearful": 2
+    }
+  },
+  "rows": [
+    {
+      "file": "01-01-01-01-01-01-05.mp4",
+      "truth": "neutral",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9774366545336372,
+        "happy": 0.00014957017194143463,
+        "surprised": 0.0031626601592757656,
+        "sad": 0.01593761620338337,
+        "angry": 0.0007678410401100339,
+        "disgust": 7.829839508736404e-05,
+        "fearful": 8.318604124907924e-05,
+        "contempt": 0.0023841734553156635
+      },
+      "face_central_scores": {
+        "neutral": 0.9696745937089216,
+        "happy": 0.0002578334992531707,
+        "surprised": 0.006311117124499646,
+        "sad": 0.020190264167891707,
+        "angry": 0.0009591101424900914,
+        "disgust": 0.00012245732976325617,
+        "fearful": 0.00016499944227684976,
+        "contempt": 0.0023196245849036686
+      },
+      "voice": "neutral",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 115394,
+      "voice_scores": {
+        "angry": 0.0701507106423378,
+        "calm": 0.0014676169957965612,
+        "disgust": 0.04039235785603523,
+        "fearful": 0.008056259714066982,
+        "happy": 0.061152637004852295,
+        "neutral": 0.5106574296951294,
+        "sad": 0.30533748865127563,
+        "surprised": 0.0027855192311108112
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-01-01-01-02-05.mp4",
+      "truth": "neutral",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9671991205106485,
+        "happy": 0.00019450176659715327,
+        "surprised": 0.009277850703831912,
+        "sad": 0.019835808071707376,
+        "angry": 0.0007326583804235421,
+        "disgust": 9.345677303208449e-05,
+        "fearful": 0.00021817568783430547,
+        "contempt": 0.002448428105925105
+      },
+      "face_central_scores": {
+        "neutral": 0.954090037112972,
+        "happy": 0.00033072389816540387,
+        "surprised": 0.01852513946690464,
+        "sad": 0.023476391221690516,
+        "angry": 0.0008868758958011242,
+        "disgust": 0.0001431186263430115,
+        "fearful": 0.0004326539965682044,
+        "contempt": 0.002115059781555238
+      },
+      "voice": "angry",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 116460,
+      "voice_scores": {
+        "angry": 0.8350075483322144,
+        "calm": 0.00014627441123593599,
+        "disgust": 0.10091497004032135,
+        "fearful": 0.008079166524112225,
+        "happy": 0.009050947614014149,
+        "neutral": 0.0367790162563324,
+        "sad": 0.008534594438970089,
+        "surprised": 0.0014875067863613367
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-01-01-02-01-05.mp4",
+      "truth": "neutral",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9869041613597206,
+        "happy": 5.6273596145170224e-05,
+        "surprised": 0.0003801810840360338,
+        "sad": 0.01021287028260734,
+        "angry": 0.0006317751947436213,
+        "disgust": 3.713669141383329e-05,
+        "fearful": 9.357233912305829e-06,
+        "contempt": 0.0017682445574210683
+      },
+      "face_central_scores": {
+        "neutral": 0.9856567464691595,
+        "happy": 6.483012327616667e-05,
+        "surprised": 0.0007441370105659497,
+        "sad": 0.01116201109965235,
+        "angry": 0.0007342528403406762,
+        "disgust": 4.6492456276973894e-05,
+        "fearful": 1.7486339814613085e-05,
+        "contempt": 0.0015740436609138653
+      },
+      "voice": "disgust",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 99378,
+      "voice_scores": {
+        "angry": 0.10653719305992126,
+        "calm": 0.005158022046089172,
+        "disgust": 0.4826001524925232,
+        "fearful": 0.012856688350439072,
+        "happy": 0.18857719004154205,
+        "neutral": 0.04781343787908554,
+        "sad": 0.08798559010028839,
+        "surprised": 0.068471759557724
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-01-01-02-02-05.mp4",
+      "truth": "neutral",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9792327563407839,
+        "happy": 6.559786784805651e-05,
+        "surprised": 4.0125073845520755e-05,
+        "sad": 0.017711566139808635,
+        "angry": 0.0005188408921038003,
+        "disgust": 3.9034076175965864e-05,
+        "fearful": 3.511029146388179e-06,
+        "contempt": 0.0023885685802878314
+      },
+      "face_central_scores": {
+        "neutral": 0.9715905678780122,
+        "happy": 4.2772736329907945e-05,
+        "surprised": 5.5459816822474044e-05,
+        "sad": 0.025508095200668393,
+        "angry": 0.0005566699564836121,
+        "disgust": 4.466860598100186e-05,
+        "fearful": 5.337896477956823e-06,
+        "contempt": 0.002196427909224341
+      },
+      "voice": "sad",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 115394,
+      "voice_scores": {
+        "angry": 0.02395588904619217,
+        "calm": 0.0002741123898886144,
+        "disgust": 0.1804247945547104,
+        "fearful": 0.00893798004835844,
+        "happy": 0.005809357855468988,
+        "neutral": 0.03860088065266609,
+        "sad": 0.7358513474464417,
+        "surprised": 0.006145717576146126
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-02-01-01-01-05.mp4",
+      "truth": "calm",
+      "face_full": "happy",
+      "face_central": "happy",
+      "face_full_scores": {
+        "neutral": 0.3861250440686672,
+        "happy": 0.5751227534421505,
+        "surprised": 0.0015279435189394302,
+        "sad": 0.015717272652994163,
+        "angry": 0.0009139224246980246,
+        "disgust": 0.00221285128914069,
+        "fearful": 0.00021277284380019266,
+        "contempt": 0.01816743975960974
+      },
+      "face_central_scores": {
+        "neutral": 0.20425158301820465,
+        "happy": 0.7827215075474422,
+        "surprised": 0.0027330434107979223,
+        "sad": 0.003086864128933404,
+        "angry": 0.0004784990069961665,
+        "disgust": 0.0004691593200508427,
+        "fearful": 0.00020332039918244385,
+        "contempt": 0.006056023168392364
+      },
+      "voice": "disgust",
+      "fusion_central": "happy",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 129274,
+      "voice_scores": {
+        "angry": 0.0035869022831320763,
+        "calm": 0.011442718096077442,
+        "disgust": 0.7456496953964233,
+        "fearful": 0.0018796189688146114,
+        "happy": 0.0034461442846804857,
+        "neutral": 0.026053383946418762,
+        "sad": 0.10679307579994202,
+        "surprised": 0.10114846378564835
+      },
+      "fusion_full": "disgust"
+    },
+    {
+      "file": "01-01-02-01-01-02-05.mp4",
+      "truth": "calm",
+      "face_full": "happy",
+      "face_central": "happy",
+      "face_full_scores": {
+        "neutral": 0.3369505762693071,
+        "happy": 0.65547287125682,
+        "surprised": 0.0012862208629800535,
+        "sad": 0.000970886527384236,
+        "angry": 0.00016681179205260989,
+        "disgust": 0.00013837609681941588,
+        "fearful": 5.4842170973398736e-05,
+        "contempt": 0.004959415023663251
+      },
+      "face_central_scores": {
+        "neutral": 0.2942945059049784,
+        "happy": 0.6979366870030826,
+        "surprised": 0.0019782700686718424,
+        "sad": 0.0013052713593627362,
+        "angry": 0.00022927513076878873,
+        "disgust": 0.00017516977918007973,
+        "fearful": 8.664029712279632e-05,
+        "contempt": 0.003994180456832884
+      },
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 131410,
+      "voice_scores": {
+        "angry": 0.003181657288223505,
+        "calm": 0.008036335930228233,
+        "disgust": 0.8365549445152283,
+        "fearful": 0.014952842146158218,
+        "happy": 0.0007974164909683168,
+        "neutral": 0.027537059038877487,
+        "sad": 0.10055200755596161,
+        "surprised": 0.008387736976146698
+      },
+      "fusion_full": "disgust"
+    },
+    {
+      "file": "01-01-02-01-02-01-05.mp4",
+      "truth": "calm",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.6473472088645841,
+        "happy": 0.33098429247100897,
+        "surprised": 0.0020729084036134916,
+        "sad": 0.005899419971173048,
+        "angry": 0.0006670065306070208,
+        "disgust": 0.0005688860196948827,
+        "fearful": 0.00019720462392712422,
+        "contempt": 0.012263073115391404
+      },
+      "face_central_scores": {
+        "neutral": 0.5825675662621227,
+        "happy": 0.38962937000287484,
+        "surprised": 0.003995071738303011,
+        "sad": 0.008480095254071143,
+        "angry": 0.0010473226092757727,
+        "disgust": 0.0009362999237820436,
+        "fearful": 0.000376584763471338,
+        "contempt": 0.012967689446098983
+      },
+      "voice": "sad",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 132476,
+      "voice_scores": {
+        "angry": 0.01116371713578701,
+        "calm": 0.01505979336798191,
+        "disgust": 0.3700515925884247,
+        "fearful": 0.0036055350210517645,
+        "happy": 6.585416849702597e-05,
+        "neutral": 0.001242342172190547,
+        "sad": 0.5508081912994385,
+        "surprised": 0.048003047704696655
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-02-01-02-02-05.mp4",
+      "truth": "calm",
+      "face_full": "happy",
+      "face_central": "happy",
+      "face_full_scores": {
+        "neutral": 0.3338537462610404,
+        "happy": 0.6545230005267894,
+        "surprised": 0.0006181482224167282,
+        "sad": 0.0026435592625317383,
+        "angry": 0.00023317628147267034,
+        "disgust": 0.00024398569564909635,
+        "fearful": 6.389120922348919e-05,
+        "contempt": 0.007820492540876531
+      },
+      "face_central_scores": {
+        "neutral": 0.26480702182788574,
+        "happy": 0.7227456057831424,
+        "surprised": 0.001049095416491528,
+        "sad": 0.0037931087925026628,
+        "angry": 0.0003753433822548654,
+        "disgust": 0.0003607473301780273,
+        "fearful": 0.0001096007785391688,
+        "contempt": 0.006759476689005662
+      },
+      "voice": "disgust",
+      "fusion_central": "happy",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 135680,
+      "voice_scores": {
+        "angry": 0.008957418613135815,
+        "calm": 0.004388520494103432,
+        "disgust": 0.5387064814567566,
+        "fearful": 0.0007916474132798612,
+        "happy": 0.0024431850761175156,
+        "neutral": 0.00344192236661911,
+        "sad": 0.42493847012519836,
+        "surprised": 0.016332363709807396
+      },
+      "fusion_full": "happy"
+    },
+    {
+      "file": "01-01-02-02-01-01-05.mp4",
+      "truth": "calm",
+      "face_full": "happy",
+      "face_central": "happy",
+      "face_full_scores": {
+        "neutral": 0.15727680862656604,
+        "happy": 0.8373608633952285,
+        "surprised": 0.0011822317022206197,
+        "sad": 0.0012599789645453927,
+        "angry": 0.00013011867222035968,
+        "disgust": 0.00011115946993013347,
+        "fearful": 5.401988582886082e-05,
+        "contempt": 0.0026248192834599955
+      },
+      "face_central_scores": {
+        "neutral": 0.18208881935678178,
+        "happy": 0.8105158085976214,
+        "surprised": 0.0015527176085203924,
+        "sad": 0.0021047860983647603,
+        "angry": 0.00020175155199058983,
+        "disgust": 0.00016902581472437588,
+        "fearful": 8.315595258896311e-05,
+        "contempt": 0.0032839350194076426
+      },
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 151696,
+      "voice_scores": {
+        "angry": 0.000644888321403414,
+        "calm": 0.021170852705836296,
+        "disgust": 0.9753068089485168,
+        "fearful": 5.57961939193774e-05,
+        "happy": 0.00012148010137025267,
+        "neutral": 5.337796392268501e-05,
+        "sad": 0.00020269508240744472,
+        "surprised": 0.0024441350251436234
+      },
+      "fusion_full": "disgust"
+    },
+    {
+      "file": "01-01-02-02-01-02-05.mp4",
+      "truth": "calm",
+      "face_full": "happy",
+      "face_central": "happy",
+      "face_full_scores": {
+        "neutral": 0.45646374136700657,
+        "happy": 0.529640664639279,
+        "surprised": 0.0045450626771970665,
+        "sad": 0.0028309700730598827,
+        "angry": 0.00036377474151479545,
+        "disgust": 0.0002799957735905219,
+        "fearful": 0.0002454072588120079,
+        "contempt": 0.0056303834695401395
+      },
+      "face_central_scores": {
+        "neutral": 0.30684653015172425,
+        "happy": 0.6774065547324625,
+        "surprised": 0.007396971565307762,
+        "sad": 0.0027680176228144344,
+        "angry": 0.000428851590356841,
+        "disgust": 0.0003369199399350217,
+        "fearful": 0.0003880909256065005,
+        "contempt": 0.004428063471792775
+      },
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 144222,
+      "voice_scores": {
+        "angry": 0.000549315067473799,
+        "calm": 0.17221792042255402,
+        "disgust": 0.7814850807189941,
+        "fearful": 0.002512464066967368,
+        "happy": 0.00014090708282310516,
+        "neutral": 0.007961411960422993,
+        "sad": 0.03429858013987541,
+        "surprised": 0.000834310136269778
+      },
+      "fusion_full": "disgust"
+    },
+    {
+      "file": "01-01-02-02-02-01-05.mp4",
+      "truth": "calm",
+      "face_full": "happy",
+      "face_central": "happy",
+      "face_full_scores": {
+        "neutral": 0.42285625430635004,
+        "happy": 0.5682111526275794,
+        "surprised": 0.0007777309766384737,
+        "sad": 0.0033468832321729837,
+        "angry": 0.00017368002401254822,
+        "disgust": 0.00013712308060732356,
+        "fearful": 5.288959727717506e-05,
+        "contempt": 0.00444428615536217
+      },
+      "face_central_scores": {
+        "neutral": 0.33008727178651237,
+        "happy": 0.6587810640400374,
+        "surprised": 0.0011440436531792411,
+        "sad": 0.0046819892968307485,
+        "angry": 0.00021728688205087485,
+        "disgust": 0.00019178268099632892,
+        "fearful": 8.210625861744285e-05,
+        "contempt": 0.004814455401775503
+      },
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 152764,
+      "voice_scores": {
+        "angry": 4.7284866013797e-05,
+        "calm": 0.01209963858127594,
+        "disgust": 0.883791983127594,
+        "fearful": 0.0002700652985367924,
+        "happy": 7.213340722955763e-05,
+        "neutral": 0.0006776871741749346,
+        "sad": 0.10000940412282944,
+        "surprised": 0.003031790489330888
+      },
+      "fusion_full": "disgust"
+    },
+    {
+      "file": "01-01-02-02-02-02-05.mp4",
+      "truth": "calm",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.6327601838412105,
+        "happy": 0.3324108064094263,
+        "surprised": 0.020207538156343328,
+        "sad": 0.007210810325171335,
+        "angry": 0.0004936197839383345,
+        "disgust": 0.00033670689609454984,
+        "fearful": 0.0006908070449943255,
+        "contempt": 0.005889527542821307
+      },
+      "face_central_scores": {
+        "neutral": 0.6310144188614374,
+        "happy": 0.30794556580903554,
+        "surprised": 0.03921518459156888,
+        "sad": 0.012187808679047568,
+        "angry": 0.0008573160840548551,
+        "disgust": 0.0005691227966135207,
+        "fearful": 0.001327185293089564,
+        "contempt": 0.006883397885152615
+      },
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 137816,
+      "voice_scores": {
+        "angry": 0.0002316793252248317,
+        "calm": 1.0116586963704322e-05,
+        "disgust": 0.9296957850456238,
+        "fearful": 0.002807755023241043,
+        "happy": 7.241398634505458e-06,
+        "neutral": 0.0025029568932950497,
+        "sad": 0.06309285759925842,
+        "surprised": 0.0016515592578798532
+      },
+      "fusion_full": "disgust"
+    },
+    {
+      "file": "01-01-03-01-01-01-05.mp4",
+      "truth": "happy",
+      "face_full": "happy",
+      "face_central": "happy",
+      "face_full_scores": {
+        "neutral": 0.29184031299565166,
+        "happy": 0.5826002884051661,
+        "surprised": 0.062324968724945445,
+        "sad": 0.027633066982033553,
+        "angry": 0.003353958600040024,
+        "disgust": 0.002392957388439632,
+        "fearful": 0.008061233448530004,
+        "contempt": 0.021793213455193652
+      },
+      "face_central_scores": {
+        "neutral": 0.17956639937481592,
+        "happy": 0.6402447004591567,
+        "surprised": 0.12382092459966626,
+        "sad": 0.025500903079887352,
+        "angry": 0.004651722667165681,
+        "disgust": 0.002725850997559759,
+        "fearful": 0.01596196291914889,
+        "contempt": 0.007527535902599465
+      },
+      "voice": "angry",
+      "fusion_central": "happy",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 128206,
+      "voice_scores": {
+        "angry": 0.4388197064399719,
+        "calm": 0.0004116815107408911,
+        "disgust": 0.3233415186405182,
+        "fearful": 0.0001722907618386671,
+        "happy": 0.09889983385801315,
+        "neutral": 0.002213733270764351,
+        "sad": 0.09447595477104187,
+        "surprised": 0.04166528955101967
+      },
+      "fusion_full": "happy"
+    },
+    {
+      "file": "01-01-03-01-01-02-05.mp4",
+      "truth": "happy",
+      "face_full": "happy",
+      "face_central": "happy",
+      "face_full_scores": {
+        "neutral": 0.2841043367711904,
+        "happy": 0.673036064989477,
+        "surprised": 0.0040071141045689715,
+        "sad": 0.02048006073541772,
+        "angry": 0.0019159825771897909,
+        "disgust": 0.0014069173845709761,
+        "fearful": 0.0008097544039860201,
+        "contempt": 0.014239769033599213
+      },
+      "face_central_scores": {
+        "neutral": 0.42363869102886936,
+        "happy": 0.5135974855275214,
+        "surprised": 0.007711344709254792,
+        "sad": 0.031915177744538996,
+        "angry": 0.003029166527209128,
+        "disgust": 0.002160577688131974,
+        "fearful": 0.0015701368445486979,
+        "contempt": 0.016377419929925672
+      },
+      "voice": "happy",
+      "fusion_central": "happy",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 103648,
+      "voice_scores": {
+        "angry": 0.09185247123241425,
+        "calm": 0.0006334192585200071,
+        "disgust": 0.018785761669278145,
+        "fearful": 0.0012437754776328802,
+        "happy": 0.8131323456764221,
+        "neutral": 0.0013000838225707412,
+        "sad": 0.0003685814153868705,
+        "surprised": 0.07268369197845459
+      },
+      "fusion_full": "happy"
+    },
+    {
+      "file": "01-01-03-01-02-01-05.mp4",
+      "truth": "happy",
+      "face_full": "happy",
+      "face_central": "happy",
+      "face_full_scores": {
+        "neutral": 0.17842596386903378,
+        "happy": 0.6856782599102633,
+        "surprised": 0.09377075405955405,
+        "sad": 0.011490018405838062,
+        "angry": 0.0038733707036908566,
+        "disgust": 0.003012890662391515,
+        "fearful": 0.014106845555018808,
+        "contempt": 0.009641896834209669
+      },
+      "face_central_scores": {
+        "neutral": 0.2614252368854196,
+        "happy": 0.47236456311887887,
+        "surprised": 0.186940752145246,
+        "sad": 0.022001556682864243,
+        "angry": 0.007647601468845793,
+        "disgust": 0.0059269596781487575,
+        "fearful": 0.02819000525488398,
+        "contempt": 0.015503324765712784
+      },
+      "voice": "surprised",
+      "fusion_central": "happy",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 107920,
+      "voice_scores": {
+        "angry": 0.24499085545539856,
+        "calm": 0.0002277381281601265,
+        "disgust": 0.13978567719459534,
+        "fearful": 0.12336619943380356,
+        "happy": 0.08836861699819565,
+        "neutral": 0.03442778065800667,
+        "sad": 0.0484786182641983,
+        "surprised": 0.3203545808792114
+      },
+      "fusion_full": "happy"
+    },
+    {
+      "file": "01-01-03-01-02-02-05.mp4",
+      "truth": "happy",
+      "face_full": "happy",
+      "face_central": "happy",
+      "face_full_scores": {
+        "neutral": 0.1357382849262401,
+        "happy": 0.8358842021638946,
+        "surprised": 0.004610374041397985,
+        "sad": 0.00809209276301518,
+        "angry": 0.0029549264162035543,
+        "disgust": 0.0025189571616037,
+        "fearful": 0.0007567099422881247,
+        "contempt": 0.009444452585356592
+      },
+      "face_central_scores": {
+        "neutral": 0.2188495199651903,
+        "happy": 0.7295211187053737,
+        "surprised": 0.00883650817709566,
+        "sad": 0.01466586149895606,
+        "angry": 0.005715551091843302,
+        "disgust": 0.004807610649531059,
+        "fearful": 0.0014496775985507334,
+        "contempt": 0.016154152313459104
+      },
+      "voice": "angry",
+      "fusion_central": "happy",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 120732,
+      "voice_scores": {
+        "angry": 0.4865124821662903,
+        "calm": 0.01787504367530346,
+        "disgust": 0.3424833118915558,
+        "fearful": 0.0009314387571066618,
+        "happy": 0.11143941432237625,
+        "neutral": 0.00022643785632681102,
+        "sad": 0.023690443485975266,
+        "surprised": 0.016841458156704903
+      },
+      "fusion_full": "happy"
+    },
+    {
+      "file": "01-01-03-02-01-01-05.mp4",
+      "truth": "happy",
+      "face_full": "happy",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.19107772371654097,
+        "happy": 0.6482689535325473,
+        "surprised": 0.1081379017624491,
+        "sad": 0.030115090188279504,
+        "angry": 0.002565173707348603,
+        "disgust": 0.0019358160448718405,
+        "fearful": 0.010243724550258496,
+        "contempt": 0.007655616497704278
+      },
+      "face_central_scores": {
+        "neutral": 0.36685049732420794,
+        "happy": 0.34487742225868073,
+        "surprised": 0.18995106770488115,
+        "sad": 0.05763489151950577,
+        "angry": 0.004573907995255093,
+        "disgust": 0.00359217635296539,
+        "fearful": 0.01810762913633648,
+        "contempt": 0.014412407708167383
+      },
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 132476,
+      "voice_scores": {
+        "angry": 0.38672369718551636,
+        "calm": 0.000245450297370553,
+        "disgust": 0.4452713131904602,
+        "fearful": 0.0011209945660084486,
+        "happy": 0.01699552871286869,
+        "neutral": 0.00035592413041740656,
+        "sad": 0.06427867710590363,
+        "surprised": 0.08500837534666061
+      },
+      "fusion_full": "happy"
+    },
+    {
+      "file": "01-01-03-02-01-02-05.mp4",
+      "truth": "happy",
+      "face_full": "happy",
+      "face_central": "happy",
+      "face_full_scores": {
+        "neutral": 0.06973218075619685,
+        "happy": 0.7769441430963798,
+        "surprised": 0.12947385370711176,
+        "sad": 0.009313448220903645,
+        "angry": 0.0011537518302746806,
+        "disgust": 0.0007846220258121904,
+        "fearful": 0.009960402668417828,
+        "contempt": 0.0026375976949033152
+      },
+      "face_central_scores": {
+        "neutral": 0.13864287549087215,
+        "happy": 0.5561093164021819,
+        "surprised": 0.25779940561505826,
+        "sad": 0.01853916151786584,
+        "angry": 0.0022430523047798725,
+        "disgust": 0.0015567522873763465,
+        "fearful": 0.019874546982483733,
+        "contempt": 0.005234889399381864
+      },
+      "voice": "angry",
+      "fusion_central": "angry",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 123936,
+      "voice_scores": {
+        "angry": 0.9194470047950745,
+        "calm": 2.091549902161205e-07,
+        "disgust": 0.011121485382318497,
+        "fearful": 1.5071595043991692e-05,
+        "happy": 0.06517160683870316,
+        "neutral": 1.14723061415134e-05,
+        "sad": 9.605474588170182e-06,
+        "surprised": 0.004223434254527092
+      },
+      "fusion_full": "angry"
+    },
+    {
+      "file": "01-01-03-02-02-01-05.mp4",
+      "truth": "happy",
+      "face_full": "happy",
+      "face_central": "happy",
+      "face_full_scores": {
+        "neutral": 0.0486255527699436,
+        "happy": 0.9235552002418128,
+        "surprised": 0.017781782380548884,
+        "sad": 0.004576200132044578,
+        "angry": 0.0009732380542116351,
+        "disgust": 0.0005605588979696597,
+        "fearful": 0.0019319563454670557,
+        "contempt": 0.001995511178001819
+      },
+      "face_central_scores": {
+        "neutral": 0.0967707824761578,
+        "happy": 0.8492687598522976,
+        "surprised": 0.03407282596982853,
+        "sad": 0.009101057827786394,
+        "angry": 0.0018803798246850342,
+        "disgust": 0.001112964109654664,
+        "fearful": 0.0038218393852467447,
+        "contempt": 0.003971390554343213
+      },
+      "voice": "angry",
+      "fusion_central": "angry",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 115394,
+      "voice_scores": {
+        "angry": 0.9403538703918457,
+        "calm": 0.0008686182554811239,
+        "disgust": 0.004137830808758736,
+        "fearful": 0.0005473087076097727,
+        "happy": 0.03419123962521553,
+        "neutral": 0.00012918264837935567,
+        "sad": 0.012580342590808868,
+        "surprised": 0.007191599812358618
+      },
+      "fusion_full": "happy"
+    },
+    {
+      "file": "01-01-03-02-02-02-05.mp4",
+      "truth": "happy",
+      "face_full": "happy",
+      "face_central": "happy",
+      "face_full_scores": {
+        "neutral": 0.21719031592051954,
+        "happy": 0.7243416866240433,
+        "surprised": 0.025916881825602936,
+        "sad": 0.014558655222646781,
+        "angry": 0.0011454284144545243,
+        "disgust": 0.0010917135815686411,
+        "fearful": 0.0034276869070501877,
+        "contempt": 0.01232763150411399
+      },
+      "face_central_scores": {
+        "neutral": 0.3103459534105239,
+        "happy": 0.5974453691151859,
+        "surprised": 0.045936964516673506,
+        "sad": 0.0222418938427579,
+        "angry": 0.0019725970567924436,
+        "disgust": 0.0017771038833046917,
+        "fearful": 0.006118471374725727,
+        "contempt": 0.014161646800035897
+      },
+      "voice": "angry",
+      "fusion_central": "angry",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 108986,
+      "voice_scores": {
+        "angry": 0.9045597910881042,
+        "calm": 2.8578149795066565e-05,
+        "disgust": 0.01194804348051548,
+        "fearful": 0.0010563887190073729,
+        "happy": 0.07740246504545212,
+        "neutral": 0.00032758168526925147,
+        "sad": 0.0007951536681503057,
+        "surprised": 0.003882047953084111
+      },
+      "fusion_full": "angry"
+    },
+    {
+      "file": "01-01-04-01-01-01-05.mp4",
+      "truth": "sad",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9922038985509459,
+        "happy": 0.00032761475163313133,
+        "surprised": 0.0001768457009083045,
+        "sad": 0.004984487971553536,
+        "angry": 0.00019741637210291517,
+        "disgust": 2.017359692527277e-05,
+        "fearful": 3.632478837337624e-06,
+        "contempt": 0.002085930577093474
+      },
+      "face_central_scores": {
+        "neutral": 0.9931396412582165,
+        "happy": 0.0002652598848944928,
+        "surprised": 0.0003161481502563445,
+        "sad": 0.00447825787774068,
+        "angry": 0.0001813889293165899,
+        "disgust": 1.7489455950208085e-05,
+        "fearful": 5.320307104720486e-06,
+        "contempt": 0.0015964941365202792
+      },
+      "voice": "surprised",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 104716,
+      "voice_scores": {
+        "angry": 4.896153768640943e-05,
+        "calm": 0.039387114346027374,
+        "disgust": 0.004965601023286581,
+        "fearful": 0.07760000973939896,
+        "happy": 0.0009648015256971121,
+        "neutral": 0.34514886140823364,
+        "sad": 0.15456464886665344,
+        "surprised": 0.37731999158859253
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-04-01-01-02-05.mp4",
+      "truth": "sad",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9891816416599118,
+        "happy": 8.636471921928798e-05,
+        "surprised": 0.00020944810021517645,
+        "sad": 0.008417624849795113,
+        "angry": 0.0004171772408984439,
+        "disgust": 2.7707095643263923e-05,
+        "fearful": 5.721376985351513e-06,
+        "contempt": 0.0016543149573316057
+      },
+      "face_central_scores": {
+        "neutral": 0.9911022376863544,
+        "happy": 0.0001200720323587212,
+        "surprised": 0.00035558540066013366,
+        "sad": 0.0065210506597453725,
+        "angry": 0.0003672310682278116,
+        "disgust": 2.6716133899466462e-05,
+        "fearful": 8.414203232506732e-06,
+        "contempt": 0.0014986928155214935
+      },
+      "voice": "sad",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 116460,
+      "voice_scores": {
+        "angry": 0.04908044636249542,
+        "calm": 0.10025691986083984,
+        "disgust": 0.09764084219932556,
+        "fearful": 0.16379839181900024,
+        "happy": 0.00707646319642663,
+        "neutral": 0.000663034210447222,
+        "sad": 0.5765369534492493,
+        "surprised": 0.004946930333971977
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-04-01-02-01-05.mp4",
+      "truth": "sad",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9928016879198047,
+        "happy": 0.0017208856165453663,
+        "surprised": 0.000132097420509214,
+        "sad": 0.0023445448240031063,
+        "angry": 0.00024614768560699446,
+        "disgust": 2.8424726839437454e-05,
+        "fearful": 3.10817174531609e-06,
+        "contempt": 0.0027231036349459007
+      },
+      "face_central_scores": {
+        "neutral": 0.9921319053677967,
+        "happy": 0.002313675637202524,
+        "surprised": 0.00021282801597458472,
+        "sad": 0.0023010948399056117,
+        "angry": 0.00022379484997959355,
+        "disgust": 3.0626822041460775e-05,
+        "fearful": 4.4710592104591345e-06,
+        "contempt": 0.0027816034078890924
+      },
+      "voice": "calm",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 99378,
+      "voice_scores": {
+        "angry": 0.00012739445082843304,
+        "calm": 0.42461520433425903,
+        "disgust": 0.28183218836784363,
+        "fearful": 0.03912242129445076,
+        "happy": 0.0002365057443967089,
+        "neutral": 0.002807465149089694,
+        "sad": 0.05384686589241028,
+        "surprised": 0.19741199910640717
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-04-01-02-02-05.mp4",
+      "truth": "sad",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9924163226665191,
+        "happy": 0.000140527665052544,
+        "surprised": 6.248278713068462e-05,
+        "sad": 0.005175797082553365,
+        "angry": 0.0003311353040197945,
+        "disgust": 2.199524746376806e-05,
+        "fearful": 2.0833019349474682e-06,
+        "contempt": 0.0018496559453257129
+      },
+      "face_central_scores": {
+        "neutral": 0.9929999927465741,
+        "happy": 0.00019774818260666623,
+        "surprised": 6.716377849726274e-05,
+        "sad": 0.004292490572028761,
+        "angry": 0.00033355051167806727,
+        "disgust": 2.4310503718469645e-05,
+        "fearful": 2.191939845313776e-06,
+        "contempt": 0.002082551765051272
+      },
+      "voice": "disgust",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 118596,
+      "voice_scores": {
+        "angry": 0.00018527350039221346,
+        "calm": 0.13966885209083557,
+        "disgust": 0.6740666627883911,
+        "fearful": 0.00248728203587234,
+        "happy": 0.00034057293669320643,
+        "neutral": 0.006886444520205259,
+        "sad": 0.16563774645328522,
+        "surprised": 0.010727133601903915
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-04-02-01-01-05.mp4",
+      "truth": "sad",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9569270492118346,
+        "happy": 0.0004302835454601116,
+        "surprised": 0.006447775541305983,
+        "sad": 0.03134750947325389,
+        "angry": 0.0007476269247020504,
+        "disgust": 0.0001337605731455619,
+        "fearful": 0.00031098321738748223,
+        "contempt": 0.0036550115129105752
+      },
+      "face_central_scores": {
+        "neutral": 0.9530436908266039,
+        "happy": 0.0006849404871571526,
+        "surprised": 0.012435108609967271,
+        "sad": 0.028639489517346958,
+        "angry": 0.0006872870295751995,
+        "disgust": 0.00016212362451801336,
+        "fearful": 0.0005764123203287775,
+        "contempt": 0.003770947584502789
+      },
+      "voice": "sad",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 113258,
+      "voice_scores": {
+        "angry": 0.0009191649733111262,
+        "calm": 0.008212458342313766,
+        "disgust": 0.18765732645988464,
+        "fearful": 0.2566584050655365,
+        "happy": 0.016510475426912308,
+        "neutral": 0.1805282086133957,
+        "sad": 0.28885284066200256,
+        "surprised": 0.06066112592816353
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-04-02-01-02-05.mp4",
+      "truth": "sad",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9555257298179636,
+        "happy": 0.00018395572636176544,
+        "surprised": 0.00026083788478868035,
+        "sad": 0.036935856962704065,
+        "angry": 0.0029492180448369774,
+        "disgust": 0.00020400557665732906,
+        "fearful": 2.6367010270420328e-05,
+        "contempt": 0.003914028976417252
+      },
+      "face_central_scores": {
+        "neutral": 0.9540463017683373,
+        "happy": 0.00030739736016959185,
+        "surprised": 0.00036058821706030664,
+        "sad": 0.039070665390567035,
+        "angry": 0.0021400820856512736,
+        "disgust": 0.00018159124838166684,
+        "fearful": 3.502693376394725e-05,
+        "contempt": 0.0038583469960689625
+      },
+      "voice": "neutral",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 104716,
+      "voice_scores": {
+        "angry": 0.00013108790153637528,
+        "calm": 0.0033486399333924055,
+        "disgust": 0.008484727703034878,
+        "fearful": 0.1971358358860016,
+        "happy": 0.1615968942642212,
+        "neutral": 0.5047965049743652,
+        "sad": 0.10865014791488647,
+        "surprised": 0.01585620827972889
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-04-02-02-01-05.mp4",
+      "truth": "sad",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9791625486051077,
+        "happy": 6.637736141199832e-05,
+        "surprised": 8.554260740367333e-05,
+        "sad": 0.01785272402860683,
+        "angry": 0.0006899748097744203,
+        "disgust": 4.5442118430115733e-05,
+        "fearful": 5.214298040085801e-06,
+        "contempt": 0.0020921761712252465
+      },
+      "face_central_scores": {
+        "neutral": 0.9770889323929897,
+        "happy": 9.161588077437746e-05,
+        "surprised": 0.00012539620968094554,
+        "sad": 0.01946076928367826,
+        "angry": 0.0007352585420114283,
+        "disgust": 5.629856672156513e-05,
+        "fearful": 7.2169923605593915e-06,
+        "contempt": 0.0024345121317832885
+      },
+      "voice": "sad",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 104716,
+      "voice_scores": {
+        "angry": 0.0001990869059227407,
+        "calm": 0.00025411107344552875,
+        "disgust": 0.0017867825226858258,
+        "fearful": 0.05713430792093277,
+        "happy": 0.00038527537253685296,
+        "neutral": 0.01763262413442135,
+        "sad": 0.9217734932899475,
+        "surprised": 0.0008343514055013657
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-04-02-02-02-05.mp4",
+      "truth": "sad",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9686071189973798,
+        "happy": 0.0001248402407118025,
+        "surprised": 0.000203091794386814,
+        "sad": 0.025775530248497724,
+        "angry": 0.0015470053237066452,
+        "disgust": 0.0001228028919800436,
+        "fearful": 1.606677980782687e-05,
+        "contempt": 0.003603543723529315
+      },
+      "face_central_scores": {
+        "neutral": 0.9718821241648721,
+        "happy": 0.00018608807284397865,
+        "surprised": 0.00032814595013919867,
+        "sad": 0.022680275850639156,
+        "angry": 0.0013189349307892353,
+        "disgust": 0.00012350154218246625,
+        "fearful": 2.257922169773329e-05,
+        "contempt": 0.0034583502668361753
+      },
+      "voice": "sad",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 100444,
+      "voice_scores": {
+        "angry": 0.01440475694835186,
+        "calm": 3.583383295335807e-05,
+        "disgust": 0.09701834619045258,
+        "fearful": 0.1666955053806305,
+        "happy": 0.013510220684111118,
+        "neutral": 0.047887805849313736,
+        "sad": 0.46136873960494995,
+        "surprised": 0.19907887279987335
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-05-01-01-01-05.mp4",
+      "truth": "angry",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9872814533898963,
+        "happy": 0.002505833247131189,
+        "surprised": 0.0015889892537877032,
+        "sad": 0.0027757396577703848,
+        "angry": 0.0013342759726502177,
+        "disgust": 0.000172444873204277,
+        "fearful": 5.653924243112105e-05,
+        "contempt": 0.00428472436312895
+      },
+      "face_central_scores": {
+        "neutral": 0.9871039688185093,
+        "happy": 0.004366833595688944,
+        "surprised": 0.00039294663105679035,
+        "sad": 0.0024632411927003987,
+        "angry": 0.0006441218479056175,
+        "disgust": 0.00011559982209155827,
+        "fearful": 1.8589001253922602e-05,
+        "contempt": 0.004894699090793501
+      },
+      "voice": "angry",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 123936,
+      "voice_scores": {
+        "angry": 0.927762508392334,
+        "calm": 4.9062663265431183e-08,
+        "disgust": 0.0012768193846568465,
+        "fearful": 7.125921547412872e-05,
+        "happy": 0.05231313407421112,
+        "neutral": 0.0003498009464237839,
+        "sad": 8.161183359334245e-06,
+        "surprised": 0.01821824163198471
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-05-01-01-02-05.mp4",
+      "truth": "angry",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.7502408076416157,
+        "happy": 0.00026534338770665066,
+        "surprised": 0.11923489665110942,
+        "sad": 0.015837485062140902,
+        "angry": 0.08327175599931425,
+        "disgust": 0.018004321969724485,
+        "fearful": 0.0032293382228673205,
+        "contempt": 0.009916051065521236
+      },
+      "face_central_scores": {
+        "neutral": 0.5919796122692805,
+        "happy": 0.0005023486415482173,
+        "surprised": 0.23790362011627608,
+        "sad": 0.012970930178966568,
+        "angry": 0.10579017931436104,
+        "disgust": 0.03277275494350036,
+        "fearful": 0.006395196096147832,
+        "contempt": 0.011685358439919363
+      },
+      "voice": "angry",
+      "fusion_central": "angry",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 121800,
+      "voice_scores": {
+        "angry": 0.9687379598617554,
+        "calm": 1.5491896476760303e-07,
+        "disgust": 0.007352902553975582,
+        "fearful": 0.00930124893784523,
+        "happy": 0.0020029630977660418,
+        "neutral": 0.00045629593660123646,
+        "sad": 5.070329279988073e-05,
+        "surprised": 0.012097738683223724
+      },
+      "fusion_full": "angry"
+    },
+    {
+      "file": "01-01-05-01-02-01-05.mp4",
+      "truth": "angry",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9766300762557779,
+        "happy": 0.00011987520502173833,
+        "surprised": 0.0004109540327899213,
+        "sad": 0.017090302118760285,
+        "angry": 0.002261857994942939,
+        "disgust": 0.00016845767958113814,
+        "fearful": 2.2172147984902602e-05,
+        "contempt": 0.0032963045651412154
+      },
+      "face_central_scores": {
+        "neutral": 0.9787157203215883,
+        "happy": 0.000192859610396494,
+        "surprised": 0.0006288793348895719,
+        "sad": 0.015469659684069404,
+        "angry": 0.001791866830266221,
+        "disgust": 0.00013985816108008783,
+        "fearful": 2.8521707445591688e-05,
+        "contempt": 0.0030326343502644695
+      },
+      "voice": "disgust",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 130342,
+      "voice_scores": {
+        "angry": 0.10335026681423187,
+        "calm": 0.00019796798005700111,
+        "disgust": 0.8754852414131165,
+        "fearful": 2.32375805353513e-06,
+        "happy": 0.006132905371487141,
+        "neutral": 4.992089816369116e-05,
+        "sad": 0.0009198603802360594,
+        "surprised": 0.013861509971320629
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-05-01-02-02-05.mp4",
+      "truth": "angry",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9345820822440615,
+        "happy": 0.0007571151660546825,
+        "surprised": 0.006275189493140103,
+        "sad": 0.008349914805282481,
+        "angry": 0.030381983980106848,
+        "disgust": 0.008056551883610328,
+        "fearful": 0.0005489925405593449,
+        "contempt": 0.011048169887184732
+      },
+      "face_central_scores": {
+        "neutral": 0.8807545665869001,
+        "happy": 0.0006913978816105428,
+        "surprised": 0.012321553708979355,
+        "sad": 0.012426212952955101,
+        "angry": 0.059716931644964895,
+        "disgust": 0.015995403230743287,
+        "fearful": 0.001085605555435138,
+        "contempt": 0.01700832843841162
+      },
+      "voice": "disgust",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 141018,
+      "voice_scores": {
+        "angry": 0.18083561956882477,
+        "calm": 1.277600949833868e-05,
+        "disgust": 0.8115682601928711,
+        "fearful": 5.602127203019336e-06,
+        "happy": 0.001618505222722888,
+        "neutral": 1.0174050657951739e-05,
+        "sad": 0.0004168151644989848,
+        "surprised": 0.005532258655875921
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-05-02-01-01-05.mp4",
+      "truth": "angry",
+      "face_full": "neutral",
+      "face_central": "surprised",
+      "face_full_scores": {
+        "neutral": 0.6197621210798596,
+        "happy": 0.001198696666263809,
+        "surprised": 0.3352582653477864,
+        "sad": 0.008385858146548368,
+        "angry": 0.00811438929381529,
+        "disgust": 0.0008177646383525254,
+        "fearful": 0.02092909191046025,
+        "contempt": 0.005533812916913818
+      },
+      "face_central_scores": {
+        "neutral": 0.27949221454455103,
+        "happy": 0.0023237432019420964,
+        "surprised": 0.6663363996471215,
+        "sad": 0.0027643429194192794,
+        "angry": 0.0027077347567091192,
+        "disgust": 0.0007094288058328281,
+        "fearful": 0.041610194837739124,
+        "contempt": 0.004055941286685006
+      },
+      "voice": "angry",
+      "fusion_central": "angry",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 108986,
+      "voice_scores": {
+        "angry": 0.8243691325187683,
+        "calm": 2.0735573968977405e-07,
+        "disgust": 0.00497786607593298,
+        "fearful": 0.054401446133852005,
+        "happy": 0.09243760257959366,
+        "neutral": 2.57505143963499e-06,
+        "sad": 6.21570652583614e-05,
+        "surprised": 0.02374894544482231
+      },
+      "fusion_full": "angry"
+    },
+    {
+      "file": "01-01-05-02-01-02-05.mp4",
+      "truth": "angry",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9146929664218767,
+        "happy": 0.0008056996588963395,
+        "surprised": 0.07116465011811238,
+        "sad": 0.002971815236444962,
+        "angry": 0.005427862223490343,
+        "disgust": 0.00035889014017055496,
+        "fearful": 0.0006210382293989305,
+        "contempt": 0.003957077971609785
+      },
+      "face_central_scores": {
+        "neutral": 0.846861896532464,
+        "happy": 0.0015350763831608004,
+        "surprised": 0.14100652129320226,
+        "sad": 0.002953397553953951,
+        "angry": 0.0019346778173833102,
+        "disgust": 0.00026102169431735855,
+        "fearful": 0.0011855847196234565,
+        "contempt": 0.004261824005894822
+      },
+      "voice": "fearful",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 114326,
+      "voice_scores": {
+        "angry": 0.006686205510050058,
+        "calm": 3.478344945406775e-09,
+        "disgust": 0.0003344280703458935,
+        "fearful": 0.8004129528999329,
+        "happy": 0.0004584421985782683,
+        "neutral": 4.360501770861447e-05,
+        "sad": 0.00021906886831857264,
+        "surprised": 0.19184526801109314
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-05-02-02-01-05.mp4",
+      "truth": "angry",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.8758292246007972,
+        "happy": 0.001265574917485527,
+        "surprised": 0.0025327701345971916,
+        "sad": 0.009036595111470896,
+        "angry": 0.09543556922685775,
+        "disgust": 0.006388436897300762,
+        "fearful": 0.0002256308325786844,
+        "contempt": 0.009286198278911967
+      },
+      "face_central_scores": {
+        "neutral": 0.8158923260495411,
+        "happy": 0.002390638856019057,
+        "surprised": 0.003962978261505893,
+        "sad": 0.005041361295038952,
+        "angry": 0.15158020210562487,
+        "disgust": 0.010873799718176433,
+        "fearful": 0.00033262000255545546,
+        "contempt": 0.009926073711538285
+      },
+      "voice": "angry",
+      "fusion_central": "angry",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 116460,
+      "voice_scores": {
+        "angry": 0.989054799079895,
+        "calm": 8.540962603831304e-09,
+        "disgust": 0.0012079274747520685,
+        "fearful": 0.002298313193023205,
+        "happy": 0.0074125961400568485,
+        "neutral": 1.8529632273001084e-09,
+        "sad": 6.855285391793586e-06,
+        "surprised": 1.9470015104161575e-05
+      },
+      "fusion_full": "angry"
+    },
+    {
+      "file": "01-01-05-02-02-02-05.mp4",
+      "truth": "angry",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.7437847153716405,
+        "happy": 0.00039949691353794223,
+        "surprised": 0.09379192025953437,
+        "sad": 0.009045101127237094,
+        "angry": 0.1260288029875071,
+        "disgust": 0.013184070526338592,
+        "fearful": 0.002731039470293586,
+        "contempt": 0.011034853343910812
+      },
+      "face_central_scores": {
+        "neutral": 0.5576059482129093,
+        "happy": 0.0007476058399350959,
+        "surprised": 0.18557920784630336,
+        "sad": 0.00492784548920502,
+        "angry": 0.20778701076111553,
+        "disgust": 0.024611817575612673,
+        "fearful": 0.005299868619147553,
+        "contempt": 0.013440695655771556
+      },
+      "voice": "angry",
+      "fusion_central": "angry",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 116460,
+      "voice_scores": {
+        "angry": 0.9384428262710571,
+        "calm": 6.864064427958283e-09,
+        "disgust": 0.004866165108978748,
+        "fearful": 0.009699419140815735,
+        "happy": 0.04682955890893936,
+        "neutral": 2.34864305781457e-09,
+        "sad": 1.833522765082307e-05,
+        "surprised": 0.0001436886377632618
+      },
+      "fusion_full": "angry"
+    },
+    {
+      "file": "01-01-06-01-01-01-05.mp4",
+      "truth": "fearful",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9551044330174405,
+        "happy": 4.62627876812626e-05,
+        "surprised": 0.0337851082678026,
+        "sad": 0.007210660151814544,
+        "angry": 0.0016127598391430416,
+        "disgust": 8.393575025571414e-05,
+        "fearful": 0.00026508103553945464,
+        "contempt": 0.001891759150322796
+      },
+      "face_central_scores": {
+        "neutral": 0.9228746780574988,
+        "happy": 5.766281814242628e-05,
+        "surprised": 0.06692211288140497,
+        "sad": 0.006145854813632576,
+        "angry": 0.0015566963759962988,
+        "disgust": 9.076561853745902e-05,
+        "fearful": 0.0005070645178914944,
+        "contempt": 0.001845164916896006
+      },
+      "voice": "surprised",
+      "fusion_central": "surprised",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 100444,
+      "voice_scores": {
+        "angry": 3.362259349160013e-06,
+        "calm": 4.3090157220149194e-08,
+        "disgust": 0.00014830208965577185,
+        "fearful": 0.018862491473555565,
+        "happy": 0.0001692448859103024,
+        "neutral": 8.221776079153642e-05,
+        "sad": 5.996130857965909e-05,
+        "surprised": 0.9806743264198303
+      },
+      "fusion_full": "surprised"
+    },
+    {
+      "file": "01-01-06-01-01-02-05.mp4",
+      "truth": "fearful",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9648581083669644,
+        "happy": 8.706941005234756e-05,
+        "surprised": 0.02507849732319166,
+        "sad": 0.00544806521070456,
+        "angry": 0.0017398195722401076,
+        "disgust": 0.00012102014953675653,
+        "fearful": 0.0003224276859124607,
+        "contempt": 0.002344992281397611
+      },
+      "face_central_scores": {
+        "neutral": 0.941999105174736,
+        "happy": 0.0001110519606850535,
+        "surprised": 0.04846081501511266,
+        "sad": 0.004861040493957498,
+        "angry": 0.0016594198273913948,
+        "disgust": 0.000133670111435253,
+        "fearful": 0.0005940946146255475,
+        "contempt": 0.002180802802056719
+      },
+      "voice": "surprised",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 107920,
+      "voice_scores": {
+        "angry": 0.17280177772045135,
+        "calm": 1.2843432841691538e-06,
+        "disgust": 0.0300630833953619,
+        "fearful": 0.0639301985502243,
+        "happy": 0.032670602202415466,
+        "neutral": 0.015359395183622837,
+        "sad": 0.02798168919980526,
+        "surprised": 0.657192051410675
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-06-01-02-01-05.mp4",
+      "truth": "fearful",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9822330576270506,
+        "happy": 0.00012120707364714885,
+        "surprised": 0.0059977569510176985,
+        "sad": 0.006285884314586736,
+        "angry": 0.0018337200399749102,
+        "disgust": 0.0001595627405055186,
+        "fearful": 0.00017534695743237887,
+        "contempt": 0.00319346429578501
+      },
+      "face_central_scores": {
+        "neutral": 0.9801822946193331,
+        "happy": 0.00013493826495861907,
+        "surprised": 0.008145628041617517,
+        "sad": 0.006129032955076073,
+        "angry": 0.0018135198086450307,
+        "disgust": 0.00016782778209438668,
+        "fearful": 0.00021886239618859574,
+        "contempt": 0.003207896132086581
+      },
+      "voice": "surprised",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 100444,
+      "voice_scores": {
+        "angry": 0.00010238329559797421,
+        "calm": 4.453489964362234e-06,
+        "disgust": 0.012474154122173786,
+        "fearful": 0.07529089599847794,
+        "happy": 0.00048413549666292965,
+        "neutral": 0.002918912097811699,
+        "sad": 0.025223076343536377,
+        "surprised": 0.8835020661354065
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-06-01-02-02-05.mp4",
+      "truth": "fearful",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9812381492595431,
+        "happy": 0.00010017967051084845,
+        "surprised": 0.008623136162815648,
+        "sad": 0.005863033445006512,
+        "angry": 0.001744641053229414,
+        "disgust": 0.00010663987217106233,
+        "fearful": 0.00011678662875454309,
+        "contempt": 0.002207433907968992
+      },
+      "face_central_scores": {
+        "neutral": 0.9749741619921806,
+        "happy": 0.00014845870780045518,
+        "surprised": 0.01623353608712642,
+        "sad": 0.004769314936539616,
+        "angry": 0.0015655173425557344,
+        "disgust": 0.00011012083614509503,
+        "fearful": 0.00019691767083964185,
+        "contempt": 0.002001972426812388
+      },
+      "voice": "surprised",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 98310,
+      "voice_scores": {
+        "angry": 0.09660495817661285,
+        "calm": 9.57943939283723e-06,
+        "disgust": 0.008716625161468983,
+        "fearful": 0.07438430190086365,
+        "happy": 0.01707860641181469,
+        "neutral": 0.010127447545528412,
+        "sad": 0.02817295864224434,
+        "surprised": 0.7649054527282715
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-06-02-01-01-05.mp4",
+      "truth": "fearful",
+      "face_full": "surprised",
+      "face_central": "surprised",
+      "face_full_scores": {
+        "neutral": 0.2557295742770234,
+        "happy": 0.00040427877418896515,
+        "surprised": 0.6951413863427196,
+        "sad": 0.002465451941410176,
+        "angry": 0.0009848534275520564,
+        "disgust": 0.000265997782881428,
+        "fearful": 0.042668284558899795,
+        "contempt": 0.002340172895324621
+      },
+      "face_central_scores": {
+        "neutral": 0.4356169938611241,
+        "happy": 0.0005697412624902229,
+        "surprised": 0.5397521472602508,
+        "sad": 0.003353384316771966,
+        "angry": 0.0012467768472508415,
+        "disgust": 0.00031376644922076995,
+        "fearful": 0.015883680123225333,
+        "contempt": 0.0032635098796660027
+      },
+      "voice": "fearful",
+      "fusion_central": "fearful",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 103648,
+      "voice_scores": {
+        "angry": 0.0011250788811594248,
+        "calm": 3.264960801718786e-10,
+        "disgust": 2.0691520603577374e-06,
+        "fearful": 0.9870861172676086,
+        "happy": 0.008551552891731262,
+        "neutral": 6.269056939345319e-06,
+        "sad": 0.0010930805001407862,
+        "surprised": 0.002135836984962225
+      },
+      "fusion_full": "fearful"
+    },
+    {
+      "file": "01-01-06-02-01-02-05.mp4",
+      "truth": "fearful",
+      "face_full": "neutral",
+      "face_central": "surprised",
+      "face_full_scores": {
+        "neutral": 0.5003258276161756,
+        "happy": 0.0007765612598235157,
+        "surprised": 0.47758236174803165,
+        "sad": 0.0038603214685327147,
+        "angry": 0.0014385532586251944,
+        "disgust": 0.0003447165716137606,
+        "fearful": 0.01279938778324219,
+        "contempt": 0.002872270293955408
+      },
+      "face_central_scores": {
+        "neutral": 0.48340737004605505,
+        "happy": 0.0011427098049009688,
+        "surprised": 0.4966982578421897,
+        "sad": 0.003721384176671176,
+        "angry": 0.0012556932935382258,
+        "disgust": 0.0003247241045858568,
+        "fearful": 0.01069100310936473,
+        "contempt": 0.002758857622694297
+      },
+      "voice": "fearful",
+      "fusion_central": "fearful",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 114326,
+      "voice_scores": {
+        "angry": 0.012710198760032654,
+        "calm": 3.6210952458759493e-08,
+        "disgust": 0.000300270359730348,
+        "fearful": 0.8843919634819031,
+        "happy": 0.07210459560155869,
+        "neutral": 6.702900464006234e-06,
+        "sad": 0.0002972735383082181,
+        "surprised": 0.03018893301486969
+      },
+      "fusion_full": "fearful"
+    },
+    {
+      "file": "01-01-06-02-02-01-05.mp4",
+      "truth": "fearful",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.6115279145592725,
+        "happy": 0.0005938946506747456,
+        "surprised": 0.35674532296571176,
+        "sad": 0.00807785501484992,
+        "angry": 0.0019861683693060887,
+        "disgust": 0.0005096630646111171,
+        "fearful": 0.016437671816479937,
+        "contempt": 0.004121509559093934
+      },
+      "face_central_scores": {
+        "neutral": 0.6250512357618668,
+        "happy": 0.0008153027186683014,
+        "surprised": 0.3417219035940347,
+        "sad": 0.010156461931308192,
+        "angry": 0.002313317427176545,
+        "disgust": 0.0006439878664243143,
+        "fearful": 0.014615467188887926,
+        "contempt": 0.004682323511633178
+      },
+      "voice": "angry",
+      "fusion_central": "angry",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 103648,
+      "voice_scores": {
+        "angry": 0.7998784184455872,
+        "calm": 2.3147142655943753e-06,
+        "disgust": 0.013428225181996822,
+        "fearful": 0.017605667933821678,
+        "happy": 0.07410082221031189,
+        "neutral": 0.0003860347205772996,
+        "sad": 0.00463018799200654,
+        "surprised": 0.08996835350990295
+      },
+      "fusion_full": "angry"
+    },
+    {
+      "file": "01-01-06-02-02-02-05.mp4",
+      "truth": "fearful",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.7863439728862106,
+        "happy": 0.004448820674572144,
+        "surprised": 0.19008669740730885,
+        "sad": 0.0037456582162992244,
+        "angry": 0.002523719448273239,
+        "disgust": 0.0006602346631900059,
+        "fearful": 0.004602929342062784,
+        "contempt": 0.0075879673620831934
+      },
+      "face_central_scores": {
+        "neutral": 0.7174358896934564,
+        "happy": 0.004272094908019568,
+        "surprised": 0.25983296588705906,
+        "sad": 0.0033227980216472257,
+        "angry": 0.0026254510532508313,
+        "disgust": 0.0006809750322772805,
+        "fearful": 0.005835997464184666,
+        "contempt": 0.005993827940104851
+      },
+      "voice": "happy",
+      "fusion_central": "happy",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 99378,
+      "voice_scores": {
+        "angry": 0.1982341855764389,
+        "calm": 1.2012805200356524e-05,
+        "disgust": 5.417831926024519e-05,
+        "fearful": 0.0016047981334850192,
+        "happy": 0.7889036536216736,
+        "neutral": 1.7392230802215636e-05,
+        "sad": 0.0009794734651222825,
+        "surprised": 0.010194392874836922
+      },
+      "fusion_full": "happy"
+    },
+    {
+      "file": "01-01-07-01-01-01-05.mp4",
+      "truth": "disgust",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.7273264804048375,
+        "happy": 0.007381861887080557,
+        "surprised": 0.002656603435825537,
+        "sad": 0.06259352719133494,
+        "angry": 0.09890829199801503,
+        "disgust": 0.045381764066604914,
+        "fearful": 0.00129444664830786,
+        "contempt": 0.054457024367993684
+      },
+      "face_central_scores": {
+        "neutral": 0.7159411555707345,
+        "happy": 0.012284612755819076,
+        "surprised": 0.003455346657199043,
+        "sad": 0.06171869638139634,
+        "angry": 0.09879186971753062,
+        "disgust": 0.04834118741903063,
+        "fearful": 0.001562646171813701,
+        "contempt": 0.05790448532647613
+      },
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 138884,
+      "voice_scores": {
+        "angry": 0.02325124479830265,
+        "calm": 0.0012339231325313449,
+        "disgust": 0.9572334289550781,
+        "fearful": 0.0022853927221149206,
+        "happy": 0.0005208806251175702,
+        "neutral": 0.001494299154728651,
+        "sad": 0.00785466656088829,
+        "surprised": 0.006126152817159891
+      },
+      "fusion_full": "disgust"
+    },
+    {
+      "file": "01-01-07-01-01-02-05.mp4",
+      "truth": "disgust",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.8987486252000604,
+        "happy": 0.0006034242767568601,
+        "surprised": 0.0009428350759768463,
+        "sad": 0.065103410831359,
+        "angry": 0.015319086214641722,
+        "disgust": 0.006316000225372671,
+        "fearful": 0.00022911445678443318,
+        "contempt": 0.01273750371904806
+      },
+      "face_central_scores": {
+        "neutral": 0.8383110406917048,
+        "happy": 0.0011682741338056855,
+        "surprised": 0.0016901254606715213,
+        "sad": 0.09630247159379313,
+        "angry": 0.028067798134556367,
+        "disgust": 0.012446495013992835,
+        "fearful": 0.0004378706537006857,
+        "contempt": 0.021575924317774914
+      },
+      "voice": "disgust",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 131410,
+      "voice_scores": {
+        "angry": 0.2795458734035492,
+        "calm": 0.0009423015872016549,
+        "disgust": 0.7094923853874207,
+        "fearful": 0.0047990791499614716,
+        "happy": 0.00042218566522933543,
+        "neutral": 0.001677779364399612,
+        "sad": 0.0022520972415804863,
+        "surprised": 0.000868367962539196
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-07-01-02-01-05.mp4",
+      "truth": "disgust",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.7280406064538978,
+        "happy": 0.0029019240994011958,
+        "surprised": 0.00231544685779491,
+        "sad": 0.08887387214613857,
+        "angry": 0.06975421757831986,
+        "disgust": 0.0552190822194053,
+        "fearful": 0.0012119465965753915,
+        "contempt": 0.051682904048467065
+      },
+      "face_central_scores": {
+        "neutral": 0.60888798280675,
+        "happy": 0.0022541467025410083,
+        "surprised": 0.003393137346396843,
+        "sad": 0.11972078627437925,
+        "angry": 0.10792970697234595,
+        "disgust": 0.09219924679429421,
+        "fearful": 0.0017325792882872566,
+        "contempt": 0.06388241381500542
+      },
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 125002,
+      "voice_scores": {
+        "angry": 0.011200563982129097,
+        "calm": 0.00011420658120187,
+        "disgust": 0.984633207321167,
+        "fearful": 1.4136137906461954e-05,
+        "happy": 5.161585795576684e-05,
+        "neutral": 0.0021160675678402185,
+        "sad": 0.0017412779852747917,
+        "surprised": 0.0001290318468818441
+      },
+      "fusion_full": "disgust"
+    },
+    {
+      "file": "01-01-07-01-02-02-05.mp4",
+      "truth": "disgust",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.8854238931710375,
+        "happy": 0.003015873259935274,
+        "surprised": 0.0008210410979237258,
+        "sad": 0.05245935576326474,
+        "angry": 0.020053848347975592,
+        "disgust": 0.009516891989288031,
+        "fearful": 0.0003083802946017308,
+        "contempt": 0.028400716075973484
+      },
+      "face_central_scores": {
+        "neutral": 0.8507027123384026,
+        "happy": 0.00487304836682773,
+        "surprised": 0.0013658305998362425,
+        "sad": 0.05568126969793283,
+        "angry": 0.031581976676337324,
+        "disgust": 0.016957237277555836,
+        "fearful": 0.0005295802346730469,
+        "contempt": 0.03830834480843451
+      },
+      "voice": "disgust",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 119664,
+      "voice_scores": {
+        "angry": 0.08961114287376404,
+        "calm": 5.1629787776619196e-05,
+        "disgust": 0.7905451059341431,
+        "fearful": 0.000704606412909925,
+        "happy": 0.004851922858506441,
+        "neutral": 0.010290495119988918,
+        "sad": 0.06838949769735336,
+        "surprised": 0.03555556759238243
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-07-02-01-01-05.mp4",
+      "truth": "disgust",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.3655395017766549,
+        "happy": 0.008779940164229895,
+        "surprised": 0.05820555581084,
+        "sad": 0.33115120420643185,
+        "angry": 0.08892951743807674,
+        "disgust": 0.08655757605780907,
+        "fearful": 0.011477441091012853,
+        "contempt": 0.049359263454944735
+      },
+      "face_central_scores": {
+        "neutral": 0.4350011235178703,
+        "happy": 0.012839436590315915,
+        "surprised": 0.11001298388428532,
+        "sad": 0.17291974985711697,
+        "angry": 0.12234073508429899,
+        "disgust": 0.08477189173472621,
+        "fearful": 0.013840118770966145,
+        "contempt": 0.04827396056042018
+      },
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 138884,
+      "voice_scores": {
+        "angry": 0.10068545490503311,
+        "calm": 9.049440450326074e-06,
+        "disgust": 0.8487363457679749,
+        "fearful": 0.000525520124938339,
+        "happy": 0.0027180975303053856,
+        "neutral": 0.002246164483949542,
+        "sad": 0.015462224371731281,
+        "surprised": 0.029617048799991608
+      },
+      "fusion_full": "disgust"
+    },
+    {
+      "file": "01-01-07-02-01-02-05.mp4",
+      "truth": "disgust",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.5363869722457014,
+        "happy": 0.02362856174821372,
+        "surprised": 0.04303073936402215,
+        "sad": 0.16532534025713125,
+        "angry": 0.09341196654988941,
+        "disgust": 0.0779405848653729,
+        "fearful": 0.01307652659539185,
+        "contempt": 0.04719930837427725
+      },
+      "face_central_scores": {
+        "neutral": 0.44594565138315545,
+        "happy": 0.0069572574129028175,
+        "surprised": 0.08291107828810358,
+        "sad": 0.08474615485056337,
+        "angry": 0.17206862547881918,
+        "disgust": 0.12836856454555398,
+        "fearful": 0.024222045568749934,
+        "contempt": 0.054780622472151604
+      },
+      "voice": "surprised",
+      "fusion_central": "surprised",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 125002,
+      "voice_scores": {
+        "angry": 0.37335076928138733,
+        "calm": 8.437130418315064e-06,
+        "disgust": 0.010301021859049797,
+        "fearful": 0.0004155613132752478,
+        "happy": 0.00017442430544178933,
+        "neutral": 0.0001238040713360533,
+        "sad": 0.003460428910329938,
+        "surprised": 0.6121655702590942
+      },
+      "fusion_full": "surprised"
+    },
+    {
+      "file": "01-01-07-02-02-01-05.mp4",
+      "truth": "disgust",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.5960782210305577,
+        "happy": 0.0019053969752371898,
+        "surprised": 0.0019488813786033507,
+        "sad": 0.09457966328016786,
+        "angry": 0.14746293766319313,
+        "disgust": 0.10137627650431653,
+        "fearful": 0.0016435626875264113,
+        "contempt": 0.055005060480397806
+      },
+      "face_central_scores": {
+        "neutral": 0.5808634262224409,
+        "happy": 0.0021381542864649626,
+        "surprised": 0.0021063160595172843,
+        "sad": 0.052006640890508625,
+        "angry": 0.18415001123303273,
+        "disgust": 0.12210766664073208,
+        "fearful": 0.0013373905560747912,
+        "contempt": 0.05529039411122863
+      },
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 136748,
+      "voice_scores": {
+        "angry": 0.0003449002979323268,
+        "calm": 2.6043464458780363e-05,
+        "disgust": 0.9335049390792847,
+        "fearful": 2.2986281692283228e-05,
+        "happy": 2.148771454812959e-05,
+        "neutral": 0.0002064919681288302,
+        "sad": 0.06381687521934509,
+        "surprised": 0.002056269207969308
+      },
+      "fusion_full": "disgust"
+    },
+    {
+      "file": "01-01-07-02-02-02-05.mp4",
+      "truth": "disgust",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.4310896254910601,
+        "happy": 0.005015638418508242,
+        "surprised": 0.0047016887359842005,
+        "sad": 0.29603750821014563,
+        "angry": 0.07952532514663425,
+        "disgust": 0.12694957801128834,
+        "fearful": 0.004873867823468264,
+        "contempt": 0.05180676816291102
+      },
+      "face_central_scores": {
+        "neutral": 0.39322568574646116,
+        "happy": 0.0044007218311490305,
+        "surprised": 0.005155580307567349,
+        "sad": 0.34002487431461126,
+        "angry": 0.0701053045845148,
+        "disgust": 0.1360177181744634,
+        "fearful": 0.005788985028824834,
+        "contempt": 0.04528113001240821
+      },
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 145290,
+      "voice_scores": {
+        "angry": 7.022633508313447e-05,
+        "calm": 1.644960866542533e-05,
+        "disgust": 0.9230400919914246,
+        "fearful": 1.8725074824033072e-06,
+        "happy": 6.598629170184722e-06,
+        "neutral": 7.58923761168262e-07,
+        "sad": 0.0002788155688904226,
+        "surprised": 0.07658509165048599
+      },
+      "fusion_full": "disgust"
+    },
+    {
+      "file": "01-01-08-01-01-01-05.mp4",
+      "truth": "surprised",
+      "face_full": "surprised",
+      "face_central": "surprised",
+      "face_full_scores": {
+        "neutral": 0.3045037961851823,
+        "happy": 0.00382472465116443,
+        "surprised": 0.6520548037640564,
+        "sad": 0.0045566662760150025,
+        "angry": 0.0005110612351029051,
+        "disgust": 0.00022160254917277754,
+        "fearful": 0.032189350731918406,
+        "contempt": 0.002137994607387633
+      },
+      "face_central_scores": {
+        "neutral": 0.08130219375314407,
+        "happy": 0.0052649155676109975,
+        "surprised": 0.8682437621389374,
+        "sad": 0.0015626610306846414,
+        "angry": 0.0005444584403356342,
+        "disgust": 0.0002411881711160737,
+        "fearful": 0.041259277378022076,
+        "contempt": 0.0015815435201491934
+      },
+      "voice": "angry",
+      "fusion_central": "surprised",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 119664,
+      "voice_scores": {
+        "angry": 0.6499497890472412,
+        "calm": 2.778069301712094e-06,
+        "disgust": 0.09371726214885712,
+        "fearful": 0.00026667333440855145,
+        "happy": 0.08377258479595184,
+        "neutral": 1.0044440386991482e-05,
+        "sad": 0.0003542219928931445,
+        "surprised": 0.17192670702934265
+      },
+      "fusion_full": "surprised"
+    },
+    {
+      "file": "01-01-08-01-01-02-05.mp4",
+      "truth": "surprised",
+      "face_full": "surprised",
+      "face_central": "surprised",
+      "face_full_scores": {
+        "neutral": 0.23324690982795185,
+        "happy": 0.003174621465338662,
+        "surprised": 0.7170939538475625,
+        "sad": 0.008448976825851507,
+        "angry": 0.0004807291474632129,
+        "disgust": 0.00033160468584997224,
+        "fearful": 0.03442306602127257,
+        "contempt": 0.002800138178709602
+      },
+      "face_central_scores": {
+        "neutral": 0.08500115766041151,
+        "happy": 0.0011091657132121574,
+        "surprised": 0.8712726345794621,
+        "sad": 0.002889585462457383,
+        "angry": 0.00019748662612631773,
+        "disgust": 0.0001237524825601664,
+        "fearful": 0.03838034846083481,
+        "contempt": 0.0010258690149354472
+      },
+      "voice": "angry",
+      "fusion_central": "surprised",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 117528,
+      "voice_scores": {
+        "angry": 0.7546753287315369,
+        "calm": 5.01517263273854e-07,
+        "disgust": 0.003254381939768791,
+        "fearful": 0.0005129477358423173,
+        "happy": 0.04272862896323204,
+        "neutral": 0.0001410799886798486,
+        "sad": 0.00020647744531743228,
+        "surprised": 0.19848063588142395
+      },
+      "fusion_full": "surprised"
+    },
+    {
+      "file": "01-01-08-01-02-01-05.mp4",
+      "truth": "surprised",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "face_full_scores": {
+        "neutral": 0.9289846567111125,
+        "happy": 0.0026374454492970345,
+        "surprised": 0.04968349028672389,
+        "sad": 0.009208408725267894,
+        "angry": 0.0012423470606973954,
+        "disgust": 0.00031256015099109645,
+        "fearful": 0.0013908967253457958,
+        "contempt": 0.006540194890564256
+      },
+      "face_central_scores": {
+        "neutral": 0.8915459488556182,
+        "happy": 0.00392477116402272,
+        "surprised": 0.08993333761658272,
+        "sad": 0.00542594129446879,
+        "angry": 0.0011957030532437328,
+        "disgust": 0.0003199708350580333,
+        "fearful": 0.0019899465974953993,
+        "contempt": 0.005664380583510335
+      },
+      "voice": "surprised",
+      "fusion_central": "neutral",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 98310,
+      "voice_scores": {
+        "angry": 0.3686603009700775,
+        "calm": 4.4913400643054047e-07,
+        "disgust": 0.026471639052033424,
+        "fearful": 0.004200128372758627,
+        "happy": 0.03058396838605404,
+        "neutral": 0.000259668129729107,
+        "sad": 0.0035058078356087208,
+        "surprised": 0.5663180947303772
+      },
+      "fusion_full": "neutral"
+    },
+    {
+      "file": "01-01-08-01-02-02-05.mp4",
+      "truth": "surprised",
+      "face_full": "surprised",
+      "face_central": "surprised",
+      "face_full_scores": {
+        "neutral": 0.22596240434977402,
+        "happy": 0.19652012948060535,
+        "surprised": 0.5439256745803108,
+        "sad": 0.004243939783306437,
+        "angry": 0.000773052773138095,
+        "disgust": 0.000588869919269764,
+        "fearful": 0.022656735397470883,
+        "contempt": 0.005329193716124861
+      },
+      "face_central_scores": {
+        "neutral": 0.17696971226196634,
+        "happy": 0.01689350370189137,
+        "surprised": 0.7662026522923776,
+        "sad": 0.003683542025938673,
+        "angry": 0.0005479207310889117,
+        "disgust": 0.00042540378580879914,
+        "fearful": 0.0313704749564041,
+        "contempt": 0.003906790244524404
+      },
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 118596,
+      "voice_scores": {
+        "angry": 0.0321473591029644,
+        "calm": 2.3049311494105496e-05,
+        "disgust": 0.9139057397842407,
+        "fearful": 4.136719144298695e-05,
+        "happy": 0.01950308308005333,
+        "neutral": 0.00014616124099120498,
+        "sad": 0.004714178387075663,
+        "surprised": 0.029519055038690567
+      },
+      "fusion_full": "disgust"
+    },
+    {
+      "file": "01-01-08-02-01-01-05.mp4",
+      "truth": "surprised",
+      "face_full": "surprised",
+      "face_central": "surprised",
+      "face_full_scores": {
+        "neutral": 0.03647268317339986,
+        "happy": 0.001273659193373503,
+        "surprised": 0.9041476092741284,
+        "sad": 0.0007679359681335704,
+        "angry": 0.0004999662749517364,
+        "disgust": 0.00016140023645988855,
+        "fearful": 0.05568326089542217,
+        "contempt": 0.0009934849841309313
+      },
+      "face_central_scores": {
+        "neutral": 0.01669524591270707,
+        "happy": 0.0004233925532630158,
+        "surprised": 0.9233671145685483,
+        "sad": 0.00037002333158754386,
+        "angry": 0.00038028158766131094,
+        "disgust": 8.086513153062963e-05,
+        "fearful": 0.05823945706822534,
+        "contempt": 0.00044361984647668597
+      },
+      "voice": "surprised",
+      "fusion_central": "surprised",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 132476,
+      "voice_scores": {
+        "angry": 0.03878635913133621,
+        "calm": 1.57096565089887e-05,
+        "disgust": 0.0636787861585617,
+        "fearful": 0.00030024340958334506,
+        "happy": 0.00235688011161983,
+        "neutral": 1.9443417841102928e-05,
+        "sad": 0.00011426866694819182,
+        "surprised": 0.8947283625602722
+      },
+      "fusion_full": "surprised"
+    },
+    {
+      "file": "01-01-08-02-01-02-05.mp4",
+      "truth": "surprised",
+      "face_full": "surprised",
+      "face_central": "surprised",
+      "face_full_scores": {
+        "neutral": 0.13430046302089804,
+        "happy": 0.0020920106209814846,
+        "surprised": 0.8249059594835529,
+        "sad": 0.0014603367459856183,
+        "angry": 0.0010445626548687998,
+        "disgust": 0.0002945580208823596,
+        "fearful": 0.034095182420091,
+        "contempt": 0.001806927032739794
+      },
+      "face_central_scores": {
+        "neutral": 0.059847654904162405,
+        "happy": 0.0010743629136710918,
+        "surprised": 0.888916748801088,
+        "sad": 0.00102252353157238,
+        "angry": 0.0013578585066828287,
+        "disgust": 0.00029092282449320477,
+        "fearful": 0.04633241562264601,
+        "contempt": 0.00115751289568425
+      },
+      "voice": "surprised",
+      "fusion_central": "surprised",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 131410,
+      "voice_scores": {
+        "angry": 0.0620037317276001,
+        "calm": 2.2490639821626246e-06,
+        "disgust": 0.02413114719092846,
+        "fearful": 2.6535362849244848e-05,
+        "happy": 0.004077102988958359,
+        "neutral": 4.578644620778505e-06,
+        "sad": 5.505685112439096e-05,
+        "surprised": 0.909699559211731
+      },
+      "fusion_full": "surprised"
+    },
+    {
+      "file": "01-01-08-02-02-01-05.mp4",
+      "truth": "surprised",
+      "face_full": "neutral",
+      "face_central": "surprised",
+      "face_full_scores": {
+        "neutral": 0.5908435501177393,
+        "happy": 0.11104638269281075,
+        "surprised": 0.28078431456492675,
+        "sad": 0.0023378961466985816,
+        "angry": 0.0016761864437988643,
+        "disgust": 0.0006965120044709686,
+        "fearful": 0.004568952268822492,
+        "contempt": 0.008046205760732138
+      },
+      "face_central_scores": {
+        "neutral": 0.3792689050039755,
+        "happy": 0.14932600663807358,
+        "surprised": 0.45264073245488357,
+        "sad": 0.0019580938707004854,
+        "angry": 0.002045678259779002,
+        "disgust": 0.0008953177536040617,
+        "fearful": 0.0072029771175129995,
+        "contempt": 0.006662288901470821
+      },
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 117528,
+      "voice_scores": {
+        "angry": 0.06754280626773834,
+        "calm": 1.9667999367811717e-05,
+        "disgust": 0.8957838416099548,
+        "fearful": 0.00018995997379533947,
+        "happy": 0.022536898031830788,
+        "neutral": 7.114150503184646e-05,
+        "sad": 0.002809385536238551,
+        "surprised": 0.011046304367482662
+      },
+      "fusion_full": "disgust"
+    },
+    {
+      "file": "01-01-08-02-02-02-05.mp4",
+      "truth": "surprised",
+      "face_full": "surprised",
+      "face_central": "surprised",
+      "face_full_scores": {
+        "neutral": 0.33966394000990213,
+        "happy": 0.006392367431648643,
+        "surprised": 0.6273749843708699,
+        "sad": 0.0020109059201622354,
+        "angry": 0.0011496663117070433,
+        "disgust": 0.0004170799658264462,
+        "fearful": 0.01897598936087146,
+        "contempt": 0.004015066629012098
+      },
+      "face_central_scores": {
+        "neutral": 0.1162371116408874,
+        "happy": 0.002804369141801073,
+        "surprised": 0.8508203794425317,
+        "sad": 0.0010348430203488581,
+        "angry": 0.0010266154204118334,
+        "disgust": 0.0003172961533041188,
+        "fearful": 0.0258606347416169,
+        "contempt": 0.0018987504390981721
+      },
+      "voice": "angry",
+      "fusion_central": "surprised",
+      "frames_sampled": 12,
+      "full_frames_with_face": 12,
+      "central_frames_with_face": 6,
+      "audio_bytes": 113258,
+      "voice_scores": {
+        "angry": 0.49885445833206177,
+        "calm": 6.633948942180723e-05,
+        "disgust": 0.3033364415168762,
+        "fearful": 3.9447579183615744e-05,
+        "happy": 0.05042867362499237,
+        "neutral": 0.00014112744247540832,
+        "sad": 0.00041394680738449097,
+        "surprised": 0.1467195302248001
+      },
+      "fusion_full": "surprised"
+    }
+  ],
+  "fusion_full": {
+    "clips": 52,
+    "accuracy": 0.5,
+    "macro_f1": 0.482051282051282,
+    "per_class": {
+      "neutral": {
+        "precision": 0.18181818181818182,
+        "recall": 1.0,
+        "f1-score": 0.3076923076923077,
+        "support": 4.0
+      },
+      "happy": {
+        "precision": 0.8571428571428571,
+        "recall": 0.75,
+        "f1-score": 0.8,
+        "support": 8.0
+      },
+      "sad": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "angry": {
+        "precision": 0.5714285714285714,
+        "recall": 0.5,
+        "f1-score": 0.5333333333333333,
+        "support": 8.0
+      },
+      "fearful": {
+        "precision": 1.0,
+        "recall": 0.25,
+        "f1-score": 0.4,
+        "support": 8.0
+      },
+      "disgust": {
+        "precision": 0.7142857142857143,
+        "recall": 0.625,
+        "f1-score": 0.6666666666666666,
+        "support": 8.0
+      },
+      "surprised": {
+        "precision": 0.7142857142857143,
+        "recall": 0.625,
+        "f1-score": 0.6666666666666666,
+        "support": 8.0
+      },
+      "accuracy": 0.5,
+      "macro avg": {
+        "precision": 0.5769944341372913,
+        "recall": 0.5357142857142857,
+        "f1-score": 0.482051282051282,
+        "support": 52.0
+      },
+      "weighted avg": {
+        "precision": 0.6073926073926075,
+        "recall": 0.5,
+        "f1-score": 0.4954635108481262,
+        "support": 52.0
+      }
+    },
+    "confusion_labels": [
+      "neutral",
+      "happy",
+      "sad",
+      "angry",
+      "fearful",
+      "disgust",
+      "surprised",
+      "contempt",
+      "calm"
+    ],
+    "confusion_matrix": [
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        6,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        4,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        1,
+        0,
+        1,
+        2,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        0,
+        0,
+        0,
+        5,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        2,
+        5,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "prediction_counts": {
+      "neutral": 22,
+      "happy": 7,
+      "angry": 7,
+      "surprised": 7,
+      "fearful": 2,
+      "disgust": 7
+    }
+  }
+}

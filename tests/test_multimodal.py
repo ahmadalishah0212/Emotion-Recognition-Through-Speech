@@ -1,6 +1,7 @@
 """Behavioral checks for missing cues and transparent class alignment."""
 import numpy as np
 import pytest
+from pathlib import Path
 from src.face import aggregate_frames, load_face_model
 from src.fusion import SHARED, experimental_fusion
 from src.video import analyze_video_payload
@@ -38,3 +39,21 @@ def test_real_face_model_has_expected_outputs_if_downloaded():
     session = load_face_model()
     assert session.get_inputs()[0].shape == [1, 1, 64, 64]
     assert session.get_outputs()[0].shape == [1, 8]
+
+
+def test_local_video_fixtures_extract_real_cues_if_available():
+    cache = Path(__file__).resolve().parents[1] / "data/cache"
+    with_audio = cache / "with_audio.mp4"
+    blank = cache / "blank.mp4"
+    silent = cache / "silent.mp4"
+    if not all(path.exists() for path in (with_audio, blank, silent)):
+        pytest.skip("Optional uncommitted video fixtures absent")
+    clip = analyze_video_payload(with_audio.read_bytes(), ".mp4")
+    assert clip["sampled"] == 12 and clip["audio"]
+    assert max(clip["frames"][0].shape[:2]) <= 960
+    face = aggregate_frames(clip["frames"], load_face_model())
+    assert face and face["frames_with_face"] > 0
+    empty_face = analyze_video_payload(blank.read_bytes(), ".mp4")
+    assert aggregate_frames(empty_face["frames"], load_face_model()) is None
+    empty_audio = analyze_video_payload(silent.read_bytes(), ".mp4")
+    assert empty_audio["audio"] is None

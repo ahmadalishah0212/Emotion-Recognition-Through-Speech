@@ -2,7 +2,7 @@
 
 **Hear the voice. See the emotion.** Local Streamlit demonstration of speech, face and experimental audiovisual expression cues. Team: Ahmad Ali Shah, Saboor Khan, Sardar Bilal.
 
-VocalLens analyzes the current upload or browser recording. It shows real saved-model scores, input details and optional developer diagnostics. Its charcoal interface uses the original `#e46b72` red identity, a page for each mode, and a responsive expression distribution. The speech model was trained in this project; the facial FER+ model is pretrained. Neither can determine a person's actual feelings.
+VocalLens analyzes the current upload or browser recording. It shows real saved-model scores, input details and optional developer diagnostics. Its midnight charcoal interface keeps the `#e46b72` coral identity and adds distinct expression colors. The speech model was trained in this project; the facial OpenCV Zoo model is pretrained. Neither can determine a person's actual feelings.
 
 ## Windows setup
 
@@ -15,13 +15,13 @@ py -3.12 -m venv .venv
 .\.venv\Scripts\python.exe -m streamlit run app.py
 ```
 
-The selected model and reports are included. Speech datasets are not needed merely to run the app. Face and video modes need the ~35 MB official FER+ model, verified by SHA-256. No GPU or paid API is needed. From Command Prompt, use `cd /d "C:\Users\ahmad\Desktop\Emotion Recognition"` then `.venv\Scripts\python.exe -m streamlit run app.py`. The system `python` from `C:\Users\ahmad` may select Python 3.14 without Streamlit.
+The selected speech model and reports are included. Speech datasets are not needed merely to run the app. Face and video modes need the official 4.8 MB OpenCV Zoo expression model and 0.2 MB YuNet detector, downloaded separately with SHA-256 verification. To reproduce the retired FER+ comparison, add `--include-ferplus` to the download command. CPU inference works; GPU use requires a compatible ONNX Runtime CUDA installation and was not tested here. From Command Prompt, use `cd /d "C:\Users\ahmad\Desktop\Emotion Recognition"` then `.venv\Scripts\python.exe -m streamlit run app.py`. The system `python` from `C:\Users\ahmad` may select Python 3.14 without Streamlit.
 
 ## Modes
 
 - **Voice only:** upload WAV, MP3, FLAC or OGG spoken audio or record via the browser microphone. Preview, then select **Analyze voice**. Silence, corrupt or too-short files fail; a conservative single-frequency check rejects pure tones. Clipped and very short clips receive a warning. Music, noise and crying can still yield unreliable labels because there is no validated speech or out-of-distribution detector. The optional developer trace gives the file hash, processed signal, feature version, saved-model hash and exact scores.
-- **Face only:** capture a camera still or upload a video. OpenCV finds faces; FER+ scores the largest detected face in each sampled frame. Missing faces produce no prediction; multiple faces trigger a warning. No identity recognition is performed.
-- **Voice + Face:** upload a short video with a visible face and audio track. The app extracts the actual audio, samples up to 12 frames, shows both independent results, and displays an explicitly experimental shared-class average. Disagreement remains visible. The fusion has no measured accuracy.
+- **Face only:** choose **Photo**, **Video**, or **Webcam**. JPG/JPEG, PNG and WebP photos are previewed, validated and scored per numbered detected face. Video samples up to 12 frames and scores the largest face in each; multiple people may switch across frames, so it warns. Missing faces produce no prediction. No identity recognition is performed.
+- **Voice + Face:** upload a short video with a visible face and audio track. The app extracts the actual audio, samples up to 12 frames, shows both independent results, and displays an explicitly experimental shared-class average. Agreement and disagreement remain visible. One held-out acted actor evaluation is in [the face report](reports/face_improvement.md).
 
 Browser camera and microphone permission are needed for capture. Uploaded video is limited to 50 MB and two minutes. The first 12 seconds of decoded audio are used for voice scoring. MP3 decoder support can vary; WAV is safest for a demo.
 
@@ -58,8 +58,8 @@ Large raw files are excluded from Git. The [dataset audit and access guide](data
 
 ## Face and video evidence
 
-The [ONNX Model Zoo FER+ network](https://github.com/onnx/models/blob/main/validated/vision/body_analysis/emotion_ferplus/README.md) is a CNN with 64×64 grayscale input and eight expression outputs. It was trained outside this project. Local checks confirmed its input/output shape, finite scores, detection on a sample face, no prediction on blank frames, and video audio/frame extraction. An unlabeled sample image and composited video are pipeline fixtures, not accuracy benchmarks. FER2013 and RAF-DB access is described in the [dataset guide](data/EXPANDED_DATASETS.md). No independent face or audiovisual accuracy is claimed. See [testing log](TESTING.md).
+The previous [FER+ network](https://github.com/onnx/models/blob/main/validated/vision/body_analysis/emotion_ferplus/README.md) uses a 64×64 grayscale crop and eight classes. Its input and output handling were correct, but it overpredicted Neutral on labeled RAVDESS video. The deployed [OpenCV Zoo Progressive Teacher](https://github.com/opencv/opencv_zoo/tree/main/models/facial_expression_recognition) uses YuNet landmarks, an aligned 112×112 RGB crop and seven classes. On **52 evaluable clips from held-out Actor 05**, FER+ reached **34.62% accuracy / 28.50% macro F1**, versus **51.92% / 45.00%** for the replacement. Sad recall rose from **0/8 to 3/8**. The separate Actor 01 comparison and exact confusion matrices are in [the face investigation](reports/face_improvement.md) and [JSON reports](results/face/). These are acted clips from two actors, not photo or real-world accuracy. FER2013 and RAF-DB access is described in the [dataset guide](data/EXPANDED_DATASETS.md).
 
 ## Project files
 
-[Training report](reports/expanded_model.md) · [Dataset guide](data/EXPANDED_DATASETS.md) · [Testing evidence](TESTING.md) · [Project report](reports/project_report.md) · [Viva preparation](reports/viva_preparation.md). The code and small models are in this repository; all raw datasets, cache files and the large FER+ ONNX binary remain local.
+[Training report](reports/expanded_model.md) · [Face investigation](reports/face_improvement.md) · [Dataset guide](data/EXPANDED_DATASETS.md) · [Testing evidence](TESTING.md) · [Project report](reports/project_report.md) · [Viva preparation](reports/viva_preparation.md). Raw datasets, cache files and ONNX binaries remain local and are excluded from Git.

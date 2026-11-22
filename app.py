@@ -1,10 +1,12 @@
 """VocalLens: voice, face, and experimental combined expression cues."""
 import hashlib
 from pathlib import Path
+import cv2
 import streamlit as st
 from src.predict import predict_audio
 from src.audio_debug import trace_audio
-from src.face import aggregate_frames, decode_image, load_face_model
+from src.face import decode_image
+from src.face_opencv import aggregate_frames, analyze_photo, load_model as load_face_model
 from src.video import analyze_video_payload
 from src.fusion import experimental_fusion
 from src.ui_theme import CSS, hero, mode_cards, result_dashboard
@@ -49,11 +51,32 @@ def face_analysis(frames):
     if result is None:
         st.warning("No face was detected in the sampled image or video frames. No facial prediction was made.")
         return None
-    show_result(result, "Face", "pretrained FER+")
+    show_result(result, "Face", "OpenCV Zoo expression model")
     st.caption(f"Face found in {result['frames_with_face']} of {result['frames_sampled']} sampled frame(s). Frame scores were averaged once for the video result.")
     if result["multi_face_frames"]:
         st.warning(f"Multiple faces appeared in {result['multi_face_frames']} sampled frame(s). Only the largest detected face in each frame was analyzed; this may switch people between frames.")
-    st.caption("Facial expression is an observable cue, not a reliable measure of internal emotion. FER+ has not been independently benchmarked on this project's video inputs.")
+    st.caption("Facial expression is an observable cue, not a reliable measure of internal emotion. This model was evaluated on acted RAVDESS video; personal photos may differ substantially.")
+    return result
+
+
+def photo_analysis(payload, name):
+    result = analyze_photo(payload, load_face_model())
+    if not result["faces"]:
+        st.warning("No usable face was detected. Try a clearer, front-facing photo with better light.")
+        return result
+    st.success(f"Detected {len(result['faces'])} face(s). Each numbered region has its own result.")
+    st.image(result["image"], caption="Detected face regions · numbers correspond to results below", use_container_width=True)
+    for face in result["faces"]:
+        st.subheader(f"Face {face['number']}")
+        left, right = st.columns([1, 3])
+        with left:
+            st.image(face["crop"], caption=f"Detected face {face['number']}", use_container_width=True)
+        with right:
+            show_result(face, "Face", "OpenCV Zoo expression model")
+            for warning in face["warnings"]:
+                st.warning(warning)
+    st.caption("Predictions describe visible expression cues, not identity or a person's feelings. This model has not been independently calibrated on personal photos.")
+    input_details(name, payload)
     return result
 
 
@@ -85,20 +108,39 @@ if mode == "Voice only":
                 st.error(f"The audio could not be analyzed: {exc}")
 
 elif mode == "Face only":
-    st.markdown("<div class='section-label'>02 / Expression studio</div><div class='content-card'><h3>See the visible expression</h3><p>Capture a still frame or upload a short video. The model analyzes expressions without identifying people.</p></div>", unsafe_allow_html=True)
-    source = st.radio("Face input", ["Camera photo", "Upload video"], horizontal=True)
-    if source == "Camera photo":
-        st.caption("The browser camera captures one still frame. For changing expressions over time, upload a video.")
-        picture = st.camera_input("Capture a face", key="face_camera")
-        if picture is not None and st.button("Analyze face", type="primary", use_container_width=True):
+    st.markdown("<div class='section-label'>02 / Expression studio</div><div class='content-card'><h3>See the visible expression</h3><p>Analyze a photo, short video, or webcam still. Every detected face in a photo gets its own numbered result.</p></div>", unsafe_allow_html=True)
+    source = st.segmented_control("Choose your input method", ["Photo", "Video", "Webcam"], default="Photo")
+    descriptions = {"Photo": "▧  Still image · each detected face is scored separately",
+                    "Video": "▷  Motion clip · up to 12 sampled frames",
+                    "Webcam": "◉  Camera still · capture in your browser"}
+    st.markdown(f"<div class='input-choice'><b>{source}</b><span>{descriptions[source]}</span></div>", unsafe_allow_html=True)
+    if source == "Photo":
+        st.caption("JPG, PNG or WebP · under 12 MB · up to 24 megapixels. Photos stay in this session only.")
+        photo = st.file_uploader("Upload a face photo", type=["jpg", "jpeg", "png", "webp"], key="face_photo")
+        if photo is not None:
+            raw = photo.getvalue()
             try:
-                with st.spinner("Detecting and scoring the face…"):
-                    face_analysis([decode_image(picture.getvalue())])
-                input_details(picture.name, picture.getvalue())
+                frame = decode_image(raw)
+                st.image(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB), caption=f"Preview · {photo.name}", use_container_width=True)
+                st.caption(f"Ready: {photo.name} · {frame.shape[1]} × {frame.shape[0]} pixels · {len(raw):,} bytes")
+                if st.button("Analyze photo", type="primary", use_container_width=True):
+                    with st.spinner("Detecting each face and scoring visible expressions…"):
+                        photo_analysis(raw, photo.name)
             except (ValueError, FileNotFoundError) as exc:
                 st.error(str(exc))
-            except Exception as exc:
-                st.error(f"The image could not be analyzed: {exc}")
+            except Exception:
+                st.error("The photo could not be analyzed. Try a clear JPG, PNG or WebP image.")
+    elif source == "Webcam":
+        st.caption("Capture one still frame. Your browser may ask for camera permission.")
+        picture = st.camera_input("Capture a face", key="face_camera")
+        if picture is not None and st.button("Analyze webcam photo", type="primary", use_container_width=True):
+            try:
+                with st.spinner("Detecting and scoring the face…"):
+                    photo_analysis(picture.getvalue(), picture.name)
+            except (ValueError, FileNotFoundError) as exc:
+                st.error(str(exc))
+            except Exception:
+                st.error("The camera photo could not be analyzed.")
     else:
         video = st.file_uploader("Upload a video", type=["mp4", "mov", "webm", "avi"], key="face_video")
         if video is not None:
@@ -141,11 +183,16 @@ else:
                 with right:
                     st.subheader("Face cue")
                     face_result = face_analysis(clip["frames"])
+                if voice_result and face_result:
+                    if voice_result["emotion"] == face_result["emotion"]:
+                        st.info(f"Both models ranked {voice_result['emotion'].title()} first. Agreement between model outputs does not establish a person's actual emotion.")
+                    else:
+                        st.info(f"The cues differ: voice ranked {voice_result['emotion'].title()} first; face ranked {face_result['emotion'].title()} first. Both results remain visible above.")
                 combined = experimental_fusion(voice_result, face_result)
                 if combined:
                     st.subheader("Experimental combined cue")
-                    show_result(combined, "Combined", "unvalidated late fusion")
-                    st.caption("Shared classes only: neutral, happy, sad, angry, fearful, disgust, surprised. Calm (voice) and contempt (face) are excluded; each remaining vector is renormalized, then averaged equally. The models are not jointly calibrated, and this output has no measured accuracy.")
+                    show_result(combined, "Combined", "exploratory late fusion")
+                    st.caption("Seven shared classes; voice Calm is excluded. The remaining voice scores are renormalized and averaged equally with face scores. This exploratory fusion was evaluated on one held-out actor and is not jointly calibrated or validated for real-world recordings.")
                 else:
                     st.info("A combined cue needs both valid voice and face results. Available single-cue results are shown above.")
                 input_details(video.name, video.getvalue())
@@ -156,6 +203,6 @@ else:
 
 with st.expander("Models, sources and limits"):
     st.write("**Voice:** The selected logistic regression uses 130 MFCC, delta-MFCC, energy and spectral summary features from 16 kHz mono audio. On 360 untouched RAVDESS clips from six unseen actors: accuracy **45.83%**, macro F1 **45.12%**. On TESS's other speaker: **37.79% / 33.37%**; on unseen German EmoDB: **31.94% / 30.04%**. These are acted-corpus tests, not real-world accuracy.")
-    st.write("**Face:** OpenCV detects face regions; pretrained ONNX Model Zoo FER+ scores a 64×64 grayscale crop. It performs no identity recognition. Download the model separately with checksum verification.")
-    st.write("[RAVDESS data](https://zenodo.org/records/1188976) · [TESS](https://doi.org/10.5683/SP2/E8H2MF) · [EmoDB](https://zenodo.org/records/7447302) · [FER+ model and MIT license](https://github.com/onnx/models/blob/main/validated/vision/body_analysis/emotion_ferplus/README.md)")
+    st.write("**Face:** YuNet detects face landmarks; OpenCV Zoo's Progressive Teacher scores aligned 112×112 crops. On 52 acted clips from one held-out RAVDESS actor, accuracy was **51.92%** and macro F1 **45.00%**. It performs no identity recognition. Photo performance is unmeasured.")
+    st.write("[RAVDESS data](https://zenodo.org/records/1188976) · [TESS](https://doi.org/10.5683/SP2/E8H2MF) · [EmoDB](https://zenodo.org/records/7447302) · [OpenCV expression model](https://github.com/opencv/opencv_zoo/tree/main/models/facial_expression_recognition)")
 st.markdown("<div class='footer'>VocalLens · Ahmad Ali Shah, Saboor Khan, Sardar Bilal · Academic demonstration · Outputs are uncertain expression cues.</div>", unsafe_allow_html=True)

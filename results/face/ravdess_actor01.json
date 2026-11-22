@@ -1,0 +1,1090 @@
+{
+  "source_archive": "Video_Speech_Actor_01.zip",
+  "actor": "01",
+  "independent_voice_test": false,
+  "protocol_note": "Face results use intended acted clip labels. Central-frame comparison is exploratory if chosen on this archive. Voice/fusion are independent only for original held-out RAVDESS actors.",
+  "clips": 60,
+  "face_full": {
+    "clips": 52,
+    "accuracy": 0.23076923076923078,
+    "macro_f1": 0.16825396825396827,
+    "per_class": {
+      "neutral": {
+        "precision": 0.0975609756097561,
+        "recall": 1.0,
+        "f1-score": 0.17777777777777778,
+        "support": 4.0
+      },
+      "happy": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 8.0
+      },
+      "sad": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "angry": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "fearful": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "disgust": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "surprised": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "accuracy": 0.23076923076923078,
+      "macro avg": {
+        "precision": 0.15679442508710803,
+        "recall": 0.2857142857142857,
+        "f1-score": 0.16825396825396827,
+        "support": 52.0
+      },
+      "weighted avg": {
+        "precision": 0.16135084427767354,
+        "recall": 0.23076923076923078,
+        "f1-score": 0.1675213675213675,
+        "support": 52.0
+      }
+    },
+    "confusion_labels": [
+      "neutral",
+      "happy",
+      "sad",
+      "angry",
+      "fearful",
+      "disgust",
+      "surprised",
+      "contempt",
+      "calm"
+    ],
+    "confusion_matrix": [
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        5,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "prediction_counts": {
+      "neutral": 41,
+      "happy": 8,
+      "sad": 3
+    }
+  },
+  "face_central": {
+    "clips": 52,
+    "accuracy": 0.25,
+    "macro_f1": 0.2011812476928756,
+    "per_class": {
+      "neutral": {
+        "precision": 0.10256410256410256,
+        "recall": 1.0,
+        "f1-score": 0.18604651162790697,
+        "support": 4.0
+      },
+      "happy": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 8.0
+      },
+      "sad": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "angry": {
+        "precision": 1.0,
+        "recall": 0.125,
+        "f1-score": 0.2222222222222222,
+        "support": 8.0
+      },
+      "fearful": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "disgust": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "surprised": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 8.0
+      },
+      "accuracy": 0.25,
+      "macro avg": {
+        "precision": 0.30036630036630035,
+        "recall": 0.30357142857142855,
+        "f1-score": 0.2011812476928756,
+        "support": 52.0
+      },
+      "weighted avg": {
+        "precision": 0.31558185404339245,
+        "recall": 0.25,
+        "f1-score": 0.20234545815941163,
+        "support": 52.0
+      }
+    },
+    "confusion_labels": [
+      "neutral",
+      "happy",
+      "sad",
+      "angry",
+      "fearful",
+      "disgust",
+      "surprised",
+      "contempt",
+      "calm"
+    ],
+    "confusion_matrix": [
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        7,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        4,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "prediction_counts": {
+      "neutral": 39,
+      "happy": 8,
+      "angry": 1,
+      "sad": 4
+    }
+  },
+  "voice": null,
+  "fusion_central": null,
+  "rows": [
+    {
+      "file": "01-01-01-01-01-01-01.mp4",
+      "truth": "neutral",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "neutral",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 105784
+    },
+    {
+      "file": "01-01-01-01-01-02-01.mp4",
+      "truth": "neutral",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "angry",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 106852
+    },
+    {
+      "file": "01-01-01-01-02-01-01.mp4",
+      "truth": "neutral",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "surprised",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 104716
+    },
+    {
+      "file": "01-01-01-01-02-02-01.mp4",
+      "truth": "neutral",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "neutral",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 101512
+    },
+    {
+      "file": "01-01-02-01-01-01-01.mp4",
+      "truth": "calm",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "calm",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 113258
+    },
+    {
+      "file": "01-01-02-01-01-02-01.mp4",
+      "truth": "calm",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "happy",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 115394
+    },
+    {
+      "file": "01-01-02-01-02-01-01.mp4",
+      "truth": "calm",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "surprised",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 112190
+    },
+    {
+      "file": "01-01-02-01-02-02-01.mp4",
+      "truth": "calm",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "surprised",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 111122
+    },
+    {
+      "file": "01-01-02-02-01-01-01.mp4",
+      "truth": "calm",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "surprised",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 118596
+    },
+    {
+      "file": "01-01-02-02-01-02-01.mp4",
+      "truth": "calm",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "calm",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 128206
+    },
+    {
+      "file": "01-01-02-02-02-01-01.mp4",
+      "truth": "calm",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "surprised",
+      "fusion_central": "surprised",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 134612
+    },
+    {
+      "file": "01-01-02-02-02-02-01.mp4",
+      "truth": "calm",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "angry",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 128206
+    },
+    {
+      "file": "01-01-03-01-01-01-01.mp4",
+      "truth": "happy",
+      "face_full": "happy",
+      "face_central": "happy",
+      "voice": "surprised",
+      "fusion_central": "happy",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 111122
+    },
+    {
+      "file": "01-01-03-01-01-02-01.mp4",
+      "truth": "happy",
+      "face_full": "happy",
+      "face_central": "happy",
+      "voice": "happy",
+      "fusion_central": "happy",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 111122
+    },
+    {
+      "file": "01-01-03-01-02-01-01.mp4",
+      "truth": "happy",
+      "face_full": "happy",
+      "face_central": "happy",
+      "voice": "happy",
+      "fusion_central": "happy",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 113258
+    },
+    {
+      "file": "01-01-03-01-02-02-01.mp4",
+      "truth": "happy",
+      "face_full": "happy",
+      "face_central": "happy",
+      "voice": "angry",
+      "fusion_central": "happy",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 118596
+    },
+    {
+      "file": "01-01-03-02-01-01-01.mp4",
+      "truth": "happy",
+      "face_full": "happy",
+      "face_central": "happy",
+      "voice": "happy",
+      "fusion_central": "happy",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 117528
+    },
+    {
+      "file": "01-01-03-02-01-02-01.mp4",
+      "truth": "happy",
+      "face_full": "happy",
+      "face_central": "happy",
+      "voice": "happy",
+      "fusion_central": "happy",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 116460
+    },
+    {
+      "file": "01-01-03-02-02-01-01.mp4",
+      "truth": "happy",
+      "face_full": "happy",
+      "face_central": "happy",
+      "voice": "angry",
+      "fusion_central": "happy",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 126070
+    },
+    {
+      "file": "01-01-03-02-02-02-01.mp4",
+      "truth": "happy",
+      "face_full": "happy",
+      "face_central": "happy",
+      "voice": "angry",
+      "fusion_central": "happy",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 126070
+    },
+    {
+      "file": "01-01-04-01-01-01-01.mp4",
+      "truth": "sad",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "angry",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 122868
+    },
+    {
+      "file": "01-01-04-01-01-02-01.mp4",
+      "truth": "sad",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "angry",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 114326
+    },
+    {
+      "file": "01-01-04-01-02-01-01.mp4",
+      "truth": "sad",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "angry",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 112190
+    },
+    {
+      "file": "01-01-04-01-02-02-01.mp4",
+      "truth": "sad",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "angry",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 107920
+    },
+    {
+      "file": "01-01-04-02-01-01-01.mp4",
+      "truth": "sad",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "sad",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 121800
+    },
+    {
+      "file": "01-01-04-02-01-02-01.mp4",
+      "truth": "sad",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "sad",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 118596
+    },
+    {
+      "file": "01-01-04-02-02-01-01.mp4",
+      "truth": "sad",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "sad",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 119664
+    },
+    {
+      "file": "01-01-04-02-02-02-01.mp4",
+      "truth": "sad",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "angry",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 119664
+    },
+    {
+      "file": "01-01-05-01-01-01-01.mp4",
+      "truth": "angry",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "angry",
+      "fusion_central": "angry",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 123936
+    },
+    {
+      "file": "01-01-05-01-01-02-01.mp4",
+      "truth": "angry",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "angry",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 126070
+    },
+    {
+      "file": "01-01-05-01-02-01-01.mp4",
+      "truth": "angry",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "angry",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 112190
+    },
+    {
+      "file": "01-01-05-01-02-02-01.mp4",
+      "truth": "angry",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "angry",
+      "fusion_central": "angry",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 119664
+    },
+    {
+      "file": "01-01-05-02-01-01-01.mp4",
+      "truth": "angry",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "angry",
+      "fusion_central": "angry",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 131410
+    },
+    {
+      "file": "01-01-05-02-01-02-01.mp4",
+      "truth": "angry",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "angry",
+      "fusion_central": "angry",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 139952
+    },
+    {
+      "file": "01-01-05-02-02-01-01.mp4",
+      "truth": "angry",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "angry",
+      "fusion_central": "angry",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 132476
+    },
+    {
+      "file": "01-01-05-02-02-02-01.mp4",
+      "truth": "angry",
+      "face_full": "neutral",
+      "face_central": "angry",
+      "voice": "fearful",
+      "fusion_central": "fearful",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 142086
+    },
+    {
+      "file": "01-01-06-01-01-01-01.mp4",
+      "truth": "fearful",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "fearful",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 117528
+    },
+    {
+      "file": "01-01-06-01-01-02-01.mp4",
+      "truth": "fearful",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "happy",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 116460
+    },
+    {
+      "file": "01-01-06-01-02-01-01.mp4",
+      "truth": "fearful",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "surprised",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 110054
+    },
+    {
+      "file": "01-01-06-01-02-02-01.mp4",
+      "truth": "fearful",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "fearful",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 118596
+    },
+    {
+      "file": "01-01-06-02-01-01-01.mp4",
+      "truth": "fearful",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "fearful",
+      "fusion_central": "fearful",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 160238
+    },
+    {
+      "file": "01-01-06-02-01-02-01.mp4",
+      "truth": "fearful",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "fearful",
+      "fusion_central": "fearful",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 135680
+    },
+    {
+      "file": "01-01-06-02-02-01-01.mp4",
+      "truth": "fearful",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "sad",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 127138
+    },
+    {
+      "file": "01-01-06-02-02-02-01.mp4",
+      "truth": "fearful",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "fearful",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 125002
+    },
+    {
+      "file": "01-01-07-01-01-01-01.mp4",
+      "truth": "disgust",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "happy",
+      "fusion_central": "happy",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 123936
+    },
+    {
+      "file": "01-01-07-01-01-02-01.mp4",
+      "truth": "disgust",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 125002
+    },
+    {
+      "file": "01-01-07-01-02-01-01.mp4",
+      "truth": "disgust",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 125002
+    },
+    {
+      "file": "01-01-07-01-02-02-01.mp4",
+      "truth": "disgust",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "calm",
+      "fusion_central": "disgust",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 122868
+    },
+    {
+      "file": "01-01-07-02-01-01-01.mp4",
+      "truth": "disgust",
+      "face_full": "neutral",
+      "face_central": "sad",
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 137816
+    },
+    {
+      "file": "01-01-07-02-01-02-01.mp4",
+      "truth": "disgust",
+      "face_full": "sad",
+      "face_central": "sad",
+      "voice": "surprised",
+      "fusion_central": "disgust",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 131410
+    },
+    {
+      "file": "01-01-07-02-02-01-01.mp4",
+      "truth": "disgust",
+      "face_full": "sad",
+      "face_central": "sad",
+      "voice": "disgust",
+      "fusion_central": "disgust",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 129274
+    },
+    {
+      "file": "01-01-07-02-02-02-01.mp4",
+      "truth": "disgust",
+      "face_full": "sad",
+      "face_central": "sad",
+      "voice": "surprised",
+      "fusion_central": "surprised",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 139952
+    },
+    {
+      "file": "01-01-08-01-01-01-01.mp4",
+      "truth": "surprised",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "surprised",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 108986
+    },
+    {
+      "file": "01-01-08-01-01-02-01.mp4",
+      "truth": "surprised",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "surprised",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 104716
+    },
+    {
+      "file": "01-01-08-01-02-01-01.mp4",
+      "truth": "surprised",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "surprised",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 113258
+    },
+    {
+      "file": "01-01-08-01-02-02-01.mp4",
+      "truth": "surprised",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "surprised",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 104716
+    },
+    {
+      "file": "01-01-08-02-01-01-01.mp4",
+      "truth": "surprised",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "happy",
+      "fusion_central": "happy",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 110054
+    },
+    {
+      "file": "01-01-08-02-01-02-01.mp4",
+      "truth": "surprised",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "surprised",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 114326
+    },
+    {
+      "file": "01-01-08-02-02-01-01.mp4",
+      "truth": "surprised",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "angry",
+      "fusion_central": "neutral",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 112190
+    },
+    {
+      "file": "01-01-08-02-02-02-01.mp4",
+      "truth": "surprised",
+      "face_full": "neutral",
+      "face_central": "neutral",
+      "voice": "surprised",
+      "fusion_central": "surprised",
+      "frames_sampled": 11,
+      "full_frames_with_face": 11,
+      "central_frames_with_face": 6,
+      "audio_bytes": 104716
+    }
+  ]
+}

@@ -1,47 +1,21 @@
 """VocalLens: voice, face, and experimental combined expression cues."""
 import hashlib
 from pathlib import Path
-import pandas as pd
 import streamlit as st
 from src.predict import predict_audio
 from src.audio_debug import trace_audio
 from src.face import aggregate_frames, decode_image, load_face_model
 from src.video import analyze_video_payload
 from src.fusion import experimental_fusion
+from src.ui_theme import CSS, hero, mode_cards, result_dashboard
+from src.audio_quality import assess_audio
 
 st.set_page_config(page_title="VocalLens | Hear the voice. See the emotion.", page_icon="◉", layout="wide")
-st.markdown("""<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
-html,body,[class*="css"] {font-family:'DM Sans',sans-serif;}
-.stApp {background:#080d18;color:#e5edf7;}
-.block-container {max-width:1100px;padding-top:2.6rem;padding-bottom:3rem;}
-h1,h2,h3 {font-family:'Space Grotesk',sans-serif;letter-spacing:-.035em;}
-.hero {border:1px solid #25364e;background:linear-gradient(120deg,#101c2b,#0b1421);border-radius:24px;padding:2.1rem 2.3rem;margin-bottom:1.6rem;}
-.hero h1 {font-size:3.2rem;margin:.3rem 0 .1rem;color:#f6fbff;}
-.hero .tagline {font-size:1.25rem;color:#65d9e9;font-weight:600;margin:0 0 .4rem;}
-.hero .support {color:#a9b9ca;margin:0;}
-.eyebrow {color:#52d5e8;font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;}
-.result {border:1px solid #2d4659;border-left:4px solid #e46b72;background:#0e1b29;border-radius:18px;padding:1.25rem 1.5rem;margin:.65rem 0;}
-.result .kind {color:#99aebe;font-size:.77rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;}
-.result .emotion {color:#e9fcff;font:700 2rem 'Space Grotesk',sans-serif;line-height:1.25;}
-.result .score {color:#e99197;font-size:.88rem;}
-.stButton button[kind="primary"] {background:#e46b72;color:#fff;border:none;font-weight:700;border-radius:10px;}
-.stButton button[kind="primary"]:hover {background:#f08289;color:#fff;}
-div[data-testid="stAlert"] {border-radius:12px;}
-.footer {border-top:1px solid #223146;margin-top:2rem;padding-top:1rem;color:#879bad;font-size:.83rem;}
-</style>""", unsafe_allow_html=True)
+st.markdown(CSS, unsafe_allow_html=True)
 
 
 def show_result(result, modality, model):
-    score = result["probabilities"][result["emotion"]]
-    st.markdown(f"<div class='result'><div class='kind'>{modality} · {model}</div>"
-                f"<div class='emotion'>{result['emotion'].title()}</div>"
-                f"<div class='score'>Top model score {score:.1%}</div></div>", unsafe_allow_html=True)
-    if score < 0.45:
-        st.warning("The top score is low. Several expression categories remain plausible.")
-    chart = pd.DataFrame({"Expression": [key.title() for key in result["probabilities"]],
-                          "Model score": list(result["probabilities"].values())}).set_index("Expression")
-    st.bar_chart(chart, color="#37cfe2", horizontal=True)
+    result_dashboard(result, modality, model)
 
 
 def input_details(name, payload, signal=None, sr=None):
@@ -56,8 +30,12 @@ def input_details(name, payload, signal=None, sr=None):
 def voice_analysis(payload, name, debug=False):
     if len(payload) > 25 * 1024 * 1024:
         raise ValueError("Audio file must be under 25 MB")
+    quality = assess_audio(payload)
     result = predict_audio(payload)
     show_result(result, "Voice", result["model"].replace("_", " ").upper())
+    st.markdown(f"<div class='micro-note'>Analyzed audio: {quality['duration']:.1f} seconds · {quality['sample_rate']:,} Hz mono</div>", unsafe_allow_html=True)
+    for warning in quality["warnings"]:
+        st.warning(warning)
     if debug:
         with st.expander("Developer audio trace", expanded=True):
             st.write(f"**Current file:** {name}")
@@ -79,16 +57,16 @@ def face_analysis(frames):
     return result
 
 
-st.markdown("<div class='hero'><div class='eyebrow'>Multimodal expression analysis</div>"
-            "<h1>VocalLens<span style='color:#e46b72'>.</span></h1>"
-            "<p class='tagline'>Hear the voice. See the emotion.</p>"
-            "<p class='support'>Multimodal emotion analysis through speech and facial expressions.</p></div>", unsafe_allow_html=True)
-mode = st.radio("Choose analysis mode", ["Voice only", "Face only", "Voice + Face"], horizontal=True)
-st.caption("Choose one mode. Each analysis uses the file or capture shown below; changing mode clears the displayed result.")
+hero()
+mode = st.segmented_control("Analysis mode", ["Voice only", "Face only", "Voice + Face"], default="Voice only", label_visibility="collapsed")
+mode_cards(mode)
 
 if mode == "Voice only":
+    st.markdown("<div class='section-label'>01 / Voice studio</div><div class='content-card'><h3>Listen beneath the words</h3><p>Upload spoken audio or record a sample. Review the exact recording before analysis.</p></div>", unsafe_allow_html=True)
     source = st.radio("Voice input", ["Upload audio", "Record with microphone"], horizontal=True)
-    debug_audio = st.toggle("Developer audio trace", value=False, help="Show decoded audio, feature and model details after analysis.")
+    with st.sidebar:
+        st.markdown("### Studio settings")
+        debug_audio = st.toggle("Developer audio trace", value=False, help="Show decoded audio, feature and model details after analysis.")
     audio = (st.file_uploader("Upload a spoken recording", type=["wav", "mp3", "flac", "ogg"], key="voice_upload")
              if source == "Upload audio" else st.audio_input("Record a spoken sample", key="voice_microphone"))
     if audio is None:
@@ -107,6 +85,7 @@ if mode == "Voice only":
                 st.error(f"The audio could not be analyzed: {exc}")
 
 elif mode == "Face only":
+    st.markdown("<div class='section-label'>02 / Expression studio</div><div class='content-card'><h3>See the visible expression</h3><p>Capture a still frame or upload a short video. The model analyzes expressions without identifying people.</p></div>", unsafe_allow_html=True)
     source = st.radio("Face input", ["Camera photo", "Upload video"], horizontal=True)
     if source == "Camera photo":
         st.caption("The browser camera captures one still frame. For changing expressions over time, upload a video.")
@@ -137,6 +116,7 @@ elif mode == "Face only":
                     st.error(f"The video could not be analyzed: {exc}")
 
 else:
+    st.markdown("<div class='section-label'>03 / Multimodal studio</div><div class='content-card'><h3>Two cues. One moment.</h3><p>Upload a video with spoken audio and a visible face to compare what each channel suggests.</p></div>", unsafe_allow_html=True)
     st.caption("Upload a video with a visible face and spoken audio. Browser camera and microphone widgets cannot capture a synchronized clip here; video upload keeps both cues together.")
     video = st.file_uploader("Upload a video with voice and face", type=["mp4", "mov", "webm", "avi"], key="combined_video")
     if video is not None:
@@ -175,7 +155,7 @@ else:
                 st.error(f"The video could not be analyzed: {exc}")
 
 with st.expander("Models, sources and limits"):
-    st.write("**Voice:** 46 MFCC, energy, zero-crossing and spectral features from 16 kHz mono audio feed the saved calibrated SVM. Held-out RAVDESS actor accuracy: 44.17%; macro F1: 39.75%.")
+    st.write("**Voice:** The selected logistic regression uses 130 MFCC, delta-MFCC, energy and spectral summary features from 16 kHz mono audio. On 360 untouched RAVDESS clips from six unseen actors: accuracy **45.83%**, macro F1 **45.12%**. On TESS's other speaker: **37.79% / 33.37%**; on unseen German EmoDB: **31.94% / 30.04%**. These are acted-corpus tests, not real-world accuracy.")
     st.write("**Face:** OpenCV detects face regions; pretrained ONNX Model Zoo FER+ scores a 64×64 grayscale crop. It performs no identity recognition. Download the model separately with checksum verification.")
-    st.write("[RAVDESS data](https://zenodo.org/records/1188976) · [FER+ model and MIT license](https://github.com/onnx/models/blob/main/validated/vision/body_analysis/emotion_ferplus/README.md)")
+    st.write("[RAVDESS data](https://zenodo.org/records/1188976) · [TESS](https://doi.org/10.5683/SP2/E8H2MF) · [EmoDB](https://zenodo.org/records/7447302) · [FER+ model and MIT license](https://github.com/onnx/models/blob/main/validated/vision/body_analysis/emotion_ferplus/README.md)")
 st.markdown("<div class='footer'>VocalLens · Ahmad Ali Shah, Saboor Khan, Sardar Bilal · Academic demonstration · Outputs are uncertain expression cues.</div>", unsafe_allow_html=True)

@@ -1,5 +1,21 @@
 # Testing log
 
+## Expanded model and premium UI (22 November 2026)
+
+The expanded data audit found 1,439 valid RAVDESS clips (24 speakers; one exact duplicate excluded), 2,800 valid TESS clips (two speakers), and 454 compatible EmoDB clips (ten speakers; 81 boredom clips excluded). There were no TESS or EmoDB corrupt files or byte duplicates. TESS and EmoDB official archive SHA-256 hashes were verified before extraction. `scripts/train_expanded.py` cached 46- and 130-feature vectors for all **4,693 compatible clips**, then compared six candidates using training-only actor GroupKFold. The winner was the 130-feature balanced logistic model, CV macro F1 **0.4093**. `scripts/deploy_expanded.py` checked the report and saved artifact before changing `models/selected.json`. The original SVM remains in `models/`.
+
+| Untouched test | Saved SVM accuracy / macro F1 | New model accuracy / macro F1 |
+|---|---:|---:|
+| RAVDESS six actors, 360 clips | 0.4417 / 0.3975 | **0.4583 / 0.4512** |
+| TESS YAF, 1,400 clips | 0.3386 / 0.2408 | **0.3779 / 0.3337** |
+| EmoDB, ten unseen speakers, 454 clips | 0.1101 / 0.1072 | **0.3194 / 0.3004** |
+
+The exact per-class reports, precision, recall, confusion matrices, speaker lists and counts are in `results/expanded/evaluation.json`. These external tests are acted speech; no real-world corpus was measured.
+
+The redesigned Streamlit app rendered in the browser at localhost:8502. All three mode selectors changed the active card and workflow. A local three-second video upload showed 12 sampled frames, an extracted audio track, **Voice: Surprised 83.3%**, **Face: Neutral 97.0%**, and an explicitly experimental **Combined: Neutral 54.5%** result. The distinct voice and face results remained visible. These numbers are outputs for the fixture, not ground-truth accuracy. Removing a first voice upload removed its displayed result; a second WAV produced a different chart and result. The first RAVDESS file displayed Angry 79.3%, the second Surprised 58.8%. Input bytes, model output and chart values were checked in the browser. The hero, navigation and red Analyze button were visually inspected at laptop viewport width. Physical microphone and camera permission/capture were not verified.
+
+`python -m pytest -q` passed **19 tests** after adjusting the selected-model tests and adding external-dataset mapping checks; three warnings come from `audioread` deprecated Python 3.12 modules. The suite includes current model feature-version compatibility, real WAV score changes and rejection of pure tones before app prediction. A separate local fixture check produced a 3.0-second, 12-frame audiovisual result (audio 95,652 bytes; voice Surprised, face Neutral, combined Neutral), `None` for blank-video face analysis, and `None` for silent-video audio. The input quality guard scanned all 1,440 RAVDESS WAVs with **zero false rejections or warnings**. FER2013/RAF-DB labeled benchmark data and official RAVDESS audiovisual videos are not present; no face or audiovisual accuracy result is claimed.
+
 ## Deep audio investigation and red accent restoration (22 November 2026)
 
 `scripts/deep_audio_diagnostic.py` processed **24 known-label RAVDESS clips** (all eight emotions from Actors 01, 05 and 10), **three stock MP3s**, and **two generated pure tones**. It recorded each file's hash, processed duration and signal shape, feature dimensions, all eight probabilities from each saved model, top-two margin, and repeated-inference agreement. All 29 inputs had distinct hashes and distinct 46-feature vectors; repeated inference matched exactly. All three models use the same class order: angry, calm, disgust, fearful, happy, neutral, sad, surprised. Their `predict()` outputs matched the top `predict_proba()` class. The JSON and CSV are in `results/diagnostics/`.

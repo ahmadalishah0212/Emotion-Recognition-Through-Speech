@@ -1,93 +1,65 @@
-# VocalLens: Multimodal Emotion Recognition Through Speech and Facial Expressions
+# VocalLens
 
-**Hear the voice. See the emotion.**
+**Hear the voice. See the emotion.** Local Streamlit demonstration of speech, face and experimental audiovisual expression cues. Team: Ahmad Ali Shah, Saboor Khan, Sardar Bilal.
 
-**Team:** Ahmad Ali Shah, Saboor Khan, Sardar Bilal. VocalLens is a local Python and Streamlit course project with voice, face, and experimental combined expression analysis. The voice models were trained and evaluated by this project; the face model is pretrained. See [testing status](TESTING.md).
+VocalLens analyzes the current upload or browser recording. It shows real saved-model scores, input details and optional developer diagnostics. Its charcoal interface uses the original `#e46b72` red identity, a page for each mode, and a responsive expression distribution. The speech model was trained in this project; the facial FER+ model is pretrained. Neither can determine a person's actual feelings.
 
-## Features
+## Windows setup
 
-- Official RAVDESS speech ZIP download, checksum check and dataset audit
-- Shared audio preprocessing and 46-dimensional feature extraction
-- Speaker-independent evaluation of SVM, random forest and logistic regression
-- Saved models, class reports, confusion matrices and macro F1 comparison
-- Streamlit upload and browser microphone input with actual saved-model prediction
-- Explicit input-source selection, so a previous microphone recording cannot override a new upload
-- Camera still capture and video face analysis using pretrained FER+ and OpenCV face detection
-- Video audio extraction and separate voice/face results, with labeled experimental late fusion
-- Optional developer audio trace with file fingerprint, processed signal, feature sample, saved model and complete score vector
-
-## Windows setup (PowerShell)
-
-Install Python **3.12** from [python.org](https://www.python.org/downloads/) and select **Add Python to PATH**. The saved model was trained with Python 3.12, scikit-learn 1.9.1, NumPy 2.5.5, SciPy 1.18.1 and joblib 1.6.0; `requirements.txt` pins those model-loading dependencies. In PowerShell, from this project directory:
+Use Python **3.12**. From PowerShell in this project directory:
 
 ```powershell
 py -3.12 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-python scripts/download_face_model.py
-python scripts/download_dataset.py
-python scripts/validate_dataset.py
-python -m src.eda
-python -m src.train
-python -m pytest -q
-python -m streamlit run app.py
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe scripts\download_face_model.py
+.\.venv\Scripts\python.exe -m streamlit run app.py
 ```
 
-If PowerShell blocks activation, run `Set-ExecutionPolicy -Scope Process Bypass` in that PowerShell session. No GPU or paid API is required. Browser microphone and camera capture require permission. WAV is the safest audio format. MP3 decoding worked on this laptop; decoder support can vary elsewhere. Video audio extraction uses the FFmpeg binary bundled by `imageio-ffmpeg`.
+The selected model and reports are included. Speech datasets are not needed merely to run the app. Face and video modes need the ~35 MB official FER+ model, verified by SHA-256. No GPU or paid API is needed. From Command Prompt, use `cd /d "C:\Users\ahmad\Desktop\Emotion Recognition"` then `.venv\Scripts\python.exe -m streamlit run app.py`. The system `python` from `C:\Users\ahmad` may select Python 3.14 without Streamlit.
 
-The face model download is about 35 MB. The script verifies SHA-256 before saving it to `models/face/`; the binary is excluded from Git. Its source is the [MIT-licensed ONNX Model Zoo FER+ model](https://github.com/onnx/models/blob/main/validated/vision/body_analysis/emotion_ferplus/README.md). Face mode requires this file. Video uploads are limited to 50 MB and two minutes; up to 12 frames are analyzed. Camera mode captures one still frame. For both cues from the same recording, upload a video with sound.
+## Modes
 
-From **Command Prompt** in this workspace, use the project Python directly (no activation required):
+- **Voice only:** upload WAV, MP3, FLAC or OGG spoken audio or record via the browser microphone. Preview, then select **Analyze voice**. Silence, corrupt or too-short files fail; a conservative single-frequency check rejects pure tones. Clipped and very short clips receive a warning. Music, noise and crying can still yield unreliable labels because there is no validated speech or out-of-distribution detector. The optional developer trace gives the file hash, processed signal, feature version, saved-model hash and exact scores.
+- **Face only:** capture a camera still or upload a video. OpenCV finds faces; FER+ scores the largest detected face in each sampled frame. Missing faces produce no prediction; multiple faces trigger a warning. No identity recognition is performed.
+- **Voice + Face:** upload a short video with a visible face and audio track. The app extracts the actual audio, samples up to 12 frames, shows both independent results, and displays an explicitly experimental shared-class average. Disagreement remains visible. The fusion has no measured accuracy.
 
-```bat
-cd /d "C:\Users\ahmad\Desktop\Emotion Recognition"
-.venv\Scripts\python.exe -m streamlit run app.py
-```
+Browser camera and microphone permission are needed for capture. Uploaded video is limited to 50 MB and two minutes. The first 12 seconds of decoded audio are used for voice scoring. MP3 decoder support can vary; WAV is safest for a demo.
 
-Running `python -m streamlit` from `C:\Users\ahmad` uses the system Python instead of this project's environment, which produces `No module named streamlit`.
+## Speech training and actual results
 
-The official dataset is already extracted in this workspace. For a new clone, if the dataset script cannot connect, download **Audio_Speech_Actors_01-24.zip** from the [official RAVDESS record](https://zenodo.org/records/1188976), place it in `data/raw/`, then rerun `python scripts/download_dataset.py`. The script checks the archive's official MD5 and extracts it. See [data setup](data/README.md). Do not commit the dataset ZIP or extracted audio.
+The retained **baseline calibrated SVM** used 46 features and RAVDESS only. Its six-actor held-out accuracy was 44.17% and macro F1 39.75%; baseline logistic regression was 40.00% / 39.27%, random forest 39.17% / 37.38%. A previous tuned SVM reached 44.72% / 40.86% but was not deployed because its gain was uncertain.
 
-## Output and interpretation
+The selected **logistic regression with 130 features** adds MFCC delta and delta-delta summaries plus spectral bandwidth and rolloff. Training-only three-fold actor GroupKFold selected it by macro F1 (**0.4093**). The candidate uses 1,079 RAVDESS clips from 18 training actors plus 490 TESS clips from one actor (70 per compatible class). The six original RAVDESS test actors, TESS's second actor and all ten EmoDB actors remained untouched during model selection.
 
-### Why different outside recordings can show ~44% Fearful
+| Untouched test | Clips / speakers | Saved SVM accuracy / macro F1 | Selected model accuracy / macro F1 |
+|---|---:|---:|---:|
+| RAVDESS unseen actors | 360 / 6 | 44.17% / 39.75% | **45.83% / 45.12%** |
+| TESS unseen actor | 1,400 / 1 | 33.86% / 24.08% | **37.79% / 33.37%** |
+| EmoDB unseen German corpus | 454 / 10 | 11.01% / 10.72% | **31.94% / 30.04%** |
 
-The reported value comes from the saved calibrated SVM, not a hardcoded result. On this laptop the stock angry MP3 yields Fearful `0.444647515` (shown as **44.5%** by one-decimal rounding), while the crying MP3 yields `0.407634972` and the laughter MP3 `0.441609287`. Two different pure tones yield an **identical** Fearful `0.444324897` score vector despite different audio and features: they are so far from the acted-speech training data that the SVM's RBF similarity to its support vectors is effectively zero. Thus similar or identical scores on unrelated audio can be genuine model behavior. The app's normal result remains the real model output; turn on **Developer audio trace** before analyzing to inspect the active file, hash, feature shape, model path and all scores. The Analyze button uses the existing red `#e46b72` accent.
+These results show better transfer on two *acted* external tests. EmoDB performance remains low, and TESS has only two female speakers. There is no labeled test of natural conversation, accents, phone recordings, noisy rooms or music; **real-world generalization has not been established**. Scores are model outputs, not calibrated certainty about a person. The full per-class reports, precision, recall, class distribution and confusion matrices are in [evaluation.json](results/expanded/evaluation.json) and [model report](reports/expanded_model.md).
 
-For a repeatable audit of all three saved models on 24 known-label RAVDESS clips, all 360 held-out actor clips, and optional external files, run:
+The notorious near-fixed Fearful score of the old SVM on stock audio came from RBF saturation far outside its training features, not stale uploads or fabricated values. See [deep diagnostics](TESTING.md). The new model is a genuine classifier trained on more data, but an unsuitable file can still yield a misleading output.
+
+## Reproduce training
+
+Large raw files are excluded from Git. The [dataset audit and access guide](data/EXPANDED_DATASETS.md) explains source licenses and label maps. RAVDESS, TESS and EmoDB are downloaded from official repositories; TESS and EmoDB archives have recorded SHA-256 checks. To regenerate the experiment:
 
 ```powershell
-.\.venv\Scripts\python.exe scripts\deep_audio_diagnostic.py "C:\Users\ahmad\Downloads\universfield-female-crying-291098.mp3" "C:\Users\ahmad\Downloads\universfield-angry-female-144242.mp3"
+.\.venv\Scripts\python.exe scripts\download_dataset.py
+.\.venv\Scripts\python.exe scripts\download_expanded_datasets.py
+.\.venv\Scripts\python.exe scripts\validate_dataset.py
+.\.venv\Scripts\python.exe scripts\train_expanded.py
+.\.venv\Scripts\python.exe scripts\deploy_expanded.py
+.\.venv\Scripts\python.exe -m pytest -q
 ```
 
-The results are in `results/diagnostics/`. A training-actor-only SVM tuning check found a small possible gain, but its actor-bootstrap interval included zero; the deployed model and original metrics were kept. See [testing evidence](TESTING.md).
+`train_expanded.py` caches extracted features under ignored `data/cache/`, selects candidates using training actor groups, evaluates once on untouched tests, and writes `results/expanded/`. `deploy_expanded.py` verifies that the cached model matches the recorded training-CV winner. The old SVM, logistic regression and forest artifacts remain in `models/`. The experiment is CPU-compatible; initial feature extraction can take several minutes.
 
-The instructor's required 2–4 model range is met by three trained models. Training created `models/{svm,random_forest,logistic_regression}.joblib` and `models/selected.json`; the app never retrains. Results appear in `results/metrics/`, `results/figures/` and `results/model_comparison/comparison.csv`. On 360 recordings from six held-out actors, the calibrated SVM was selected by macro F1: **0.3975** (accuracy **0.4417**), versus logistic regression **0.3927** and random forest **0.3738** macro F1. The margin over logistic regression is small, and neutral, happy and sad are weak classes. Read the per-class report and confusion matrices before presenting the result.
+## Face and video evidence
 
-Use `python -m src.eda` to regenerate graphs and `python -m src.train` to regenerate model results. To launch only the app after training, use `python -m streamlit run app.py`. The app explains missing model files and asks you to train first.
+The [ONNX Model Zoo FER+ network](https://github.com/onnx/models/blob/main/validated/vision/body_analysis/emotion_ferplus/README.md) is a CNN with 64×64 grayscale input and eight expression outputs. It was trained outside this project. Local checks confirmed its input/output shape, finite scores, detection on a sample face, no prediction on blank frames, and video audio/frame extraction. An unlabeled sample image and composited video are pipeline fixtures, not accuracy benchmarks. FER2013 and RAF-DB access is described in the [dataset guide](data/EXPANDED_DATASETS.md). No independent face or audiovisual accuracy is claimed. See [testing log](TESTING.md).
 
-## Demo for the instructor
+## Project files
 
-1. Open the [dataset source](https://zenodo.org/records/1188976) and run `python scripts/validate_dataset.py`.
-2. Show `results/figures/emotion_distribution.png`, `actor_distribution.png` and `sample_audio.png` after EDA.
-3. Show the actual comparison CSV and three confusion matrices after training; explain macro F1 and the selected model.
-4. Start Streamlit. In **Voice only**, enable **Developer audio trace**, upload two different RAVDESS WAVs and press **Analyze voice** for each. The file hash and chart should update. A stock crying MP3 can still be labeled Fearful because the model was trained on spoken sentences, not non-speech crying.
-5. In **Face only**, capture a camera still or upload a video. In **Voice + Face**, upload a video with sound to show separate predictions and the experimental combined cue.
-6. Explain that outputs describe expression cues, not a person's true feelings; the combined cue has no measured accuracy.
-
-## Repository and submission
-
-`REQUIREMENTS_CHECKLIST.md`, `reports/project_report.md`, `reports/model_explanation.md`, `reports/team_roles.md`, `reports/viva_preparation.md`, and `TESTING.md` contain the report, method, roles and audit. The generated models, metrics and graphs can be committed; the large dataset remains excluded. The project repository is [Emotion-Recognition-Through-Speech](https://github.com/ahmadalishah0212/Emotion-Recognition-Through-Speech). To push later local changes from this checkout, run:
-
-```powershell
-git add app.py src scripts tests README.md requirements.txt reports TESTING.md REQUIREMENTS_CHECKLIST.md
-git commit -m "Describe your update"
-git push origin main
-```
-
-Submit the GitHub link, the official dataset link, the report, and a live app demo. The baseline, dataset/EDA and model milestones were pushed; check `git status` and `git log` for later milestones.
-
-## Limitations
-
-RAVDESS is acted studio speech. The selected SVM scored 44.17% accuracy and 39.75% macro F1 on one held-out actor split, so stock crying or laughter can share an incorrect label despite different feature vectors and charts. FER+ scores visible expressions but was not trained or independently evaluated by this group. Face detection can miss nonfrontal faces; with multiple faces only the largest per frame is scored, which may switch people across frames. Combined scores use shared classes only and are unvalidated. Model bars are estimates, not diagnostic certainty. See [report](reports/project_report.md).
+[Training report](reports/expanded_model.md) · [Dataset guide](data/EXPANDED_DATASETS.md) · [Testing evidence](TESTING.md) · [Project report](reports/project_report.md) · [Viva preparation](reports/viva_preparation.md). The code and small models are in this repository; all raw datasets, cache files and the large FER+ ONNX binary remain local.

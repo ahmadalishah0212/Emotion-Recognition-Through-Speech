@@ -24,12 +24,17 @@ def decode_image(payload):
     return image
 
 
-def detect_faces(frame):
+@lru_cache(maxsize=1)
+def _face_detector():
     detector = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
     if detector.empty():
         raise RuntimeError("OpenCV face detector is unavailable")
+    return detector
+
+
+def detect_faces(frame):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    boxes = detector.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+    boxes = _face_detector().detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
     return sorted([tuple(map(int, box)) for box in boxes], key=lambda b: b[2] * b[3], reverse=True)
 
 

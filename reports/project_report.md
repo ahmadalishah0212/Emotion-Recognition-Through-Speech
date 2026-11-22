@@ -1,5 +1,7 @@
 # VocalLens: Multimodal Emotion Recognition Through Speech and Facial Expressions
 
+> **November 2026 expansion:** The following sections document the original RAVDESS-only 46-feature baseline and its historical selection. The currently deployed model is a 130-feature logistic regression trained on RAVDESS plus a TESS subset, chosen by training-only actor cross-validation. On the untouched six-actor RAVDESS test it scored **45.83% accuracy / 45.12% macro F1**, versus the saved SVM's **44.17% / 39.75%**. TESS's held-out speaker scored **37.79% / 33.37%** and unseen EmoDB **31.94% / 30.04%**. See the [expanded protocol, all metrics and limitations](expanded_model.md), [corpus licenses](../data/EXPANDED_DATASETS.md) and [current README](../README.md). Acted-corpus gains do not establish real-world accuracy. The project has no independent labeled face or multimodal accuracy result.
+
 **Hear the voice. See the emotion.**
 
 **Team:** Ahmad Ali Shah, Saboor Khan, Sardar Bilal  

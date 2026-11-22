@@ -1,4 +1,6 @@
-# RAVDESS dataset setup
+# RAVDESS dataset setup (original baseline)
+
+For the current RAVDESS + TESS training experiment and EmoDB cross-corpus test, use [EXPANDED_DATASETS.md](EXPANDED_DATASETS.md). The selection and single-corpus decision below describe the original baseline only.
 
 Download the **audio-only speech** archive from the [official Zenodo record](https://zenodo.org/records/1188976), file `Audio_Speech_Actors_01-24.zip` (about 209 MB as displayed by Zenodo). It contains 1,440 WAV recordings from 24 actors. Do not download the song or video archives for this project. The record lists a CC BY-NC-SA 4.0 license; cite Livingstone and Russo (2018) and use the data in accordance with the license.
 

@@ -6,7 +6,7 @@ librosa>=0.10.2,<1
 soundfile>=0.12,<1
 matplotlib>=3.8,<4
 seaborn>=0.13,<1
-streamlit>=1.40,<2
+streamlit>=1.67,<2
 joblib==1.6.0
 pytest>=8,<10
 onnxruntime==1.32.0

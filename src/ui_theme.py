@@ -6,7 +6,6 @@ import streamlit as st
 
 CSS = """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 :root {color-scheme:dark}
 .stApp {background:radial-gradient(ellipse 85% 50% at 82% -15%,#38212a 0%,transparent 70%),radial-gradient(ellipse 70% 30% at 0% 65%,#191d2a 0%,transparent 75%),#090b10;color:#eef0f4;font-family:'DM Sans',sans-serif}
 .block-container {max-width:1180px;padding-top:1.6rem;padding-bottom:3rem}
@@ -59,6 +58,31 @@ div[data-testid="stFileUploaderDropzone"] {border:1px dashed #79505b;background:
 div[data-testid="stAlert"] {border-radius:13px}
 .footer {border-top:1px solid #30303b;margin-top:2.2rem;padding-top:1.1rem;color:#898d9b;font-size:.78rem}
 @media(max-width:700px){.brand-hero{padding:1.6rem}.block-container{padding-left:1rem;padding-right:1rem}.score-row{grid-template-columns:75px 1fr 46px;gap:.5rem}.mode-card{min-height:0}}
+/* Final studio treatment: local system fonts, brighter depth, accessible controls. */
+.stApp {background:radial-gradient(ellipse at 90% 0%,#52283666,transparent 48%),radial-gradient(ellipse at 0% 65%,#243f5360,transparent 55%),#090b10;font-family:'Segoe UI',Arial,sans-serif}
+p,span,label {font-family:'Segoe UI',Arial,sans-serif}
+h1,h2,h3,.brand-hero h1,.mode-card strong,.result-emotion,.distribution-title {font-family:'Segoe UI',Arial,sans-serif!important}
+.brand-hero {background:linear-gradient(115deg,#232532,#211b29 58%,#502936);border-color:#80505e;box-shadow:0 18px 65px #0006,inset 0 1px 0 #ffffff12}
+.brand-hero h1 {font-weight:750;letter-spacing:-.065em!important}
+.brand-hero:after {content:'VOICE / VISION / EXPRESSION';position:absolute;right:2rem;bottom:1.5rem;color:#eebbc4;font-size:.65rem;letter-spacing:.17em}
+.brand-copy,.content-card p,.mode-card small {color:#bdc1cf}
+.mode-card {background:linear-gradient(135deg,#252835,#151923);border-color:#434655;min-height:102px;box-shadow:inset 0 1px 0 #ffffff09}
+.mode-card.active {background:linear-gradient(125deg,#4b2939,#242333);border-color:#f28b98;box-shadow:0 8px 35px #e46b7220,inset 0 1px 0 #ffc5cc30}
+.content-card {background:linear-gradient(125deg,#222633,#171b25);border-color:#414451}
+.result-card {background:radial-gradient(ellipse at 100% 0%,#73516a40,transparent 70%),linear-gradient(110deg,#292b3b,#181c28);box-shadow:0 15px 45px #0005,inset 0 1px 0 #ffffff12;animation:result-reveal .3s ease-out}
+.result-score b {font-size:1.55rem;font-variant-numeric:tabular-nums}
+.distribution {background:linear-gradient(135deg,#1e2330,#141923);border-color:#3b4251}
+.score-fill {opacity:.85}.score-track {height:10px;background:#333948}
+div[data-testid="stFileUploader"] {background:linear-gradient(130deg,#242532,#191e2b);border-color:#595263;box-shadow:0 10px 30px #0002}
+div[data-testid="stFileUploaderDropzone"] {border-color:#b56b7c;background:#2a2432;transition:border-color .2s,background .2s}
+div[data-testid="stFileUploaderDropzone"]:hover {border-color:#ff9caa;background:#342735}
+button[aria-checked="true"] {box-shadow:0 0 0 1px #ed8495,0 5px 20px #e46b7225!important}
+button:focus-visible {outline:2px solid #ffb4bf!important;outline-offset:3px}
+.input-choice {padding:.7rem 1rem;border-left:3px solid #e46b72;background:#242332;border-radius:0 10px 10px 0}
+div[data-testid="stImage"] img {max-height:360px;object-fit:contain;border-radius:14px}
+@keyframes result-reveal {from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;transform:none!important}}
+@media(max-width:700px){.brand-hero:after{display:none}}
 </style>
 """
 

@@ -10,3 +10,4 @@ data/cache/
 data/external/
 *.zip
 models/face/*.onnx
+demo/assets/

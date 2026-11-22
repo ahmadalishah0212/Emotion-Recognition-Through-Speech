@@ -1,5 +1,17 @@
 # Testing log
 
+## Final presentation pass — 23 November 2026
+
+Existing environment: Python 3.12, existing `.venv`; a fresh installation in a separate environment was **not** tested. The documented explicit interpreter starts Streamlit on localhost. No models were retrained or replaced. The face downloader and model paths were reviewed; existing local weights were used. Syntax compilation and `pip check` passed. No TODO/FIXME markers were found in `src/` or `app.py`.
+
+Command: `.\.venv\Scripts\python.exe -m pytest -q`. Initial result: `29 passed, 3 warnings in 40.54s`. Final result after image-layout polish: `29 passed, 3 warnings in 69.54s (0:01:09)`. The warnings are existing `audioread` Python 3.12 deprecations. This covers byte-driven audio prediction, tone rejection, silence/invalid input paths, image formats and size bounds, multiple/no faces, fusion class mapping, and local video audio/blank/silent fixtures. Model tests use genuine inference when local models/fixtures exist; none skipped in this run.
+
+`scripts/final_demo_check.py` ran genuine speech, photo, video and fusion inference for the first Happy, Sad, Angry and Neutral clips of Actor 05. Results are in `results/final_demo_check.json`; these four deterministic probes are not a new accuracy benchmark. A dim photo detected one face and produced a dim-light warning; a blurred photo still detected one face without a blur warning; the duplicated photo detected two faces and a blank photo detected none. Glasses, physical hardware, live capture, GPU, and comprehensive angle/noise robustness were not newly tested.
+
+Browser workflows tested: upload WAV → Analyze voice; switch modes (previous results removed); upload JPG → preview → Analyze photo; video → 12-frame face result; same-video voice/face → separate scores, disagreement and experimental fusion; webcam permission/unavailable interface. Happy-labeled audio scored Angry 43.9%, the sampled Happy photo scored Happy 99.8%, Happy video face averaged Happy 99.0%, and fusion scored Happy 54.4%. Sad video face scored Neutral 80.8%. Results reflect errors openly. Screenshots are real 1280×720 captures, individually framed and documented in `docs/SCREENSHOTS.md`. An initial browser tab expired; reopening and repeating succeeded. Physical microphone/webcam and GPU inference remain unverified. No new latency or peak-memory benchmark was performed.
+
+UI changes add layered midnight/rose surfaces, brighter coral controls, local system typography, compact image previews, visible keyboard focus and reduced-motion rules. Existing model caching, bounded 12-frame sampling, image limits, 50 MB/two-minute video limit and CPU fallback are retained. No cloud inference or additional UI dependencies were added.
+
 ## Face replacement and photo upload (22 November 2026)
 
 The baseline suite passed **19 tests** before this change. The final suite passed **29 tests** with three existing Python 3.12 `audioread` deprecation warnings. The new tests cover JPG, PNG and WebP decoding, corrupt and oversized images, no-face output, two separately numbered faces, real FER+ and OpenCV Zoo inference on a local ignored sample, video audio/frame extraction, blank and silent video, and a 960-pixel sampled-frame limit. The final command was `.\.venv\Scripts\python.exe -m pytest -q`.

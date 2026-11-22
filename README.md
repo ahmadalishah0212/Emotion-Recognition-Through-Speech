@@ -6,6 +6,14 @@ VocalLens analyzes the current upload or browser recording. It shows real saved-
 
 ## Windows setup
 
+See the [six-minute classroom demo](demo/README.md), [speaking script](demo/DEMO_SCRIPT.md), and [real screenshot gallery](docs/SCREENSHOTS.md).
+
+![VocalLens studio](docs/screenshots/01-vocallens-home.jpg)
+
+![Experimental combined result](docs/screenshots/06b-experimental-fusion.jpg)
+
+Screenshots use actual model outputs; RAVDESS frames are attributed and licensed in the gallery.
+
 Use Python **3.12**. From PowerShell in this project directory:
 
 ```powershell

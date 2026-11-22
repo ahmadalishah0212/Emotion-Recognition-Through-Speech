@@ -1,0 +1,304 @@
+{
+  "note": "Pipeline probes only; selected first clips, not an accuracy benchmark.",
+  "samples": [
+    {
+      "acted_label": "happy",
+      "voice": {
+        "emotion": "angry",
+        "probabilities": {
+          "angry": 0.4388197064399719,
+          "calm": 0.0004116815107408911,
+          "disgust": 0.3233415186405182,
+          "fearful": 0.0001722907618386671,
+          "happy": 0.09889983385801315,
+          "neutral": 0.002213733270764351,
+          "sad": 0.09447595477104187,
+          "surprised": 0.04166528955101967
+        },
+        "model": "logistic_expanded_v2"
+      },
+      "photo_faces": [
+        {
+          "number": 1,
+          "emotion": "happy",
+          "probabilities": {
+            "angry": 1.0258480832341796e-05,
+            "disgust": 4.338612638918257e-05,
+            "fearful": 0.00018752701707649904,
+            "happy": 0.9976607354209811,
+            "neutral": 2.4529250961542863e-05,
+            "sad": 0.0011440608399347612,
+            "surprised": 0.0009295028638246272
+          },
+          "warnings": []
+        }
+      ],
+      "video_face": {
+        "emotion": "happy",
+        "probabilities": {
+          "angry": 1.2751221242483095e-05,
+          "disgust": 0.0009350440544813474,
+          "fearful": 0.00038742167599295935,
+          "happy": 0.989953545214315,
+          "neutral": 0.00012519820556780987,
+          "sad": 0.00744225684044597,
+          "surprised": 0.0011437827879544026
+        },
+        "frames_sampled": 12,
+        "frames_with_face": 12,
+        "multi_face_frames": 0
+      },
+      "fusion": {
+        "emotion": "happy",
+        "probabilities": {
+          "neutral": 0.0011699215926128043,
+          "happy": 0.5444470551012662,
+          "sad": 0.050978560400685255,
+          "angry": 0.2195065910784591,
+          "fearful": 0.0002798916972234083,
+          "disgust": 0.16220486419694663,
+          "surprised": 0.021413115932806634
+        },
+        "excluded_voice_mass": 0.0004116815107408911,
+        "excluded_face_mass": 0
+      },
+      "audio_quality": {
+        "duration": 4.004,
+        "sample_rate": 16000,
+        "warnings": []
+      },
+      "sampled_frames": 12
+    },
+    {
+      "acted_label": "sad",
+      "voice": {
+        "emotion": "surprised",
+        "probabilities": {
+          "angry": 4.896153768640943e-05,
+          "calm": 0.039387114346027374,
+          "disgust": 0.004965601023286581,
+          "fearful": 0.07760000973939896,
+          "happy": 0.0009648015256971121,
+          "neutral": 0.34514886140823364,
+          "sad": 0.15456464886665344,
+          "surprised": 0.37731999158859253
+        },
+        "model": "logistic_expanded_v2"
+      },
+      "photo_faces": [
+        {
+          "number": 1,
+          "emotion": "neutral",
+          "probabilities": {
+            "angry": 5.24337215626658e-06,
+            "disgust": 0.0001952414448199929,
+            "fearful": 3.951158034626368e-06,
+            "happy": 0.0322403133531815,
+            "neutral": 0.9609656537062854,
+            "sad": 0.00031915518128332505,
+            "surprised": 0.00627044178423886
+          },
+          "warnings": []
+        }
+      ],
+      "video_face": {
+        "emotion": "neutral",
+        "probabilities": {
+          "angry": 3.521151508659558e-05,
+          "disgust": 0.0007696621924244959,
+          "fearful": 3.64233388948207e-05,
+          "happy": 0.06948001953140452,
+          "neutral": 0.8078323197501858,
+          "sad": 0.004073823736927592,
+          "surprised": 0.11777253993507615
+        },
+        "frames_sampled": 12,
+        "frames_with_face": 12,
+        "multi_face_frames": 0
+      },
+      "fusion": {
+        "emotion": "neutral",
+        "probabilities": {
+          "neutral": 0.5835665008933092,
+          "happy": 0.03524218996238376,
+          "sad": 0.08248797221663143,
+          "angry": 4.309028878657505e-05,
+          "fearful": 0.040409097375458794,
+          "disgust": 0.002969431588747894,
+          "surprised": 0.2552817176746824
+        },
+        "excluded_voice_mass": 0.039387114346027374,
+        "excluded_face_mass": 0
+      },
+      "audio_quality": {
+        "duration": 3.2699375,
+        "sample_rate": 16000,
+        "warnings": []
+      },
+      "sampled_frames": 12
+    },
+    {
+      "acted_label": "angry",
+      "voice": {
+        "emotion": "angry",
+        "probabilities": {
+          "angry": 0.927762508392334,
+          "calm": 4.9062663265431183e-08,
+          "disgust": 0.0012768193846568465,
+          "fearful": 7.125921547412872e-05,
+          "happy": 0.05231313407421112,
+          "neutral": 0.0003498009464237839,
+          "sad": 8.161183359334245e-06,
+          "surprised": 0.01821824163198471
+        },
+        "model": "logistic_expanded_v2"
+      },
+      "photo_faces": [
+        {
+          "number": 1,
+          "emotion": "neutral",
+          "probabilities": {
+            "angry": 8.274833860223955e-05,
+            "disgust": 0.0009246319796118913,
+            "fearful": 6.9913192623734146e-06,
+            "happy": 0.06427519576594386,
+            "neutral": 0.922395452128246,
+            "sad": 0.0040772090905228375,
+            "surprised": 0.008237771377810689
+          },
+          "warnings": []
+        }
+      ],
+      "video_face": {
+        "emotion": "neutral",
+        "probabilities": {
+          "angry": 0.001097227635609708,
+          "disgust": 0.0018581324148206106,
+          "fearful": 2.9363341067778387e-05,
+          "happy": 0.25433740908651264,
+          "neutral": 0.7146358363213338,
+          "sad": 0.003152724106002721,
+          "surprised": 0.02488930709465284
+        },
+        "frames_sampled": 12,
+        "frames_with_face": 12,
+        "multi_face_frames": 0
+      },
+      "fusion": {
+        "emotion": "angry",
+        "probabilities": {
+          "neutral": 0.3574928186470263,
+          "happy": 0.15332527354659187,
+          "sad": 0.001580442644987772,
+          "angry": 0.4644299028846502,
+          "fearful": 5.031128094928681e-05,
+          "disgust": 0.0015674759477289821,
+          "surprised": 0.02155377504806561
+        },
+        "excluded_voice_mass": 4.9062663265431183e-08,
+        "excluded_face_mass": 0
+      },
+      "audio_quality": {
+        "duration": 3.8705625,
+        "sample_rate": 16000,
+        "warnings": []
+      },
+      "sampled_frames": 12
+    },
+    {
+      "acted_label": "neutral",
+      "voice": {
+        "emotion": "neutral",
+        "probabilities": {
+          "angry": 0.0701507106423378,
+          "calm": 0.0014676169957965612,
+          "disgust": 0.04039235785603523,
+          "fearful": 0.008056259714066982,
+          "happy": 0.061152637004852295,
+          "neutral": 0.5106574296951294,
+          "sad": 0.30533748865127563,
+          "surprised": 0.0027855192311108112
+        },
+        "model": "logistic_expanded_v2"
+      },
+      "photo_faces": [
+        {
+          "number": 1,
+          "emotion": "happy",
+          "probabilities": {
+            "angry": 0.0001413067498803019,
+            "disgust": 0.004424724447182973,
+            "fearful": 5.486458779666929e-05,
+            "happy": 0.6037586760153038,
+            "neutral": 0.33244323987092533,
+            "sad": 0.003364980724197003,
+            "surprised": 0.05581220760471397
+          },
+          "warnings": []
+        }
+      ],
+      "video_face": {
+        "emotion": "neutral",
+        "probabilities": {
+          "angry": 0.00010671564652560867,
+          "disgust": 0.0022912368311407156,
+          "fearful": 2.8447730042332925e-05,
+          "happy": 0.18550298337878268,
+          "neutral": 0.7201788377012018,
+          "sad": 0.0017740517382466047,
+          "surprised": 0.09011772697406033
+        },
+        "frames_sampled": 12,
+        "frames_with_face": 12,
+        "multi_face_frames": 0
+      },
+      "fusion": {
+        "emotion": "neutral",
+        "probabilities": {
+          "neutral": 0.615793404152351,
+          "happy": 0.12337274986473508,
+          "sad": 0.1537801557248304,
+          "angry": 0.03518026529566523,
+          "fearful": 0.004048274082879991,
+          "disgust": 0.02137148076264113,
+          "surprised": 0.04645367011689735
+        },
+        "excluded_voice_mass": 0.0014676169957965612,
+        "excluded_face_mass": 0
+      },
+      "audio_quality": {
+        "duration": 3.603625,
+        "sample_rate": 16000,
+        "warnings": []
+      },
+      "sampled_frames": 12
+    }
+  ],
+  "image_probes": {
+    "dim": {
+      "faces": 1,
+      "warnings": [
+        [
+          "Face appears dim; expression scoring may be unreliable."
+        ]
+      ]
+    },
+    "blur": {
+      "faces": 1,
+      "warnings": [
+        []
+      ]
+    },
+    "two_faces": {
+      "faces": 2,
+      "warnings": [
+        [],
+        []
+      ]
+    },
+    "blank": {
+      "faces": 0,
+      "warnings": []
+    }
+  }
+}

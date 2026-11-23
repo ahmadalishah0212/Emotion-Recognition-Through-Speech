@@ -3,6 +3,7 @@ import json
 from hashlib import sha256
 from pathlib import Path
 from .feature_extraction import extract_features, extract_features_v2, load_audio
+from .predict import EXTRACTORS
 
 MODEL_DIR = Path(__file__).resolve().parents[1] / "models"
 
@@ -11,7 +12,7 @@ def trace_audio(payload, result, model_dir=MODEL_DIR):
     signal, sr = load_audio(payload)
     model_dir = Path(model_dir)
     selection = json.loads((model_dir / "selected.json").read_text(encoding="utf-8"))
-    extractor = extract_features_v2 if selection.get("feature_version", "v1") == "v2" else extract_features
+    extractor = EXTRACTORS[selection.get("feature_version", "v1")][0]
     features = extractor(payload)
     model_file = model_dir / selection["file"]
     ranked = sorted(result["probabilities"].values(), reverse=True)

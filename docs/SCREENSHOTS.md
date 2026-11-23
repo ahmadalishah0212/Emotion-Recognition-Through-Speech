@@ -1,5 +1,7 @@
 # Actual VocalLens screenshots
 
+These captures predate the 138-feature voice upgrade. They are preserved as genuine historical outputs, not promises of the current engine's scores. The visual design and workflows are retained; current model evidence is in `reports/accuracy_improvement_report.md`.
+
 Captured from the running local Streamlit app, 23 November 2026, at a consistent 1280×720 browser viewport. These are JPEG browser screenshots, not mockups. Longer workflows use separate views because Streamlit scrolls within its main panel.
 
 | File in `screenshots/` | Demonstrates | Inference |

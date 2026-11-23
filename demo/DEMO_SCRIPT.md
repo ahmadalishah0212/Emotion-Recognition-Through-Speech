@@ -10,9 +10,9 @@ Point out the three modes and the shared interface.
 
 Open Voice only, upload happy.wav and preview the recording. Click Analyze voice.
 
-“This sample has an acted Happy label. The result shown here is the model’s actual prediction. The largest bar is its top score; other bars show competing classes. If it predicts another class, that is a model error on this sample, and it is useful to see it openly. We trained a logistic regression using 130 acoustic features, including MFCC and spectral summaries. We kept speakers apart when selecting and testing the model.”
+“This sample has an acted Happy label. The result shown here is the model’s actual prediction. The largest bar is its top score; other bars show competing classes. If it predicts another class, that is a model error on this sample, and it is useful to see it openly. We trained a logistic regression using 138 acoustic features, including MFCC, pitch and energy summaries. We kept speakers apart when selecting and testing the model.”
 
-“On six unseen RAVDESS actors it reached 45.83% accuracy. We also tested transfer to TESS and German EmoDB. Those are acted datasets, so we do not claim this is real-world accuracy.”
+“On the historical six-actor RAVDESS comparison it reached 49.72% accuracy. Those actors were excluded from training, but their test results have been examined during development. We also tested transfer to TESS and German EmoDB. Those are acted datasets, so we do not claim this is real-world accuracy.”
 
 ## 2:00–3:10 · Photo
 
@@ -34,7 +34,7 @@ Switch to Voice + Face and upload happy.mp4. Click Analyze both cues.
 
 “Here we extract audio and sample frames from the same video. These two panels show separate voice and face predictions. They can agree or disagree, and both remain visible. The combined cue averages scores over the seven shared classes after excluding the speech-only Calm class. It is experimental, without joint calibration.”
 
-“On one held-out actor, the combined result reached 61.54% accuracy and 0.575 macro F1. That small acted test is encouraging but does not establish broad performance.”
+“On the historical Actor 05 comparison, the updated combined result reached 65.38% accuracy. On two additional actors it reached 57.69% accuracy and 0.570 macro F1. The new voice model improved combined macro F1 slightly there but reduced accuracy by one clip. That mixed result is why we keep fusion experimental.”
 
 ## 5:15–6:00 · Conclusion
 

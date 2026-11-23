@@ -1,0 +1,7 @@
+{
+  "artifact_bytes": 8953,
+  "uncached_mean_seconds": 0.3353675766666735,
+  "cached_cold_seconds": 0.015064300000176445,
+  "cached_warm_mean_seconds": 0.008460726666665625,
+  "iterations": 30
+}

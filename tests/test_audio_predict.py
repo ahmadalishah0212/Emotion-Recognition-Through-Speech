@@ -89,7 +89,7 @@ def test_current_bytes_drive_card_chart_and_debug_trace():
     model, selection = load_selected()
     assert first_trace["feature_shape"] == [model.n_features_in_]
     assert first_trace["feature_version"] == selection.get("feature_version", "v1")
-    assert model.n_features_in_ in (len(FEATURE_NAMES), len(FEATURE_NAMES_V2))
+    assert model.n_features_in_ in (len(FEATURE_NAMES), len(FEATURE_NAMES_V2), 138)
     assert first_trace["model_file"].endswith(selection["file"])
     assert first["probabilities"] == first_trace["probabilities"]
     assert first["emotion"] == max(first["probabilities"], key=first["probabilities"].get)

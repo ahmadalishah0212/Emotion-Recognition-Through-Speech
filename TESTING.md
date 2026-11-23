@@ -1,5 +1,15 @@
 # Testing log
 
+## ML accuracy experiments and v3 deployment — 23 November 2026
+
+Baseline: `29 passed, 3 warnings in 40.88s`. After integration, the final command `.\.venv\Scripts\python.exe -m pytest -q` produced **`34 passed, 3 warnings in 25.03s`**, with explicitly checked process exit **0**. Three existing audioread/Python 3.12 deprecation warnings remain. New tests verify finite 138-feature vectors on short audio, exact preservation of the 130-feature prefix, silent-audio rejection, honest fusion errors/normalization, and model-cache replacement invalidation. Existing tests exercise real saved-model scoring, byte/debug parity, class alignment, invalid inputs, tone rejection, real face/photo/video fixtures and missing modalities. No tests skipped in the final run. Compilation and `pip check` passed.
+
+The ten-model training-actor CV search and four feature/augmentation ablations ran. Prosody LR improved pooled CV macro F1 0.4201→0.4511, with improvement in all three folds. Historical corpus comparisons, not fresh tests, improved voice accuracy on RAVDESS/TESS/EmoDB to 49.72%/46.86%/35.24%. The deployment script verified a fresh raw-sample feature vector against the cached training representation and preserved the original artifacts. See `reports/accuracy_improvement_report.md` and `results/accuracy/` for exact parameters, splits, per-class metrics and confusion matrices.
+
+Official AV Actors 10 and 15 were downloaded and MD5-verified. A frozen development-selected fusion rule was evaluated on all 120 AV videos, with 104 common-label clips in the comparison. The retained face model scored 49.04% accuracy, versus FER+ 23.08%. Equal fusion with v3 scored 57.69% / 0.5700 macro F1; v2 equal was 58.65% / 0.5602 on the same clips. The softened fusion rule failed its predeclared per-actor gate and was not deployed. Small historical Actor05 gains do not establish broad multimodal improvement.
+
+Updated Streamlit started on `127.0.0.1:8503`, and `/_stcore/health` returned `ok`. This confirms server startup; a new browser upload session was not performed during this ML task. Previous real screenshots remain explicitly historical. Physical camera/microphone, GPU inference, fresh virtual-environment installation and peak memory remain unverified. Pretrained transformer engines were researched but not run because their optional runtimes were absent and label/provenance issues remain. No new mandatory dependencies were installed.
+
 ## Final presentation pass — 23 November 2026
 
 Existing environment: Python 3.12, existing `.venv`; a fresh installation in a separate environment was **not** tested. The documented explicit interpreter starts Streamlit on localhost. No models were retrained or replaced. The face downloader and model paths were reviewed; existing local weights were used. Syntax compilation and `pip check` passed. No TODO/FIXME markers were found in `src/` or `app.py`.

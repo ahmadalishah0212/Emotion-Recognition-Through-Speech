@@ -6,7 +6,9 @@ import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
 CHECKSUMS = {"01": "3c8ececaf392b4a9b11b32271f4f6d01",
-             "05": "b00e17d61374ef6ba86fef35d50a20fb"}
+             "05": "b00e17d61374ef6ba86fef35d50a20fb",
+             "10": "70199d1c6902f76e17df308d5c41fa01",
+             "15": "4b3b9bc8473e86f884630f2506684887"}
 
 
 def main():

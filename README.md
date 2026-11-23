@@ -35,9 +35,21 @@ Browser camera and microphone permission are needed for capture. Uploaded video 
 
 ## Speech training and actual results
 
+### Current voice engine: 138-feature prosody Logistic Regression
+
+The latest accuracy investigation compared ten traditional ML configurations, then pitch/energy features and training-only noise. The selected balanced Logistic Regression adds eight prosodic summaries to the original 130 features. On the same three training-actor folds, pooled CV macro F1 improves **0.4201 → 0.4511**, with improvement in every fold. Historical comparisons improve RAVDESS accuracy **45.83% → 49.72%**, TESS **37.79% → 46.86%**, EmoDB **31.94% → 35.24%**. These corpora have been inspected previously, so they are historical comparisons rather than new untouched tests. Noise augmentation, PCA, feature filtering and the tested alternatives were rejected.
+
+On two additional AV actors (10/15; 104 common-label clips), the unchanged face model achieves **49.04% accuracy / 0.4126 macro F1**. Equal fusion with the new voice model reaches **57.69% / 0.5700**, versus the previous voice engine's **58.65% / 0.5602** on those same clips. This is mixed evidence: macro F1 improves slightly while accuracy drops by one clip. A validation-selected softened fusion rule failed to generalize and was rejected. The app retains experimental equal averaging. The historical Actor 05 comparison improves combined accuracy 61.54%→65.38%, but that actor is development data.
+
+See the [complete accuracy report](reports/accuracy_improvement_report.md), [audit](reports/ml_pipeline_audit.md), [experiment records](results/accuracy/) and [pretrained audio research](reports/pretrained_audio_research.md). The original 130-feature artifact remains available as a rollback. No transformer was run or silently integrated; no additional mandatory dependencies were introduced.
+
+To restore the preserved voice engine explicitly, run `.venv\Scripts\python.exe scripts\deploy_prosody.py --rollback-v2` and restart Streamlit. Installing the v3 engine again with that script requires the local recorded training candidate/cache; the deployed v3 artifact is already included for normal setup.
+
+### Previous 130-feature experiment, preserved
+
 The retained **baseline calibrated SVM** used 46 features and RAVDESS only. Its six-actor held-out accuracy was 44.17% and macro F1 39.75%; baseline logistic regression was 40.00% / 39.27%, random forest 39.17% / 37.38%. A previous tuned SVM reached 44.72% / 40.86% but was not deployed because its gain was uncertain.
 
-The selected **logistic regression with 130 features** adds MFCC delta and delta-delta summaries plus spectral bandwidth and rolloff. Training-only three-fold actor GroupKFold selected it by macro F1 (**0.4093**). The candidate uses 1,079 RAVDESS clips from 18 training actors plus 490 TESS clips from one actor (70 per compatible class). The six original RAVDESS test actors, TESS's second actor and all ten EmoDB actors remained untouched during model selection.
+The previously selected **logistic regression with 130 features** adds MFCC delta and delta-delta summaries plus spectral bandwidth and rolloff. Training-only three-fold actor GroupKFold selected it by macro F1 (**0.4093**). The candidate uses 1,079 RAVDESS clips from 18 training actors plus 490 TESS clips from one actor (70 per compatible class). The six original RAVDESS test actors, TESS's second actor and all ten EmoDB actors remained untouched during that original model selection.
 
 | Untouched test | Clips / speakers | Saved SVM accuracy / macro F1 | Selected model accuracy / macro F1 |
 |---|---:|---:|---:|

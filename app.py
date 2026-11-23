@@ -192,7 +192,7 @@ else:
                 if combined:
                     st.subheader("Experimental combined cue")
                     show_result(combined, "Combined", "exploratory late fusion")
-                    st.caption("Seven shared classes; voice Calm is excluded. The remaining voice scores are renormalized and averaged equally with face scores. This exploratory fusion was evaluated on one held-out actor and is not jointly calibrated or validated for real-world recordings.")
+                    st.caption("Seven shared classes; voice Calm is excluded. Remaining voice scores are renormalized and averaged equally with face scores. On two additional AV actors, combined accuracy was 57.69% and macro F1 0.570; accuracy did not improve consistently. This exploratory fusion is not jointly calibrated or validated for real-world recordings.")
                 else:
                     st.info("A combined cue needs both valid voice and face results. Available single-cue results are shown above.")
                 input_details(video.name, video.getvalue())
@@ -202,7 +202,7 @@ else:
                 st.error(f"The video could not be analyzed: {exc}")
 
 with st.expander("Models, sources and limits"):
-    st.write("**Voice:** The selected logistic regression uses 130 MFCC, delta-MFCC, energy and spectral summary features from 16 kHz mono audio. On 360 untouched RAVDESS clips from six unseen actors: accuracy **45.83%**, macro F1 **45.12%**. On TESS's other speaker: **37.79% / 33.37%**; on unseen German EmoDB: **31.94% / 30.04%**. These are acted-corpus tests, not real-world accuracy.")
-    st.write("**Face:** YuNet detects face landmarks; OpenCV Zoo's Progressive Teacher scores aligned 112×112 crops. On 52 acted clips from one held-out RAVDESS actor, accuracy was **51.92%** and macro F1 **45.00%**. It performs no identity recognition. Photo performance is unmeasured.")
+    st.write("**Voice:** The selected logistic regression uses 138 acoustic features, including pitch and energy summaries. Training-speaker CV macro F1 improved from **42.01% to 45.11%**. On the same historical RAVDESS comparison: accuracy **49.72%**, macro F1 **49.12%**. TESS: **46.86% / 40.63%**; EmoDB: **35.24% / 33.83%**. These previously inspected acted-corpus comparisons are not fresh final tests or real-world accuracy.")
+    st.write("**Face:** YuNet detects face landmarks; OpenCV Zoo's Progressive Teacher scores aligned 112×112 crops. The retained model reached **49.04% accuracy / 41.26% macro F1** on 104 common-label clips from two additional RAVDESS actors; the earlier Actor 05 result was **51.92% / 45.00%**. It performs no identity recognition. Photo performance is unmeasured.")
     st.write("[RAVDESS data](https://zenodo.org/records/1188976) · [TESS](https://doi.org/10.5683/SP2/E8H2MF) · [EmoDB](https://zenodo.org/records/7447302) · [OpenCV expression model](https://github.com/opencv/opencv_zoo/tree/main/models/facial_expression_recognition)")
 st.markdown("<div class='footer'>VocalLens · Ahmad Ali Shah, Saboor Khan, Sardar Bilal · Academic demonstration · Outputs are uncertain expression cues.</div>", unsafe_allow_html=True)
